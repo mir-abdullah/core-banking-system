@@ -22,6 +22,7 @@ const unreadCount = computed(() => {
 });
 
 const formattedRouteName = computed(() => {
+    if (route.meta?.title) return route.meta.title;
     if (!route.name) return '';
     return route.name.replace(/([A-Z])/g, ' $1').trim();
 });
@@ -75,11 +76,15 @@ const handleProfileMenuClick = (action) => {
             <h1 class="text-2xl font-semibold text-gray-900">
                 {{ displayTitle }}
             </h1>
+            
             <Breadcrumb 
                 :home="breadcrumbHome" 
                 :model="breadcrumbItems"
                 class="text-sm "
             >
+             <template #separator>
+                    <span class="px-1 text-gray-400">/</span>
+                </template>
                 <template #item="{ item }">
                     <router-link v-if="item.to" :to="item.to" class="text-gray-500 hover:text-gray-700">
                         {{ item.label }}
