@@ -113,4 +113,67 @@ export const profileMenuItems = [
     },
 ]
 
+export const generalBankingItems = [
+  {
+    title: "Cash Management",
+    color: "#0c3aa3",
+    options: [
+        { name: "Posting" },
+        { name: "Authorize" },
+        { name: "Receive Cash" },
+    
+    ],
+    dropdown: [
+      {
+        name: "Cash Collection",
+        subOptions: [
+          { name: "Receive Cash" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Funds Transfer",
+        subOptions: [
+          { name: "Cheque" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Dividend Warrants",
+        subOptions: [
+          {
+            name: "Inward Clearing",
+            options: [
+              { name: "Posting" },
+              { name: "Authorize" },
+              { name: "Cancel" },
+              { name: "Inquiry" },
+            ],
+          },
+          {
+            name: "Funds Transfer",
+            options: [
+              { name: "Cheque" },
+              { name: "Authorize" },
+              { name: "Cancel" },
+              { name: "Inquiry" },
+            ],
+          },
+          { name: "Respond Warrants" ,
+            options: [
+              { name: "Cheque" },
+              { name: "Authorize" },
+              { name: "Cancel" },
+              { name: "Inquiry" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
 

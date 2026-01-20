@@ -10,7 +10,7 @@
         <div class="flex flex-col flex-1">
             <Navbar />
             <main class="flex-1 overflow-y-auto">
-                <div class="p-6">
+                <div class="p-3">
                     <router-view />
                 </div>
             </main>

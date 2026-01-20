@@ -39,8 +39,8 @@ const routes = [
         meta: { title: 'Trade Financing' },
       },
       {
-        path: 'loan-origination',
-        name: 'LoanOrigination',
+        path: 'loan-origination-&-management',
+        name: 'LoanOrigination&Management',
         component: LoanOrigination,
         meta: { title: 'Loan Origination & Management' },
       },
@@ -51,8 +51,8 @@ const routes = [
         meta: { title: 'International Transactions' },
       },
       {
-        path: 'customer-onboarding',
-        name: 'CustomerOnboarding',
+        path: 'customer-onboarding-&-management',
+        name: 'CustomerOnboarding&Management',
         component: CustomerOnboarding,
         meta: { title: 'Customer Onboarding & Management' },
       },
