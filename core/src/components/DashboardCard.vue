@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useSidebar } from '../composables/useSidebar';
 
 //params
 const props = defineProps({
@@ -24,6 +25,9 @@ const props = defineProps({
     },
 });
 const route = useRoute();
+const { isCollapsed } = useSidebar();
+
+const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
 
 
 
@@ -32,7 +36,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <div class="group relative w-[280px] h-[374px] cursor-pointer">
+    <div class="group relative h-[374px] cursor-pointer transition-all duration-400" :style="{ width: cardWidth }">
         <router-link :to="`/${props.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`">
         <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
             :style="{ backgroundColor: props.backgroundColor }">
