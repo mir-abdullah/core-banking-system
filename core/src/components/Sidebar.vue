@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { sidebarItems, sidebarItems2 } from '../data/data';
+import { useSidebar } from '../composables/useSidebar';
 import sidebarlogo from "../assets/images/icon_navbar_logo.svg";
 import toggleIcon from "../assets/images/icon_navbar_toggle.svg";
 import teresolLogo from "../assets/images/icon_teresol_colored_large.svg";
@@ -11,7 +12,7 @@ const router = useRouter();
 const route = useRoute();
 
 const open = ref(null);
-const isCollapsed = ref(false);
+const { isCollapsed, toggleSidebar: toggleSidebarState } = useSidebar();
 
 const routeMap = {
     'Main Menu': '/dashboard',
@@ -32,7 +33,7 @@ const toggle = (name) => {
 };
 
 const toggleSidebar = () => {
-    isCollapsed.value = !isCollapsed.value;
+    toggleSidebarState();
     if (isCollapsed.value) open.value = null;
 };
 
