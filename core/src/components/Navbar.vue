@@ -185,12 +185,12 @@ const handleProfileMenuClick = (action) => {
                 </div>
             </div>
 
-            <div class="relative flex items-center gap-3 pl-4 border-l border-gray-200">
-                <div class="text-right">
+            <div class="relative flex items-center gap-3 pl-4  border-gray-200">
+                <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-lg" />
+                <div >
                     <p class="text-sm font-medium text-gray-900">Olivia Skye</p>
                     <p class="text-sm text-gray-500">Operational Manager</p>
                 </div>
-                <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-full" />
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">
                     <i class="pi pi-chevron-down"></i>
                 </button>

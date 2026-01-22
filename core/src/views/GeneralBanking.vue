@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div >
+    <div class="flex gap-5 flex-wrap" >
       <LayoutCard
         v-for="item in generalBankingItems"
         :key="item.title"

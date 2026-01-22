@@ -1,10 +1,18 @@
 <script setup>
+  import { customerOnboardingItems } from '../data/data';
+  import LayoutCard from '../components/LayoutCard.vue';
 </script>
 
 <template>
-  <div class="p-6 bg-white rounded-lg shadow-md">
-    <h1 class="text-3xl font-bold mb-4">Customer Onboarding &amp; Management</h1>
-    
-   
-  </div>
+    <div class="flex gap-5 flex-wrap" >
+      <LayoutCard
+        v-for="item in customerOnboardingItems"
+        :key="item.title"
+        :name="item.title"
+        :options="item.options"
+        :dropdown="item.dropdown"
+        :color="item.color"
+      />
+    </div>
+  
 </template>

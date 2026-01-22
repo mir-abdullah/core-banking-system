@@ -5,6 +5,7 @@
     import DashboardCard from '../components/DashboardCard.vue';
     import { useRoute } from 'vue-router';
     import DatePicker from '../components/DatePicker.vue';
+    import bankLogo from '../assets/images/icon_bank.svg'
 
 
     const route = useRoute();
@@ -18,7 +19,7 @@
         <DatePicker  class="w-fit" />
             
             <div  class="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-lg w-fit">
-                <i class="pi pi-building text-gray-600 text-sm"></i>
+                <img :src="bankLogo" alt="Bank Logo" class="w-4 h-4" />
                 <span class="text-sm text-gray-700">1016 - Wells Fargo Branch</span>
             </div>
 

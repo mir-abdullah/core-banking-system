@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSidebar } from '../composables/useSidebar';
+import cardArrowIcon from '../assets/images/icon_card_arrow_right.svg';
 
 //params
 const props = defineProps({
@@ -37,7 +38,7 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
 
 <template>
     <div class="group relative h-[374px] cursor-pointer transition-all duration-400" :style="{ width: cardWidth }">
-        <router-link :to="`/${props.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`">
+        <router-link :to="`/${props.name.toLowerCase().replace(/ /g, '-')}`">
         <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
             :style="{ backgroundColor: props.backgroundColor }">
             <div
@@ -62,8 +63,7 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
                     <span class="text-2xl font-semibold text-white">{{ props.value }}</span>
                     <span class="text-sm font-semibold text-white/70">Sub-Categories</span>
                 </div>
-                <i
-                    class="pi pi-chevron-right text-white text-lg transition-transform duration-300 group-hover:translate-x-1"></i>
+                <img :src="cardArrowIcon" alt="arrow icon" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
             </div>
         </div>
          </router-link>
