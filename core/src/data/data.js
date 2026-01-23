@@ -599,12 +599,12 @@ export const customerOnboardingItems = [
     title: "Account Opening",
     color: "#00a8a8",
     options: [
-      { name: "Open New Customer & Account" },
+      { name: "Open New Customer & Account", routeName: 'OpenNewCustomerAccount', },
       { name: "Open New Account of Existing Customer" },
       { name: "Addition of Companies" },
     ],
     dropdown: [
-      { name: "Open New Customer & Account" },
+      { name: "Open New Customer & Account", routeName: 'OpenNewCustomerAccount', },
       { name: "Open New Account of Existing Customer" },
       { name: "Addition of Companies" },
 
