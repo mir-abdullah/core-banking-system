@@ -7,6 +7,8 @@ import sidebarlogo from "../assets/images/icon_navbar_logo.svg";
 import toggleIcon from "../assets/images/icon_navbar_toggle.svg";
 import teresolLogo from "../assets/images/icon_teresol_colored_large.svg";
 import teresolCollapsedLogo from "../assets/images/icon_teresol_colored_small.svg";
+import ToggleSwitch from 'primevue/toggleswitch';
+
 
 const router = useRouter();
 const route = useRoute();
@@ -114,9 +116,10 @@ const handleClick = (item) => {
 
                     <transition name="accordion">
                         <ul v-if="item.subItems && open === item.name && !isCollapsed"
-                            class="submenu pl-12 pr-4 text-sm text-gray-500 space-y-1">
-                            <li v-for="sub in item.subItems" :key="sub">
-                                <span>{{ sub }}</span>
+                            class="submenu pl-12 pr-4 text-sm text-gray-500 space-y-2">
+                            <li v-for="sub in item.subItems" :key="sub.name" class="flex items-center justify-between gap-2">
+                                <span>{{ sub.name }}</span>
+                                <ToggleSwitch v-if="sub.hasToggle" />
                             </li>
                         </ul>
                     </transition>

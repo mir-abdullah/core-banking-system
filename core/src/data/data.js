@@ -32,13 +32,14 @@ export const sidebarItems2 = [
         name: 'General Inquiry',
         icon: 'pi-info-circle',
         iconSrc: iconNavbarGeneralInquiry,
-        subItems: ['- Customer Profile', '- General Ledger A/C', '- Exchange Rates', '- Instrument Inquiry'],
+        subItems: [{name:'- Customer Profile'}, {name:'- General Ledger A/C'}, {name:'- Exchange Rates'}, {name:'- Instrument Inquiry'}],
     },
     {
         name: 'Settings',
         icon: 'pi-cog',
         iconSrc: iconNavbarSettings,
-        subItems: ['- Dark Mode', '- Edit Dashboard'],
+        subItems: [{name:'- Dark Mode',hasToggle: true}, {name:'- Edit Dashboard',hasToggle: true}],
+        
     },
 ]
 
@@ -121,7 +122,6 @@ export const generalBankingItems = [
       { name: "Receive Cash" },
       { name: "Authorize" },
       { name: "Cancel" },
-      { name: "Inquiry" },
     ],
     dropdown: [
       {
@@ -182,9 +182,17 @@ export const generalBankingItems = [
       { name: "Lodge" },
       { name: "Authorize" },
       { name: "Cancel" },
-      { name: "Inquiry" },
     ],
     dropdown: [
+      {
+        name:"Transfer Funds",
+
+
+      },
+      {
+        name: "Inter Branch Transfer Funds",
+
+      },
       {
         name: "Forex Remittance",
         subOptions: [
@@ -282,9 +290,22 @@ export const generalBankingItems = [
       { name: "By Ref No" },
       { name: "By List" },
       { name: "By Voucher No" },
-      { name: "By Voucher List" },
+  
     ],
-    dropdown: [],
+    dropdown: [
+      {
+        name: "By Ref No",
+      }
+      ,{
+        name: "By List",
+      }
+      ,{
+        name: "By Voucher No",
+      }
+      ,{
+        name: "By Voucher List",
+      }
+    ],
   },
   {
     title: "Transaction Authorization",
@@ -293,26 +314,45 @@ export const generalBankingItems = [
       { name: "By Reference No" },
       { name: "By Voucher No" },
       { name: "By Transaction No" },
-      { name: "By Transaction List" },
-      { name: "Inter Branch Tagged Transaction" },
-      { name: "Charge Waiver Authorization" },
+  
     ],
     dropdown: [
       {
-        name: "Member Authorization",
+        name: "Authorize",
         subOptions: [
-          { name: "By Transaction No" },
           { name: "By Transaction List" },
+          {
+            name: "By Reference No",
+          },{
+            name: "By Voucher No",
+          },{
+            name: "By Voucher List",
+            options: [
+              { name:"Normal" },
+              {name:"Inter Branch" }
+            ]
+          },
+          {
+            name:"Monitor By Transaction No."
+          },
+          {
+            name:"Monitor By Transaction List"
+          },
+          {
+            name:"Charges Waiver Authorize"
+          }
+          ,{
+            name:"Inter Branch Logged Transaction"
+          }
         ],
       },
       {
         name: "View",
         subOptions: [
           { name: "By Reference No" },
-          { name: "By Voucher No" },
+       
           { name: "By Transaction List" },
           { name: "To Transaction" },
-          { name: "Or Payment" },
         ],
       },
     ],
@@ -323,6 +363,7 @@ export const generalBankingItems = [
     options: [
       { name: "Utility Bills Collection" },
       { name: "Utility Biller Addition" },
+      { name: "Modify" },
     ],
     dropdown: [
       {
@@ -346,37 +387,235 @@ export const generalBankingItems = [
       },
     ],
   },
+  {
+    title: "Credit Cards",
+    color: "#ec4899",
+    options: [
+      { name: "Card Inquiry" },
+      { name: "Cash Collection" },
+      { name: "Funds Transfer" },
+    ],
+    dropdown: [
+      {
+        name: "Card Inquiry",
+        subOptions: [
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Cash Collection",
+        subOptions: [
+          { name: "Receive Cash" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Funds Transfer",
+        subOptions: [
+          { name: "Fund Transfer" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Inquiry" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Cash Withdrawal",
+    color: "#10b981",
+    options: [
+      { name: "Payment" },
+      { name: "Authorize" },
+      { name: "Modify" },
+   
+    ],
+    dropdown: [
+      {
+        name:"Payment",
+        
+      }
+      ,{
+        name:"Authorize",
+       
+      }
+      ,{
+        name:"Modify",
+        
+      }
+      ,{
+        name:"Cancel",
+      
+      }
+      ,{
+        name:"Inquiry",
+      }
+    ],
+  },
+  {
+    title: "Inward Clearing",
+    color: "#2563eb",
+    options: [
+      { name: "Centralized Inward Clearing" },
+      { name: "Pending Return Charges" },
+      { name: "Deduct/Waive" },
+    
+    ],
+    dropdown: [
+      {
+        name: "Centralized Inward Clearing",
+        subOptions: [
+          { name: "Lodgement Settlement" },
+          { name: "Return Settlement" },
+          { name: "Authorize Settlement" },
+          { name: "Resend Inward Settlement" },
+          { name: "Semi-Auto Inw Clr" },
+          { name: "Cheque" },
+          { name: "Cheque Scan" },
+          { name: "Demand Draft" },
+          { name: "Pay Order" },
+          { name: "Upload" },
+          {
+            name: "NIFT Return File",
+            options: [
+              { name: "NIFT File" },
+              { name: "Generate" },
+              { name: "Modify" },
+              { name: "Inquire" },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Pending Return Charges",
+        subOptions: [
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Return Charges",
+        subOptions: [
+          { name: "Deduct/Waive" },
+          { name: "Cancel Deduction" },
+          { name: "Branch Status Inquiry" },
+          { name: "Instruments Inquiry" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Cash Deposit",
+    color: "#0ea5e9",
+    options: [
+      { name: "Deposit" },
+      { name: "Authorize" },
+      { name: "Modify" },
+ 
+    ],
+    dropdown: [
+      {
+        name: "Deposit",
+      }
+      ,{
+        name: "Authorize",
+      }
+      ,{
+        name: "Modify",
+      }
+      ,{
+        name: "Cancel",
+      }
+      ,{
+        name: "Inquiry",
+      }
+    ],
+  },
+  {
+    title: "Outward Clearing",
+    color: "#1d4ed8",
+    options: [
+      { name: "Online Outward Clearing" },
+      { name: "Inter City Clearing" },
+      { name: "Cent Outward Settlement" },
+    ],
+    dropdown: [
+      {
+        name: "Online Outward Clearing",
+        subOptions: [
+          { name: "Lodgement" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Inquiry" },
+          { name: "Release" },
+          { name: "Lodgement Settlement" },
+          { name: "Return Settlement" },
+          { name: "Resend Outward Settlement" },
+          { name: "Authorize Settlement" },
+        ],
+      },
+      {
+        name: "Inter City Clearing",
+        subOptions: [
+          { name: "Lodge" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Realize" },
+          { name: "Return" },
+          { name: "Inquiry" },
+        ],
+      },
+      {
+        name: "Cent Outward Settlement",
+        subOptions: [
+          { name: "Lodge" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Return" },
+          { name: "Inquiry" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const customerOnboardingItems = [
   {
+    title: "Biometric",
+    color: "#7c3aed",
+    options: [{ name: "Add" }, { name: "Modify" }, { name: "Add" }],
+    dropdown: [
+      {
+        name: "Add",
+        subOptions: [{ name: "New Customer" }, { name: "Existing Customer" }],
+      },
+      {
+        name: "Modify",
+        subOptions: [{ name: "New Customer" }, { name: "Existing Customer" }],
+      },
+    ],
+  },
+  {
     title: "Account Opening",
     color: "#00a8a8",
     options: [
-      { name: "Modify" },
       { name: "Open New Customer & Account" },
       { name: "Open New Account of Existing Customer" },
-      { name: "Account Update" },
-      { name: "Approve New Accounts" },
-      { name: "Remove Maker Before Authorization" },
+      { name: "Addition of Companies" },
     ],
     dropdown: [
+      { name: "Open New Customer & Account" },
+      { name: "Open New Account of Existing Customer" },
+      { name: "Addition of Companies" },
+
+      { name: "Process New Accounts Received" },
+      { name: "Remove Mistakes Before Authorization" },
+
       {
-        name: "Biometric",
+        name: "CIF Inquiry",
         subOptions: [
-          { name: "Modify" },
-          { name: "Open New Customer & Account" },
-          { name: "Open New Account of Existing Customer" },
-          { name: "Account Update" },
-          { name: "Approve New Accounts" },
-          { name: "Remove Maker Before Authorization" },
-        ],
-      },
-      {
-        name: "Aced",
-        subOptions: [
-          { name: "New Customer" },
-          { name: "Existing Customer" },
+          { name: "CIF Natural Person Inquiry" },
+          { name: "CIF Entity Inquiry" },
         ],
       },
     ],
@@ -385,91 +624,65 @@ export const customerOnboardingItems = [
     title: "Account Maintenance",
     color: "#16a34a",
     options: [
-      { name: "SMS Alert Request" },
-      { name: "E-Statement Request" },
+      { name: "SMS Alerts Request" },
+      { name: "E_Statement Request" },
       { name: "ATM Card Request" },
-      { name: "Apply/Remove Conditions" },
-      { name: "Natural Person CIF" },
-      { name: "Entity CIF" },
     ],
     dropdown: [
       {
-        name: "SMS Alert Request",
+        name: "Customer's Account Change Request",
+      },
+      { name: "Account Maintenance Request" },
+      { name: "Signature Cancel Request" },
+
+      {
+        name: "SMS Alerts Request",
         subOptions: [
-          {
-            name: "Service Request",
-            options: [
-              { name: "Remove Mutation Before Authorization" },
-              { name: "Authorize SMS Alerts" },
-              { name: "Authorize SMS Alert Request" },
-              { name: "Cancellation of Mutation After Process" },
-              { name: "Authorize SMS Alerts Request" },
-            ],
-          },
-          {
-            name: "E-Statement Request",
-            options: [
-              { name: "E-Statement Request" },
-              { name: "E-Statement Cancellation" },
-              { name: "E-Statement Intention Request" },
-              { name: "E-Statement Intention Cancellation" },
-            ],
-          },
+          { name: "SMS Alert Request" },
+          { name: "Remove Mistakes" },
+          { name: "SMS Alert Request Cancellation Before Process" },
+          { name: "SMS Alert Request Cancellation After Process" },
+          { name: "Authorize SMS Alerts Request" },
+        ],
+      },
+
+      {
+        name: "E_Statement Request",
+        subOptions: [
+          { name: "E_Statement Request" },
+          { name: "Remove Mistakes" },
+          { name: "E_Statement Cancellation" },
+          { name: "E_Statement Initiation Request" },
+          { name: "E_Statement Initiation Cancellation" },
         ],
       },
       {
         name: "ATM Card Request",
         subOptions: [
-          {
-            name: "Service Request",
-            options: [
-              { name: "Service Initiate" },
-              { name: "Authorize Mutation (Assign)" },
-            ],
-          },
+          { name: "ATM Card Request" },
+          { name: "Remove Mistakes" },
+          { name: "ATM Request Cancellation" },
         ],
       },
       {
         name: "Apply/Remove Conditions",
         subOptions: [
-          { name: "Apply/Remove Conditions" },
+          { name: "Apply Condition" },
           { name: "Remove Condition" },
-          { name: "Reprint" },
-        ],
-      },
-      {
-        name: "Natural Person CIF",
-        subOptions: [
-          {
-            name: "CIF Enquiry",
-            options: [
-              { name: "CIF Maker of Passing Enquiry" },
-              { name: "CIF Status Report" },
-            ],
-          },
-          {
-            name: "Customer's Account Change Request",
-            options: [
-              { name: "Account Maintenance Request" },
-            ],
-          },
-        ],
-      },
-      {
-        name: "Entity CIF",
-        subOptions: [
-          { name: "Issue Express Book" },
-          { name: "Issue Cheque Book" },
+          { name: "Report" },
         ],
       },
     ],
   },
+  //
   {
     title: "CIF Management",
     color: "#8b5cf6",
     options: [
       { name: "Natural Person CIF" },
       { name: "Entity CIF" },
+      //dummy
+      { name: "Issue Cheque Book" },
     ],
     dropdown: [
       {
@@ -477,16 +690,7 @@ export const customerOnboardingItems = [
         subOptions: [
           {
             name: "CIF Enquiry",
-            options: [
-              { name: "CIF Maker of Passing Enquiry" },
-              { name: "CIF Status Report" },
-            ],
           },
-          { name: "Remove Mutation Before Authorization" },
-          { name: "Authorize" },
-          { name: "E-Statement Cancellation" },
-          { name: "Inquiry" },
-          { name: "CIF Maintenance" },
           { name: "Removal Mutation Before Authorization" },
           { name: "Authorize" },
           { name: "Maintenance Cancellation" },
@@ -495,29 +699,42 @@ export const customerOnboardingItems = [
       },
       {
         name: "Entity CIF",
-        subOptions: [
-          { name: "Issue Express Book" },
-          { name: "Issue Cheque Book" },
+       subOptions: [
+          {
+            name: "CIF Enquiry",
+          },
+          { name: "Removal Mutation Before Authorization" },
+          { name: "Authorize" },
+          { name: "Maintenance Cancellation" },
+          { name: "Inquiry" },
         ],
       },
     ],
   },
+
   {
     title: "Cheque Book",
     color: "#dc2626",
     options: [
+      { name: "Issue Express Book" },
+      { name: "Issue Cheque Book" },
       { name: "Request" },
-      { name: "Activate" },
-      { name: "Authorize" },
-      { name: "Cancel" },
-      { name: "Inquire" },
+
     ],
     dropdown: [
+      {
+        name: "Issue Express Book",
+        subOptions: [],
+      },
+      {
+        name: "Issue Cheque Book",
+        subOptions: [],
+      },
       {
         name: "Request",
         subOptions: [
           { name: "Request" },
-          { name: "Revise" },
+          { name: "Revert" },
         ],
       },
       {
@@ -525,46 +742,45 @@ export const customerOnboardingItems = [
         subOptions: [
           { name: "By A/C No" },
           { name: "By List" },
-          { name: "All" },
+          { name: "Revert" },
         ],
       },
       {
         name: "Authorize",
         subOptions: [
+          { name: "Request" },
           { name: "Activate" },
-          { name: "Authorize" },
           { name: "Cancel Request" },
         ],
       },
       {
         name: "Cancel",
         subOptions: [
+                    { name: "Reports" },
+
           { name: "By A/C No" },
           { name: "By List" },
-          { name: "All" },
+          { name: "Revert" },
         ],
       },
       {
         name: "Inquire",
         subOptions: [
-          { name: "Request" },
-          { name: "By Account No." },
-          { name: "By Cheque No." },
+          {
+            name: "Issued",
+            options: [
+              { name: "By Account No." },
+              { name: "By Cheque No." },
+            ],
+          },
+          { name: "Status" },
+     
         ],
       },
       {
         name: "Cheque Status",
         subOptions: [
-          { name: "Status" },
-          { name: "Posting" },
-          { name: "Inquire" },
-        ],
-      },
-      {
-        name: "Account Interest Rate",
-        subOptions: [
-          { name: "Add" },
-          { name: "Modify" },
+               { name: "Change" },
           { name: "Inquire" },
         ],
       },
@@ -574,43 +790,58 @@ export const customerOnboardingItems = [
     title: "Operational Activities",
     color: "#f59e0b",
     options: [
-      { name: "Customer Charges" },
-      { name: "Customer Commission Charges" },
-      { name: "Customer WHT Tax Exemption" },
+      { name: "Account Interest Rate" },
+      { name: "Customer Information" },
       { name: "Special Conditions" },
-      { name: "Standing Instructions" },
     ],
     dropdown: [
       {
+        name: "Account Interest Rate",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Inquire" },
+        ],
+      },
+      {
         name: "Customer Information",
         subOptions: [
+                    { name: "Maintain" },
+          { name: "Inquire" },
           {
             name: "Special Charges",
             options: [
-              { name: "Create" },
-              { name: "Cancel Ref. Auth" },
-              { name: "Authorize" },
-              { name: "Inquire" },
-              { name: "Edit" },
-            ],
-          },
-          {
-            name: "Customer Commission Charges",
-            options: [
-              { name: "Create" },
-              { name: "Cancel Ref. Auth" },
-              { name: "Authorize" },
-              { name: "Inquire" },
-              { name: "Edit" },
-            ],
-          },
-          {
-            name: "Customer WHT Tax Exemption",
-            options: [
-              { name: "Create" },
-              { name: "Cancel Ref. Auth" },
-              { name: "Authorize" },
-              { name: "Inquire" },
+              {
+                name: "Customer Charges",
+                subOptions: [
+                  { name: "Manage Charges" },
+                  { name: "Cancel Bef. Auth" },
+                  { name: "Authorize" },
+                  { name: "Inquire" },
+                ],
+              },
+              {
+                name: "Customer Commission Charges",
+                subOptions: [
+                  { name: "Add" },
+                  { name: "Change" },
+                  { name: "Delete" },
+                  { name: "Cancel Bef. Auth" },
+                  { name: "Authorize" },
+                  { name: "Inquire" },
+                ],
+              },
+              {
+                name: "Customer W/H Tax Exemption",
+                subOptions: [
+                  { name: "Add" },
+                  { name: "Change" },
+                  { name: "Delete" },
+                  { name: "Cancel Bef. Auth" },
+                  { name: "Authorize" },
+                  { name: "Inquire" },
+                ],
+              },
             ],
           },
         ],
@@ -618,9 +849,8 @@ export const customerOnboardingItems = [
       {
         name: "Special Conditions",
         subOptions: [
-          { name: "Maintain" },
-          { name: "Inquire" },
-          { name: "Copy" },
+    
+          { name: "Assign" },
           { name: "Inquire" },
         ],
       },
@@ -647,15 +877,14 @@ export const customerOnboardingItems = [
       },
       {
         name: "Close Account",
+        subOptions: [],
+      },
+      {
+        name: "Block",
         subOptions: [
-          {
-            name: "Block",
-            options: [
-              { name: "Block Account" },
-              { name: "Unblock Account" },
-              { name: "Inquire" },
-            ],
-          },
+          { name: "Block Amount" },
+          { name: "Unblock Amount" },
+          { name: "Inquire" },
         ],
       },
     ],
@@ -667,29 +896,26 @@ export const customerOnboardingItems = [
       { name: "CRS Form" },
       { name: "Pending Records" },
       { name: "Maintenance" },
-      { name: "Inquiry" },
+      
     ],
     dropdown: [
       {
         name: "CRS Form",
-        subOptions: [
-          { name: "CRS Customer" },
-          { name: "CRS Employer" },
-        ],
+        subOptions: [{ name: "CRS Customer" }, { name: "CRS Employer" }],
       },
       {
         name: "Pending Records",
         subOptions: [
-          { name: "Transfer Pending Records" },
+          { name: "Inputter Pending Records" },
           { name: "Authorize Pending Records" },
-          { name: "Cancel Pending Records" },
+   
         ],
       },
       {
         name: "Maintenance",
         subOptions: [
-          { name: "Transfer Pending Entity" },
-          { name: "Cancel Pending Entity" },
+          { name: "Maintenance for Individual" },
+          { name: "Maintenance for Entity" },
         ],
       },
       {

@@ -8,6 +8,7 @@ import { notifications, profileMenuItems } from '../data/data';
 import profilePic from "../assets/images/icon_profile_picture.svg";
 import calculatorIcon from "../assets/images/icon_calculator.svg";
 import notificationIcon from "../assets/images/icon_notification.svg";
+import branchIcon from "../assets/images/icon_bank.svg";
 
 
 const route = useRoute();
@@ -126,7 +127,7 @@ const handleProfileMenuClick = (action) => {
 
             <div v-if="route.path !== '/dashboard'"
                 class="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-lg">
-                <i class="pi pi-building text-gray-600 text-sm"></i>
+                <img :src="branchIcon" alt="Branch Icon" class="w-5 h-5 text-gray-600 text-sm" />
                 <span class="text-sm text-gray-700">1016 - Wells Fargo Branch</span>
             </div>
 
@@ -235,10 +236,8 @@ const handleProfileMenuClick = (action) => {
         </div>
     </nav>
 
-    <!-- Overlay to close calculator when clicking outside -->
     <div v-if="showCalculator" class="fixed inset-0 z-40" @click="closeCalculator"></div>
 
-    <!-- Overlay to close profile when clicking outside -->
     <div v-if="showProfile" class="fixed inset-0 z-40" @click="closeProfile"></div>
 </template>
 
