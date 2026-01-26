@@ -67,7 +67,7 @@ const routes = [
     meta: { title: "Treasury Management" },
   },
   {
-    path: "/analytics-reporting",
+    path: "/analytics-&-reporting",
     name: "AnalyticsReporting",
     component: AnalyticsReporting,
     meta: { title: "Analytics & Reporting" },

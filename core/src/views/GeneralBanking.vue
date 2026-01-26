@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div class="flex gap-5 flex-wrap" >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 p-3 sm:p-4 md:p-6">
       <LayoutCard
         v-for="item in generalBankingItems"
         :key="item.title"
@@ -14,7 +14,5 @@
         :dropdown="item.dropdown"
         :color="item.color"
       />
-    
-
-  </div>
+    </div>
 </template>

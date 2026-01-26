@@ -929,3 +929,438 @@ export const customerOnboardingItems = [
   },
 ];
 
+export const loanOriginationItems = [
+  {
+    title: "Parameters Definition",
+    color: "#0c3aa3",
+    options: [
+      { name: "Security Item Rate" },
+      { name: "Base Rate [Bench Mark]" },
+      { name: "Stock Exchange Rates" },
+ 
+    ],
+    dropdown: [
+      {
+        name: "Security Item Rate",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Delete" },
+          { name: "Inquire" },
+        ],
+      },
+      {
+        name: "Base Rate [Bench Mark]",
+        subOptions: [
+          {
+            name: "Floor/Ceiling",
+            options: [
+              { name: "Add" },
+              { name: "Change" },
+              { name: "Delete" },
+              { name: "Inquire" },
+            ],
+          },
+          {
+            name: "Rate",
+            options: [
+              { name: "Add" },
+              { name: "Change" },
+              { name: "Delete" },
+              { name: "Inquire" },
+            ],
+          },
+        ],
+      },
+      {
+        name: "Stock Exchange Rates",
+        subOptions: [
+          { name: "Upload from File" },
+          { name: "Download from Central Server" },
+        ],
+      },
+      { name: "Download Markup Rates" },
+      { name: "Review Markup Rates" },
+    ],
+  },
+  {
+    title:"Security Validation",
+    color:"#f97316",
+    options:[
+      {name:"lorem ipsum"},
+      {name:"lorem ipsum"},
+      {name:"lorem ipsum"},
+    ],
+    dropdown:[
+      {
+        name:"lorem ipsum",
+
+      }
+      ]    
+  },
+  {
+    title:"Borrower Information",
+    color:"#10b981",
+    options:[
+      {name:"lorem ipsum"},
+      {name:"lorem ipsum"},
+      {name:"lorem ipsum"},
+    ],
+    dropdown:[
+      {
+        name:"lorem ipsum",
+
+      }
+      ]
+  },
+  {
+    title: "Securities",
+    color: "#ec4899",
+    options: [
+      { name: "Securities" },
+      { name: "Collateral Transactions" },
+      { name: "Insurance" },
+    ],
+    dropdown: [
+      {
+        name: "Securities",
+        subOptions: [
+          { name: "Assign" },
+          { name: "Maintain" },
+          { name: "Inquire" },
+          {
+            name: "Block",
+            options: [
+              { name: "Block Amount" },
+              { name: "Unblock Amount" },
+              { name: "Inquire" },
+            ],
+          },
+          {
+            name: "Lien",
+            options: [
+              { name: "Mark" },
+              { name: "Release" },
+              { name: "Inquire" },
+              { name: "Pledge" },
+            ],
+          },
+          {
+        name: "Collateral Transactions",
+        options: [
+          {
+            name: "Hypothecation",
+            subOptions: [
+              { name: "Add Stock Report/Security Value" },
+              { name: "Modify Stock Report/Security Value" },
+              { name: "History of Stock Report/Security Value" },
+            ],
+          },
+          { name: "Shares" },
+          { name: "Certificates" },
+          { name: "TDRs/Deposits" },
+          { name: "Mortgage" },
+        ],
+      },
+        ],
+      },
+      
+      {
+        name: "Insurance",
+        subOptions: [
+          { name: "Add" },
+          { name: "Modify" },
+          { name: "Cancel" },
+          { name: "Inquire" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Limits",
+    color: "#16a34a",
+    options: [
+      { name: "Assign/Maintain" },
+      { name: "Inquire" },
+      { name: "Account Mark-Up Rate" },
+
+    ],
+    dropdown: [
+      {
+        name: "Assign/Maintain",
+      },
+      {
+        name: "Inquire",
+      },
+      {
+        name: "Account Mark-Up Rate",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Inquire" },
+        ],
+      },
+      {
+        name: "Facility Classification",
+      },
+      {
+        name: "Profit Modify",
+      },
+      {
+        name: "Markup/Modify",
+      },
+    ],
+  },
+  {
+    title: "eCIB",
+    color: "#dc2626",
+    options: [
+      { name: "Corporate Format" },
+      { name: "Consumer Format" },
+      {name:"Corporate Format"}
+    ],
+    dropdown: [
+      {
+        name: "Corporate Format",
+      },
+      {
+        name: "Consumer Format",
+      },
+    ],
+  },
+  {
+    title: "Loans",
+    color: "#f59e0b",
+    options: [
+      { name: "Security Deposit(Leasing)" },
+      { name: "Book/Disburse" },
+      { name: "Enhance" }
+    ],
+    dropdown: [
+      {
+        name: "Security Deposit(Leasing)",
+        subOptions: [
+          { name: "Receive" },
+          { name: "Cancel" },
+          { name: "Inquire" },
+          { name: "Adjust" },
+          { name: "Cancel Adjustment" },
+        ],
+      },
+      {
+        name: "Book/Disburse",
+        subOptions: [
+          { name: "Money Market" },
+          { name: "FTR" },
+          { name: "FIM" },
+          { name: "Term Finance" },
+          { name: "Leasing" },
+          { name: "RBD" },
+        ],
+      },
+      {
+        name: "Enhance",
+        subOptions: [
+          { name: "FTR" },
+          { name: "FIM" },
+          { name: "Term Finance" },
+        ],
+      },
+      {
+        name: "Modify",
+        subOptions: [
+          {
+            name: "Leasing",
+            options: [
+              { name: "Modify" },
+              { name: "Cancel Unauthorized Modification" },
+              { name: "Authorize" },
+            ],
+          },
+          { name: "RBD" },
+          { name: "Money Market" },
+          { name: "FTR" },
+          { name: "FIM" },
+          { name: "Term Finance" },
+        ],
+      },
+      {
+        name: "Cancel / Early Terminate(Leasing)",
+        subOptions: [
+          { name: "Leasing" },
+          { name: "RBD" },
+          { name: "Money Market" },
+          { name: "FTR" },
+          { name: "FIM" },
+          { name: "Term Finance" },
+        ],
+      },
+      {
+        name: "Inquire",
+        subOptions: [
+          { name: "RBD" ,
+            options:[
+              {name:"By FDBC No."},
+              {name:"EForm"},
+              {name:"By Loan No."}
+            ]
+          },
+          { name: "Money Market" },
+          { name: "FTR" },
+          { name: "FIM" },
+          { name: "Term Finance" },
+          { name: "Leasing" },
+          { name: "Cent. Leasing" },
+        ],
+      },
+      {
+        name: "Money Market Rollover",
+      },
+      {
+        name: "Cancel Money Market Rollover",
+      },
+      {
+        name: "Recover",
+        subOptions: [
+          { name: "Loan" },
+          { name: "Leasing" },
+          { name: "RBD" },
+        ],
+      },
+      {
+        name: "Recover Pft/Mkup",
+        subOptions: [
+          { name: "Loan" },
+        ],
+      },
+      {
+        name: "Cancel Recovery",
+        subOptions: [
+          { name: "Loan" },
+          { name: "Leasing" },
+          { name: "RBD" },
+        ],
+      },
+      {
+        name: "Cancel Recovered Pft/Mkup",
+        subOptions: [
+          { name: "Loan" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Letter of Guarantee",
+    color: "#06b6d4",
+    options: [
+      { name: "Issue" },
+      { name: "Amend" },
+      { name: "Redeem" },
+  
+    ],
+    dropdown: [
+      {
+        name: "Issue",
+      },
+      {
+        name: "Amend",
+      },
+      {
+        name: "Redeem",
+      },
+      {
+        name: "Cancel",
+        subOptions: [
+          { name: "Issuance" },
+          { name: "Redemption" },
+          { name: "Amendment" },
+          { name: "Comm Post" },
+        ],
+      },
+      {
+        name: "Inquire",
+      },
+      {
+        name: "Comm Post",
+      },
+    ],
+  },
+  {
+    title: "Refinance",
+    color: "#2563eb",
+    options: [
+      { name: "Refinance from SBP" },
+      { name: "Repayment" },
+      { name: "Inquire" },
+    ],
+    dropdown: [
+      {
+        name: "Refinance from SBP",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Cancel" },
+  
+        ],
+      },
+      {
+        name: "Repayment",
+        subOptions:[
+                  { name: "Recovery" },
+          { name: "Cancel Recovery" },
+        ]
+      },
+      {
+        name: "Inquire",
+      },
+      {
+        name: "Rupee Base Discounting SBP",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Cancel" },
+          {
+            name: "Repayment",
+            options: [
+              { name: "Recovery" },
+              { name: "Recovery Cancel" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "PUT Option",
+    color: "#0ea5e9",
+    options: [
+      { name: "Issue" },
+      { name: "Amend" },
+      { name: "Redeem" },
+    ],
+    dropdown: [
+      {
+        name: "Issue",
+      },
+      {
+        name: "Amend",
+      },
+      {
+        name: "Redeem",
+      },
+      {
+        name: "Cancel",
+        subOptions: [
+          { name: "Issuance" },
+          { name: "Amendment" },
+          { name: "Redemption" },
+        ],
+      },
+      {
+        name: "Inquiry",
+      },
+    ],
+  },
+]
+
+

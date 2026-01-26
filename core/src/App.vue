@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, provide, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Sidebar from './components/Sidebar.vue';
 import Navbar from './components/Navbar.vue';
@@ -8,6 +8,22 @@ const route = useRoute();
 
 // Check karein ke current route ki meta field mein 'hide' true hai ya nahi
 const isAuthPage = computed(() => route.meta.hide === true);
+
+// Mobile sidebar state management
+const isMobileOpen = ref(false);
+
+const toggleMobileSidebar = () => {
+    isMobileOpen.value = !isMobileOpen.value;
+};
+
+const closeMobileSidebar = () => {
+    isMobileOpen.value = false;
+};
+
+// Provide functions for child components
+provide('isMobileOpen', isMobileOpen);
+provide('toggleMobileSidebar', toggleMobileSidebar);
+provide('closeMobileSidebar', closeMobileSidebar);
 </script>
 
 <template>

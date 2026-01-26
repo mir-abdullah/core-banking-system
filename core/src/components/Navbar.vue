@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { computed, ref } from 'vue';
+import { computed, ref, inject } from 'vue';
 import Breadcrumb from 'primevue/breadcrumb';
 import DatePicker from './DatePicker.vue';
 import Calculator from './Calculator.vue';
@@ -17,6 +17,9 @@ const showNotifications = ref(false);
 const showCalculator = ref(false);
 const showProfile = ref(false);
 const notificationsEnabled = ref(true);
+
+//  mobile sidebar toggle function
+const toggleMobileSidebar = inject('toggleMobileSidebar');
 
 const unreadCount = computed(() => {
     return notifications.filter(n => !n.read).length;
@@ -76,6 +79,9 @@ const breadcrumbHome = computed(() => ({
 
 const toggleCalculator = () => {
     showCalculator.value = !showCalculator.value;
+    showNotifications.value = false;
+    showProfile.value = false;  
+
 };
 
 const closeCalculator = () => {
@@ -84,6 +90,8 @@ const closeCalculator = () => {
 
 const toggleProfile = () => {
     showProfile.value = !showProfile.value;
+    showCalculator.value = false;
+    showNotifications.value = false;
 };
 
 const closeProfile = () => {
@@ -103,12 +111,19 @@ const handleProfileMenuClick = (action) => {
 </script>
 
 <template>
-    <nav class="flex items-center  px-6 py-4 focus:outline-none">
-        <div class="flex flex-col ">
-            <h1 class="text-2xl font-semibold text-gray-900">
+    <nav class="flex flex-wrap items-start sm:items-center gap-3 sm:gap-4 px-3 sm:px-4 md:px-6 py-3 sm:py-4 focus:outline-none">
+        <!-- Hamburger menu button for mobile -->
+        <button @click="toggleMobileSidebar" class="order-1 md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+            <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div class="flex flex-col basis-full sm:basis-auto w-full sm:w-auto order-3 sm:order-1">
+            <h1 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
                 {{ displayTitle }}
             </h1>
-            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="text-md bg-gray-50"
+            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="text-xs sm:text-sm md:text-base bg-gray-50"
                 style="background-color: #f9fafb; padding: 0.25rem;">
                 <template #separator>
                     <span class="px-1 text-gray-400">/</span>
@@ -122,23 +137,23 @@ const handleProfileMenuClick = (action) => {
             </Breadcrumb>
         </div>
 
-        <div class="flex items-center gap-4 ml-auto">
-            <DatePicker v-if="route.path !== '/dashboard'" />
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 ml-auto justify-end flex-wrap sm:flex-nowrap order-2 sm:order-2">
+            <DatePicker v-if="route.path !== '/dashboard'" class="hidden lg:block" />
 
             <div v-if="route.path !== '/dashboard'"
-                class="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-lg">
-                <img :src="branchIcon" alt="Branch Icon" class="w-5 h-5 text-gray-600 text-sm" />
-                <span class="text-sm text-gray-700">1016 - Wells Fargo Branch</span>
+                class="hidden md:flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-white border border-gray-200 rounded-lg">
+                <img :src="branchIcon" alt="Branch Icon" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 text-sm" />
+                <span class="text-xs sm:text-sm text-gray-700">1016 - Wells Fargo Branch</span>
             </div>
 
             <!-- Calculator Button and Dropdown -->
             <div class="relative">
-                <button @click="toggleCalculator" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                    <img :src="calculatorIcon" alt="Calculator Icon" class="w-8 h-8 cursor-pointer" />
+                <button @click="toggleCalculator" class="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <img :src="calculatorIcon" alt="Calculator Icon" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 cursor-pointer" />
                 </button>
 
                 <!-- Calculator  -->
-                <div v-if="showCalculator" class="absolute top-full left-0 mt-2 z-50">
+                <div v-if="showCalculator" class="absolute top-full right-0 mt-2 z-50">
                     <div @click.stop class="bg-white rounded-lg shadow-xl">
                         <Calculator />
                     </div>
@@ -146,39 +161,39 @@ const handleProfileMenuClick = (action) => {
             </div>
 
             <div class="relative">
-                <button class="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                <button class="relative p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors"
                     @click="showNotifications = !showNotifications">
-                    <img :src="notificationIcon" alt="Notification Icon" class="w-8 h-8 cursor-pointer" />
+                    <img :src="notificationIcon" alt="Notification Icon" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 cursor-pointer" />
                 </button>
 
                 <!-- Notifications Dropdown -->
                 <div v-if="showNotifications"
-                    class="absolute top-full right-0 mt-2 w-105 bg-white rounded-lg shadow-xl z-50 border border-gray-100">
-                    <div class="p-4 border-b border-gray-100">
-                        <h3 class="text-lg font-semibold text-red-500 underline">Notifications <span
-                                class="inline-flex items-center justify-center w-6 h-6 bg-red-500 text-white text-xs rounded-full ml-1 underline">{{
+                    class="absolute top-full right-0 mt-2 w-72 sm:w-96 md:w-105 bg-white rounded-lg shadow-xl z-50 border border-gray-100">
+                    <div class="p-3 sm:p-4 border-b border-gray-100 underline">
+                        <h3 class="text-sm sm:text-lg font-semibold text-red-500 underline">Notifications <span
+                                class="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 bg-red-500 text-white text-xs rounded-full ">{{
                                 unreadCount }}</span></h3>
                     </div>
-                    <div class="max-h-96 overflow-y-auto">
+                    <div class="max-h-72 sm:max-h-96 overflow-y-auto">
                         <div v-for="notification in notifications" :key="notification.id"
-                            class="p-4 border-b border-gray-100 hover:bg-[#e8edff] relative group">
+                            class="p-3 sm:p-4 border-b border-gray-100 hover:bg-[#e8edff] relative group">
                             <div v-if="!notification.read"
-                                class="absolute top-4 right-4 w-2.5 h-2.5 bg-red-500 rounded-full">
+                                class="absolute top-3 sm:top-4 right-3 sm:right-4 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-red-500 rounded-full">
                             </div>
-                            <div class="flex gap-3 pr-6">
+                            <div class="flex gap-2 sm:gap-3 pr-5 sm:pr-6">
                                 <img :src="notification.Img" :alt="notification.name"
-                                    class="w-10 h-10 rounded-full flex-shrink-0" />
+                                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0" />
                                 <div class="flex-1">
-                                    <p class="font-semibold text-gray-900 text-sm">{{ notification.name }}
-                                        <span class="text-sm text-gray-700 mt-0.5">{{ notification.message }}</span>
+                                    <p class="font-semibold text-gray-900 text-xs sm:text-sm">{{ notification.name }}
+                                        <span class="text-xs sm:text-sm text-gray-700 mt-0.5">{{ notification.message }}</span>
                                     </p>
                                     <div v-if="notification.hasActions" class="flex gap-2 mt-2">
                                         <button
-                                            class="px-3 py-2 bg-[#4880ff] text-white rounded text-sm font-medium hover:bg-blue-700">Approve</button>
+                                            class="px-2 sm:px-3 py-1.5 sm:py-2 bg-[#4880ff] text-white rounded text-xs sm:text-sm font-medium hover:bg-blue-700">Approve</button>
                                         <button
-                                            class="px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm   font-medium hover:bg-gray-300">Decline</button>
+                                            class="px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-200 text-gray-700 rounded text-xs sm:text-sm font-medium hover:bg-gray-300">Decline</button>
                                     </div>
-                                    <p class="text-sm text-[#6b7280] mt-2">{{ notification.time }}</p>
+                                    <p class="text-xs sm:text-sm text-[#6b7280] mt-2">{{ notification.time }}</p>
                                 </div>
                             </div>
                         </div>
@@ -186,44 +201,41 @@ const handleProfileMenuClick = (action) => {
                 </div>
             </div>
 
-            <div class="relative flex items-center gap-3 pl-4  border-gray-200">
-                <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-lg" />
-                <div >
-                    <p class="text-sm font-medium text-gray-900">Olivia Skye</p>
-                    <p class="text-sm text-gray-500">Operational Manager</p>
+            <div class="relative flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-gray-200">
+                <img :src="profilePic" alt="Profile" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg" />
+                <div class="hidden md:block">
+                    <p class="text-xs sm:text-sm font-medium text-gray-900">Olivia Skye</p>
+                    <p class="text-xs sm:text-sm text-gray-500">Operational Manager</p>
                 </div>
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">
-                    <i class="pi pi-chevron-down"></i>
+                    <i class="pi pi-chevron-down text-xs sm:text-sm"></i>
                 </button>
 
                 <!-- Profile Dropdown -->
                 <div v-if="showProfile"
-                    class="absolute top-full right-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-50 border border-gray-100">
-                    <div class="p-4 border-b border-gray-100">
-                        <div class="flex items-center gap-3">
-                            <img :src="profilePic" alt="Profile" class="w-12 h-12 rounded-full" />
+                    class="absolute top-full right-0 mt-2 w-64 sm:w-72 bg-white rounded-lg shadow-xl z-50 border border-gray-100">
+                    <div class="p-3 sm:p-4 border-b border-gray-100">
+                        <div class="flex items-center gap-2 sm:gap-3">
+                            <img :src="profilePic" alt="Profile" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full" />
                             <div class="flex-1">
-                                <p class="text-sm font-semibold text-gray-900">Olivia Skye</p>
+                                <p class="text-xs sm:text-sm font-semibold text-gray-900">Olivia Skye</p>
                                 <p class="text-xs text-gray-500">Operational Manager</p>
                             </div>
-                            <button @click="closeProfile" class="text-gray-400 hover:text-gray-600">
-                                <i class="pi pi-chevron-down"></i>
-                            </button>
                         </div>
                     </div>
                     <div class="py-2">
                         <button v-for="item in profileMenuItems" :key="item.id"
                             @click="handleProfileMenuClick(item.action)"
-                            class="w-full px-4 py-3 flex items-center gap-3 hover:bg-[#e8edff] transition-colors"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3 hover:bg-[#e8edff] transition-colors"
                             :class="{ 'text-red-500': item.isDanger }">
-                            <img :src="item.icon" class="text-lg"
+                            <img :src="item.icon" class="text-base sm:text-lg w-4 h-4 sm:w-5 sm:h-5"
                                 :style="{ color: item.isDanger ? 'rgb(239 68 68)' : 'rgb(107 114 128)' }" />
-                            <span class="flex-1 text-left text-sm font-medium"
+                            <span class="flex-1 text-left text-xs sm:text-sm font-medium"
                                 :class="item.isDanger ? 'text-red-500' : 'text-gray-700'">{{ item.label }}</span>
-                            <i v-if="item.showArrow" class="pi pi-chevron-right text-xs "
+                            <i v-if="item.showArrow" class="pi pi-chevron-right text-xs"
                                 :class="item.isDanger ? 'text-red-500' : 'text-gray-400'"></i>
                             <div v-if="item.hasToggle" class="relative inline-flex items-center cursor-pointer">
-                                <div class="w-11 h-6 rounded-full transition-colors"
+                                <div class="w-10 h-5 sm:w-11 sm:h-6 rounded-full transition-colors"
                                     :class="notificationsEnabled ? 'bg-blue-500' : 'bg-gray-300'">
                                     <div class="absolute top-0.5 left-0.5 bg-white w-5 h-5 rounded-full transition-transform"
                                         :class="notificationsEnabled ? 'translate-x-5' : 'translate-x-0'"></div>

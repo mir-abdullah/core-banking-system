@@ -2,6 +2,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import buttonIcon from '../assets/images/icon_card_recently_used_arrow_right.svg';
 import { useCardState } from '../composables/useCardState';
+import { useSidebar } from '../composables/useSidebar';
 
 const props = defineProps({
     name: { type: String, required: true },
@@ -9,6 +10,9 @@ const props = defineProps({
     dropdown: { type: Array, required: true },
     color: { type: String, required: true },
 });
+
+const { sidebarItems } = useSidebar();
+
 
 // Parent component ko data bhejne ke liye emit define kiya
 const emit = defineEmits(['select']);
@@ -89,11 +93,15 @@ const toggleNestedOption = (nested) => {
         handleItemClick(nested);
     }
 };
+const { isCollapsed } = useSidebar();
+
+const cardWidth = computed(() => isCollapsed.value ? '380px' : '350px');
+
 </script>
 
 <template>
-    <div class="group relative bg-white border-transparent rounded-xl items-center p-6 w-[330px] hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg h-fit"
-        :style="{ '--card-color': color, '--shadow-color': color }">
+    <div class="group relative bg-white border-transparent rounded-xl items-center p-6  hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg h-auto" " 
+        :style="{ '--card-color': color, '--shadow-color': color , width: cardWidth }">
         
         <div class="flex justify-between items-center mb-4 cursor-pointer" @click="toggleCard">
             <h3 class="text-xl font-bold font-sans" :style="{ color: color }">{{ name }}</h3>
