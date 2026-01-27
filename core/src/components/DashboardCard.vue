@@ -37,7 +37,7 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
 </script>
 
 <template>
-    <div class="group relative h-[374px] cursor-pointer transition-all duration-400" :style="{ width: cardWidth }">
+    <div class="group relative h-[350px] cursor-pointer transition-all duration-400" :style="{ width: cardWidth }">
         <router-link :to="`/${props.name.toLowerCase().replace(/ /g, '-')}`">
         <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
             :style="{ backgroundColor: props.backgroundColor }">
