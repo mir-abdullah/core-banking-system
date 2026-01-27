@@ -111,25 +111,25 @@ const handleProfileMenuClick = (action) => {
 </script>
 
 <template>
-    <nav class="flex flex-wrap items-start sm:items-center gap-3 sm:gap-4 px-3 sm:px-4 md:px-6 py-3 sm:py-4 focus:outline-none">
+    <nav class="flex items-start gap-3 sm:gap-4 px-3 sm:px-4 md:px-6 py-3 sm:py-4 focus:outline-none">
         <!-- Hamburger menu button for mobile -->
-        <button @click="toggleMobileSidebar" class="order-1 md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+        <button @click="toggleMobileSidebar" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0">
             <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
 
-        <div class="flex flex-col basis-full sm:basis-auto w-full sm:w-auto order-3 sm:order-1">
-            <h1 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
+        <div class="flex flex-col flex-1 min-w-0">
+            <h1 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
                 {{ displayTitle }}
             </h1>
-            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="text-xs sm:text-sm md:text-base bg-gray-50"
+            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="text-[10px] sm:text-xs md:text-xs bg-gray-50 overflow-hidden"
                 style="background-color: #f9fafb; padding: 0.25rem;">
                 <template #separator>
                     <span class="px-1 text-gray-400">/</span>
                 </template>
                 <template #item="{ item }">
-                    <router-link v-if="item.to" :to="item.to" class=" text-gray-500 hover:text-gray-700">
+                    <router-link v-if="item.to" :to="item.to" class="text-gray-500 hover:text-gray-700">
                         {{ item.label }}
                     </router-link>
                     <span v-else class="text-gray-500">{{ item.label }}</span>
@@ -137,13 +137,13 @@ const handleProfileMenuClick = (action) => {
             </Breadcrumb>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 ml-auto justify-end flex-wrap sm:flex-nowrap order-2 sm:order-2">
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 flex-shrink-0">
             <DatePicker v-if="route.path !== '/dashboard'" class="hidden lg:block" />
 
             <div v-if="route.path !== '/dashboard'"
-                class="hidden md:flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-white border border-gray-200 rounded-lg">
+                class="hidden md:flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-white border border-gray-200 rounded-lg flex-shrink-0">
                 <img :src="branchIcon" alt="Branch Icon" class="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 text-sm" />
-                <span class="text-xs sm:text-sm text-gray-700">1016 - Wells Fargo Branch</span>
+                <span class="text-xs sm:text-sm text-gray-700 whitespace-nowrap">1016 - Wells Fargo Branch</span>
             </div>
 
             <!-- Calculator Button and Dropdown -->

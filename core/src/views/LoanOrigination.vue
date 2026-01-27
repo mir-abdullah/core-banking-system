@@ -17,7 +17,7 @@
 <template>
     <div
       v-if="route.name === 'LoanOrigination&Management'"
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 p-3 sm:p-4 md:p-6 "
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-5 lg:gap-6 p-3 sm:p-4 md:p-5 lg:p-6"
     >
       <LayoutCard
         v-for="item in loanOriginationItems"

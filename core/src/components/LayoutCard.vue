@@ -93,15 +93,12 @@ const toggleNestedOption = (nested) => {
         handleItemClick(nested);
     }
 };
-const { isCollapsed } = useSidebar();
-
-const cardWidth = computed(() => isCollapsed.value ? '380px' : '350px');
 
 </script>
 
 <template>
-    <div class="group relative bg-white border-transparent rounded-xl items-center p-6  hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg h-auto" " 
-        :style="{ '--card-color': color, '--shadow-color': color , width: cardWidth }">
+    <div class="group relative bg-white border-transparent rounded-xl items-center p-4 sm:p-5 md:p-6 hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg h-auto w-full" 
+        :style="{ '--card-color': color, '--shadow-color': color }">
         
         <div class="flex justify-between items-center mb-4 cursor-pointer" @click="toggleCard">
             <h3 class="text-xl font-bold font-sans" :style="{ color: color }">{{ name }}</h3>

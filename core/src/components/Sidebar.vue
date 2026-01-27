@@ -90,9 +90,9 @@ const handleClick = (item) => {
     <!-- Sidebar container -->
     <div :class="[
         isMobile 
-            ? 'fixed left-0 top-0 z-50 h-full w-64 transform transition-transform duration-300 ' + 
+            ? 'fixed left-0 top-0 z-50 h-full w-64 transform transition-transform duration-300 flex flex-col ' + 
               (mobileOpen ? 'translate-x-0' : '-translate-x-full')
-            : (isCollapsed ? 'w-16 sm:w-20 md:w-24' : 'w-48 sm:w-64 md:w-75') + ' h-full relative transition-all duration-400',
+            : (isCollapsed ? 'w-16 sm:w-20 md:w-24' : 'w-48 sm:w-64 md:w-75') + ' h-full relative transition-all duration-400 flex flex-col',
         'bg-white'
     ]">
 
@@ -122,9 +122,9 @@ const handleClick = (item) => {
                 </li>
             </ul>
         </div>
-        <div>
+        <div class="mt-auto mb-4 sm:mb-6 md:mb-8">
 
-            <ul class="mt-20 sm:mt-24 md:mt-30 space-y-1 sm:space-y-1.5 md:space-y-2">
+            <ul class="space-y-1 sm:space-y-1.5 md:space-y-2">
                 <li v-for="item in sidebarItems2" :key="item.name" :title="item.name">
                     <a href="#" class="flex items-center gap-2 sm:gap-2.5 md:gap-3 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-xl md:rounded-2xl transition-all duration-150"
                         :class="[
@@ -163,7 +163,7 @@ const handleClick = (item) => {
         </div>
 
         <img :src="isCollapsed && !isMobile ? teresolCollapsedLogo : teresolLogo" alt="Teresol Logo"
-            class="px-4 sm:px-6 md:px-8 w-40 sm:w-56 md:w-70 h-auto mt-10 sm:mt-12 md:mt-15" />
+            class="px-4 sm:px-6 md:px-8 w-40 sm:w-56 md:w-70 h-auto mb-6 sm:mb-8 md:mb-10" />
 
 
 
