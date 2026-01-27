@@ -17,13 +17,13 @@ const formattedDate = computed(() => {
     return `${day} ${month}, ${year}`;
 });
 
-const dateInputValue = computed(() => {
-    const date = selectedDate.value;
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-});
+// const dateInputValue = computed(() => {
+//     const date = selectedDate.value;
+//     const year = date.getFullYear();
+//     const month = String(date.getMonth() + 1).padStart(2, '0');
+//     const day = String(date.getDate()).padStart(2, '0');
+//     return `${year}-${month}-${day}`;
+// });
 
 const handleDateChange = (event) => {
     selectedDate.value = new Date(event.target.value);
@@ -57,8 +57,6 @@ const closePicker = () => {
         <input 
             ref="dateInputRef"
             type="date" 
-            :value="dateInputValue"
-            @change="handleDateChange"
             @blur="closePicker"
             class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer pointer-events-none"
         />

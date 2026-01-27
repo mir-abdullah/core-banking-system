@@ -123,7 +123,7 @@ const handleProfileMenuClick = (action) => {
             <h1 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
                 {{ displayTitle }}
             </h1>
-            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="text-[10px] sm:text-xs md:text-xs bg-gray-50 overflow-hidden"
+            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="hidden sm:block text-[10px] sm:text-xs md:text-xs bg-gray-50 overflow-hidden"
                 style="background-color: #f9fafb; padding: 0.25rem;">
                 <template #separator>
                     <span class="px-1 text-gray-400">/</span>

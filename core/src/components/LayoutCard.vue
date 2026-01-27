@@ -124,11 +124,11 @@ const toggleNestedOption = (nested) => {
                         <div class="flex flex-col gap-2">
                             <div v-for="sub in activeDropdownData.subOptions" :key="sub.name" class="relative">
                                 <button
-                                    class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left font-semibold cursor-pointer"
+                                    class="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-left font-semibold cursor-pointer"
                                     :class="activeSubOption === sub.name ? 'bg-blue-50 border-blue-200 text-blue-700' : 'text-gray-800 hover:bg-blue-100'"
                                     @click="toggleSubOption(sub)">
-                                    <span class="text-sm font-medium">{{ sub.name }}</span>
-                                    <i v-if="sub.options?.length" class="pi pi-chevron-right text-xs"></i>
+                                    <span class="text-sm font-medium break-words flex-1 min-w-0">{{ sub.name }}</span>
+                                    <i v-if="sub.options?.length" class="pi pi-chevron-right text-xs flex-shrink-0"></i>
                                 </button>
 
                                 <div v-if="activeSubOption === sub.name && sub.options?.length" class="absolute left-full top-0 ml-2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 min-w-[250px] z-40">

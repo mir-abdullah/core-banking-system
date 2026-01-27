@@ -58,12 +58,12 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
                 </h3>
             </div>
 
-            <div class="relative z-10 flex items-center justify-between px-7 py-4 bg-[rgba(0,0,0,0.15)]">
-                <div class="flex flex-col gap-1">
+            <div class="relative z-10 flex items-center justify-between px-7 py-4 bg-[rgba(0,0,0,0.15)]  w-full">
+                <!-- <div class="flex flex-col gap-1">
                     <span class="text-2xl font-semibold text-white">{{ props.value }}</span>
                     <span class="text-sm font-semibold text-white/70">Sub-Categories</span>
-                </div>
-                <img :src="cardArrowIcon" alt="arrow icon" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+                </div> -->
+                <img :src="cardArrowIcon" alt="arrow icon" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1 ml-auto" />
             </div>
         </div>
          </router-link>
