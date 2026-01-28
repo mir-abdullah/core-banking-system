@@ -33,10 +33,10 @@ provide('closeMobileSidebar', closeMobileSidebar);
 
     <div v-else class="flex h-screen bg-gray-50">
         <Sidebar />
-        <div class="flex flex-col flex-1 overflow-hidden">
+        <div class="px-2 flex flex-col flex-1 overflow-hidden">
             <Navbar />
             <main class="flex-1 overflow-y-auto">
-                <div class="p-3">
+                <div class="">
                     <router-view />
                 </div>
             </main>

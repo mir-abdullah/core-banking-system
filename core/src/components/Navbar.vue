@@ -111,7 +111,7 @@ const handleProfileMenuClick = (action) => {
 </script>
 
 <template>
-    <nav class="flex items-start gap-3 sm:gap-4 px-3 sm:px-4 md:px-6 py-3 sm:py-4 focus:outline-none">
+    <nav class="flex items-start gap-3 sm:gap-4 px-5 sm:pt-4 pb-7 focus:outline-none">
         <!-- Hamburger menu button for mobile -->
         <button @click="toggleMobileSidebar" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0">
             <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,11 +120,11 @@ const handleProfileMenuClick = (action) => {
         </button>
 
         <div class="flex flex-col flex-1 min-w-0">
-            <h1 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
+            <h1 class="text-sm sm:text-base md:text-lg lg:text-2xl font-semibold text-gray-900">
                 {{ displayTitle }}
             </h1>
-            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="hidden sm:block text-[10px] sm:text-xs md:text-xs bg-gray-50 overflow-hidden"
-                style="background-color: #f9fafb; padding: 0.25rem;">
+            <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" class="hidden sm:block  sm:text-xs md:text-sm bg-gray-50 overflow-hidden"
+                style="background-color: #f9fafb; padding: 0;">
                 <template #separator>
                     <span class="px-1 text-gray-400">/</span>
                 </template>
@@ -204,7 +204,7 @@ const handleProfileMenuClick = (action) => {
             <div class="relative flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-gray-200">
                 <img :src="profilePic" alt="Profile" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg" />
                 <div class="hidden md:block">
-                    <p class="text-xs sm:text-sm font-medium text-gray-900">Olivia Skye</p>
+                    <p class="text-lg font-semibold text-gray-900">Olivia Skye</p>
                     <p class="text-xs sm:text-sm text-gray-500">Operational Manager</p>
                 </div>
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">

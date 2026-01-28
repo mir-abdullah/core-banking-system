@@ -582,8 +582,8 @@ export const generalBankingItems = [
 export const customerOnboardingItems = [
   {
     title: "Biometric",
-    color: "#7c3aed",
-    options: [{ name: "Add" }, { name: "Modify" }, { name: "Add" }],
+    color: "#0C3AA3",
+    options: [{ name: "Add" }, { name: "Modify" }, ],
     dropdown: [
       {
         name: "Add",
@@ -597,7 +597,7 @@ export const customerOnboardingItems = [
   },
   {
     title: "Account Opening",
-    color: "#00a8a8",
+    color: "#4E40D4",
     options: [
       { name: "Open New Customer & Account", routeName: 'OpenNewCustomerAccount', },
       { name: "Open New Account of Existing Customer" },
@@ -622,7 +622,7 @@ export const customerOnboardingItems = [
   },
   {
     title: "Account Maintenance",
-    color: "#16a34a",
+    color: "#4880FF",
     options: [
       { name: "SMS Alerts Request" },
       { name: "E_Statement Request" },
@@ -677,12 +677,12 @@ export const customerOnboardingItems = [
   //
   {
     title: "CIF Management",
-    color: "#8b5cf6",
+    color: "#00C7E2",
     options: [
       { name: "Natural Person CIF" },
       { name: "Entity CIF" },
       //dummy
-      { name: "Issue Cheque Book" },
+   
     ],
     dropdown: [
       {
@@ -714,11 +714,10 @@ export const customerOnboardingItems = [
 
   {
     title: "Cheque Book",
-    color: "#dc2626",
+    color: "#12d09d",
     options: [
       { name: "Issue Express Book" },
       { name: "Issue Cheque Book" },
-      { name: "Request" },
 
     ],
     dropdown: [
@@ -788,7 +787,7 @@ export const customerOnboardingItems = [
   },
   {
     title: "Operational Activities",
-    color: "#f59e0b",
+    color: "#0C3AA3",
     options: [
       { name: "Account Interest Rate" },
       { name: "Customer Information" },
@@ -891,7 +890,7 @@ export const customerOnboardingItems = [
   },
   {
     title: "CRS",
-    color: "#06b6d4",
+    color: "#4E40D4",
     options: [
       { name: "CRS Form" },
       { name: "Pending Records" },

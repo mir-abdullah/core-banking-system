@@ -92,30 +92,33 @@ const handleClick = (item) => {
         isMobile 
             ? 'fixed left-0 top-0 z-50 h-full w-64 transform transition-transform duration-300 flex flex-col ' + 
               (mobileOpen ? 'translate-x-0' : '-translate-x-full')
-            : (isCollapsed ? 'w-16 sm:w-20 md:w-24' : 'w-48 sm:w-64 md:w-75') + ' h-full relative transition-all duration-400 flex flex-col',
+            : (isCollapsed ? ' sm:w-20 md:w-26' : 'w-80 px-8') + ' h-full relative transition-all duration-400 flex flex-col',
         'bg-white'
     ]">
 
-        <button v-if="!isMobile" class="absolute top-1 right-2 sm:right-3 md:right-4 p-0.5 sm:p-1 rounded-lg cursor-pointer" @click="toggleSidebar">
+        <button v-if="!isMobile" class="absolute top-1 sm:-right-5 p-0.5 sm:p-1 rounded-lg cursor-pointer" @click="toggleSidebar">
             <img :src="toggleIcon" alt="Toggle Sidebar" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
         </button>
 
-        <div class="flex gap-0.5 sm:gap-1 md:gap-1 items-center px-2 sm:px-3 md:px-4 py-2 sm:py-3 md:py-4 ">
-            <img :src="sidebarlogo" alt="Bank Logo" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
-            <h1 v-if="!isCollapsed || isMobile" class="text-blue-500 font-sans font-semibold text-sm sm:text-base md:text-xl">Core Banking System</h1>
+        <div class="flex sm:gap-2 items-center px-2 sm:px-3 md:px-4 py-2 sm:py-3 md:py-4 justify-center ">
+            <img :src="sidebarlogo" alt="Bank Logo" class=" w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8  " />
+            <h1 v-if="!isCollapsed || isMobile" class="text-blue-500 font-sans font-semibold text-sm sm:text-lg">Core Banking System</h1>
         </div>
-        <div class="mt-2 sm:mt-3 md:mt-4">
+        <div class="mt-2 sm:mt-3 md:mt-2">
             <ul class="space-y-1 sm:space-y-1.5 md:space-y-2">
                 <li v-for="item in sidebarItems" :key="item.name" class="mb-0.5 ">
-                    <a href="#" class="flex items-center gap-2 sm:gap-2.5 md:gap-3 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-xl md:rounded-2xl transition-all duration-150"
+                    <div  :class="[`absolute left-0 w-2 h-12 rounded-r-full  ${isActive(item.name)  ? 'bg-[#3b82f6]' : 'bg-transparent'}  `]"></div>
+                    <a href="#" class="flex items-center gap-2 sm:gap-2.5 md:gap-3 px-2 sm:px-3 md:px-4 h-12 rounded-xl transition-all duration-150"
                         :class="[
-                            !isMobile && isCollapsed ? 'justify-center' : 'pl-3 sm:pl-4 md:pl-5 pr-2 sm:pr-3 md:pr-4',
+                            !isMobile && isCollapsed ? 'justify-center' : ' ml-3 ',
                             isActive(item.name)
-                                ? 'bg-[#3b82f6] text-white active-pill'
-                                : 'text-[#6b7280] hover:bg-[#e8edff]'
+                                ? 'bg-[#3b82f6] text-white active-pill '
+                                : 'text-[#6b7280] hover:bg-[#e8edff]',
+                            isActive(item.name) && isCollapsed ? 'w-15 justify-center ml-5 mr-5.5' : ''
+                        
                         ]"
                         @click.prevent="handleClick(item)">
-                        <img :src="item.iconSrc" :alt="item.name + ' Icon'" class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5" />
+                        <img :src="item.iconSrc" :alt="item.name + ' Icon'" class="w-6 h-6 " />
                         <span v-if="!isCollapsed || isMobile" class="font-medium text-xs sm:text-sm md:text-sm">{{ item.name }}</span>
                     </a>
 
@@ -126,7 +129,7 @@ const handleClick = (item) => {
 
             <ul class="space-y-1 sm:space-y-1.5 md:space-y-2">
                 <li v-for="item in sidebarItems2" :key="item.name" :title="item.name">
-                    <a href="#" class="flex items-center gap-2 sm:gap-2.5 md:gap-3 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-xl md:rounded-2xl transition-all duration-150"
+                    <a href="#" class="flex items-center gap-2 sm:gap-2.5 md:gap-3 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 rounded-xl transition-all duration-150"
                         :class="[
                             !isMobile && isCollapsed ? 'justify-center' : 'pl-3 sm:pl-4 md:pl-5 pr-2 sm:pr-3 md:pr-4',
                             isActive(item.name)
@@ -134,7 +137,7 @@ const handleClick = (item) => {
                                 : 'text-[#6b7280] hover:bg-[#e8edff]'
                         ]"
                         @click.prevent="handleClick(item)">
-                        <img :src="item.iconSrc" :alt="item.name + ' Icon'" class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5" />
+                        <img :src="item.iconSrc" :alt="item.name + ' Icon'" class="w-6 h-6" />
                         <span
                             v-if="!isCollapsed || isMobile"
                             class="font-medium text-xs sm:text-sm md:text-sm"
@@ -163,7 +166,10 @@ const handleClick = (item) => {
         </div>
 
         <img :src="isCollapsed && !isMobile ? teresolCollapsedLogo : teresolLogo" alt="Teresol Logo"
-            class="px-4 sm:px-6 md:px-8 w-40 sm:w-56 md:w-70 h-auto mb-6 sm:mb-8 md:mb-10" />
+            :class="[
+                isCollapsed && !isMobile ? 'mx-auto w-12' : 'lg:pr-9 lg:pl-2 w-40 sm:w-56 md:w-70',
+                'h-auto mb-6 sm:mb-8 md:mb-10'
+            ]"  />
 
 
 

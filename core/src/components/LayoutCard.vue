@@ -94,20 +94,25 @@ const toggleNestedOption = (nested) => {
     }
 };
 
+const { isCollapsed } = useSidebar();
+
+const cardWidth = computed(() => isCollapsed.value ? '335.2px' : '292px');
+
+
 </script>
 
 <template>
-    <div class="group relative bg-white border-transparent rounded-xl items-center p-4 sm:p-5 md:p-6 hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg h-auto w-full" 
-        :style="{ '--card-color': color, '--shadow-color': color }">
+    <div class="group relative bg-white border-transparent rounded-xl items-center p-5 sm:p-5 md:p-6 hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg w-73 h-fit" 
+        :style="{ '--card-color': color, '--shadow-color': color , width: cardWidth }">
         
         <div class="flex justify-between items-center mb-4 cursor-pointer" @click="toggleCard">
-            <h3 class="text-xl font-bold font-sans" :style="{ color: color }">{{ name }}</h3>
-            <button class="w-6 h-6 flex items-center justify-center rounded bg-gray-200 transition-colors cursor-pointer">
-                <i class="pi text-black text-sm" :class="cardOpen ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+            <h3 class="text-xl font-semibold " :style="{ color: color }">{{ name }}</h3>
+            <button class="w-7.5 h-7.5 flex items-center justify-center rounded-[6px] bg-gray-200 transition-colors cursor-pointer">
+                <i class="pi text-black text-xsm  " :class="cardOpen ? 'pi-angle-up' : 'pi-angle-down'"></i>
             </button>
         </div>
 
-        <div class="h-[3.5px]" :style="{ backgroundColor: color }"></div>
+        <div class="h-[3px]" :style="{ backgroundColor: color }"></div>
 
         <div v-if="cardOpen && dropdown && dropdown.length" class="absolute left-0 right-0 top-[60px] z-20 px-2">
             <div class="flex flex-col gap-1 bg-white rounded-xl shadow-xl border border-gray-200 p-2">
@@ -164,15 +169,15 @@ const toggleNestedOption = (nested) => {
             </div>
         </div>
 
-        <div class="flex flex-col gap-2 mt-4">
+        <div class="flex flex-col gap-1.5 mt-3 ">
             <button 
                 v-for="option in options" 
                 :key="option.name" 
                 @click="handleItemClick(option)"
-                class="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg group-hover:bg-white transition-colors duration-400 cursor-pointer border-0 text-left h-15"
+                class="flex items-center justify-between  bg-[#f6f6f6] rounded-xl group-hover:bg-white transition-colors duration-400 cursor-pointer border-0 text-left min-h-11 font-medium text-[#0D062D]"
             >
-                <span class="text-md font-medium text-gray-800">{{ option.name }}</span>
-                <img :src="buttonIcon" alt="Arrow Right" class="text-gray-400 text-xs group-hover:translate-x-0.5 transition-transform" />
+                <span class="text-md font-medium text-gray-800 pl-6 py-2 flex-1">{{ option.name }}</span>
+                <img :src="buttonIcon" alt="Arrow Right" class="text-gray-400 text-xs group-hover:translate-x-0.5 transition-transform px-5 flex-shrink-0" />
             </button>
         </div>
     </div>

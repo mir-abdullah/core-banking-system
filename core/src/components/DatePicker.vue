@@ -47,10 +47,10 @@ const closePicker = () => {
     <div  class="relative">
         <div 
             @click="openPicker"
-            class="flex items-center gap-2 px-3 py-1.5 bg-white border rounded-lg transition-colors cursor-pointer"
+            class="flex items-center gap-2 px-3 py-1.75 bg-white border rounded-lg transition-colors cursor-pointer"
             :class="isPickerOpen ? 'border-blue-400 bg-blue-50' : 'border-gray-200 hover:border-gray-300'"
         >
-            <img :src="dateLogo" alt="Calendar Icon" class="w-4 h-4" :class="isPickerOpen ? 'filter-blue' : ''" />
+            <img :src="dateLogo" alt="Calendar Icon" class="w-6 h-6" :class="isPickerOpen ? 'filter-blue' : ''" />
             <span class="text-sm whitespace-nowrap select-none" :class="isPickerOpen ? 'text-blue-600 font-medium' : 'text-gray-700'">{{ formattedDate }}</span>
         </div>
 

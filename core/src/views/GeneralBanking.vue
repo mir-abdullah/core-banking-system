@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 p-3 sm:p-4 md:p-6">
+    <div class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 h-fit">
       <LayoutCard
         v-for="item in generalBankingItems"
         :key="item.title"

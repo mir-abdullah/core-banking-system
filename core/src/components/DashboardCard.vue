@@ -28,7 +28,7 @@ const props = defineProps({
 const route = useRoute();
 const { isCollapsed } = useSidebar();
 
-const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
+const cardWidth = computed(() => isCollapsed.value ? '333.6px' : '290.4px');
 
 
 
@@ -37,15 +37,15 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
 </script>
 
 <template>
-    <div class="group relative h-[350px] cursor-pointer transition-all duration-400" :style="{ width: cardWidth }">
+    <div :class="[`group relative h-93.5 cursor-pointer transition-all duration-400`]" :style="{ width: cardWidth }">
         <router-link :to="`/${props.name.toLowerCase().replace(/ /g, '-')}`">
-        <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
+        <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-lg shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
             :style="{ backgroundColor: props.backgroundColor }">
             <div
                 class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_20%_20%,#ffffff,transparent_40%)] pointer-events-none">
             </div>
 
-            <div class="relative z-10 flex flex-col gap-6 px-7 pt-6 items-start">
+            <div class="relative z-10 flex flex-col gap-11 px-7 pt-6 items-start">
                 <div class="relative flex items-center justify-center">
                     <div class="icon-circle flex items-center justify-center">
                         <img :src="props.icon" alt="icon" class="icon-img" />
@@ -53,17 +53,17 @@ const cardWidth = computed(() => isCollapsed.value ? '320px' : '280px');
                 </div>
 
                 <h3
-                    class="title font-sans text-white text-[28px] leading-8 font-semibold transition-all duration-800 ease-out group-hover:text-[31px] group-hover:scale-[1.06] origin-left">
+                    class="title font-sans w-50 text-white text-[28px] leading-8 font-semibold transition-all duration-800 ease-out group-hover:text-[32px] text-wrap group-hover:scale-[1.06] origin-left">
                     {{ props.name }}
                 </h3>
             </div>
 
-            <div class="relative z-10 flex items-center justify-between px-7 py-4 bg-[rgba(0,0,0,0.15)]  w-full">
+            <div class="relative z-10 flex items-center justify-between px-7 py-4 bg-[rgba(0,0,0,0.15)] h-20 w-full">
                 <!-- <div class="flex flex-col gap-1">
                     <span class="text-2xl font-semibold text-white">{{ props.value }}</span>
                     <span class="text-sm font-semibold text-white/70">Sub-Categories</span>
                 </div> -->
-                <img :src="cardArrowIcon" alt="arrow icon" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1 ml-auto" />
+                <img :src="cardArrowIcon" alt="arrow icon" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 ml-auto" />
             </div>
         </div>
          </router-link>
