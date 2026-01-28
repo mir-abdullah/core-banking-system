@@ -10,9 +10,17 @@ import iconNavbarBackOffice from '../assets/images/icon_navbar_back_office.svg'
 import iconNavbarGeneralInquiry from '../assets/images/icon_navbar_general_inquiry.svg'
 import iconNavbarSettings from '../assets/images/icon_navbar_settings.svg'
 import newAccountIcon from "../assets/images/icon_notification_new_account.svg";
-import editProfileIcon from "../assets/images/icon_profile_edit_profile.svg";
+// import editProfileIcon from "../assets/images/icon_profile_edit_profile.svg";
 import logoutIcon from "../assets/images/icon_profile_logout.svg";
-import changePasswordIcon from "../assets/images/icon_profile_change_password.svg";
+// import changePasswordIcon from "../assets/images/icon_profile_change_password.svg";
+import notificatioIcon1 from "../assets/images/Avatar.png";
+import notificatioIcon2 from "../assets/images/Avatar_1.png";
+import notificatioIcon3 from "../assets/images/Avatar_2.png";
+import editProfileIcon from "../assets/images/edit-profile.svg";
+import changePasswordIcon from "../assets/images/change-password.svg";
+import notificationsIcon from "../assets/images/notifications.svg";
+
+
 
 
 export const sidebarItems = [
@@ -46,30 +54,30 @@ export const sidebarItems2 = [
 export const notifications = [
     {
         id: 1,
-        name: 'Lex Murphy',
+        name: 'Olivia Skye',
         message: 'Loan authorization request is currently pending, Please Review!',
         time: 'Today at 9:42 AM',
-        hasActions: true,
+        hasActions: false,
         read: false,
-        Img: 'pi pi-user',
+        Img: notificatioIcon1,
     },
     {
         id: 2,
-        name: 'Kathrine',
+        name: 'Olivia Skye',
         message: 'Loan authorization request is currently pending, Please Review!',
         time: 'Today at 9:42 AM',
-        hasActions: true,
+        hasActions: false,
         read: false,
-        Img: 'pi pi-user',
+        Img: notificatioIcon2,
     },
     {
         id: 3,
-        name: 'Lex Murphy',
+        name: 'Olivia Skye',
         message: 'Loan authorization request is currently pending, Please Review!',
         time: 'Today at 9:42 AM',
-        hasActions: true,
+        hasActions: false,
         read: false,
-        Img: 'pi pi-user',
+        Img: notificatioIcon3,
     },
     {
         id: 4,
@@ -96,13 +104,16 @@ export const profileMenuItems = [
         icon: changePasswordIcon,
         action: 'change-password',
         showArrow: true,
+        isDivider: true,
+        
     },
     {
         id: 3,
         label: 'Notifications',
-        icon: editProfileIcon,
+        icon: notificationsIcon,
         action: 'toggle-notifications',
         hasToggle: true,
+        isDivider: true,
     },
     {
         id: 4,
@@ -930,6 +941,15 @@ export const customerOnboardingItems = [
 
 export const loanOriginationItems = [
   {
+    title:'Loan Application',
+    color:'#7239ea',
+    options:[
+      {name:"Auto Loan", routeName: 'NewCustomerLoanApplication'},
+      {name:"House Finance"},
+      {name:"Personal Loan"},
+    ]
+  },
+  {
     title: "Parameters Definition",
     color: "#0c3aa3",
     options: [
@@ -981,36 +1001,6 @@ export const loanOriginationItems = [
       { name: "Download Markup Rates" },
       { name: "Review Markup Rates" },
     ],
-  },
-  {
-    title:"Security Validation",
-    color:"#f97316",
-    options:[
-      {name:"lorem ipsum"},
-      {name:"lorem ipsum"},
-      {name:"lorem ipsum"},
-    ],
-    dropdown:[
-      {
-        name:"lorem ipsum",
-
-      }
-      ]    
-  },
-  {
-    title:"Borrower Information",
-    color:"#10b981",
-    options:[
-      {name:"lorem ipsum"},
-      {name:"lorem ipsum"},
-      {name:"lorem ipsum"},
-    ],
-    dropdown:[
-      {
-        name:"lorem ipsum",
-
-      }
-      ]
   },
   {
     title: "Securities",

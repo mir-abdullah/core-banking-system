@@ -13,6 +13,7 @@ import BackOfficeOperations from "../views/BackOfficeOperations.vue";
 import GeneralInquiry from "../views/GeneralInquiry.vue";
 import Settings from "../views/Settings.vue";
 import OpenNewCustomerAccount from "../UseCase/openNewCustomerAccount.vue";
+import NewCustLoanApp from "../UseCase/NewCustLoanApp.vue";
 
 const routes = [
   { path: "/", name: "SignIn", component: SignUpPage, meta: { hide: true } },
@@ -39,6 +40,14 @@ const routes = [
     name: "LoanOrigination&Management",
     component: LoanOrigination,
     meta: { title: "Loan Origination & Management" },
+    children: [
+      {
+        path: "new-customer-loan-application",
+        name: "NewCustomerLoanApplication",
+        component: NewCustLoanApp,
+        meta: { title: "Auto Loan Application" },
+      },
+    ],
   },
   {
     path: "/international-transactions",

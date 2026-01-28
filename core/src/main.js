@@ -12,7 +12,13 @@ createApp(App)
   .use(router)
   .use(PrimeVue, {
     theme: {
-      preset: Aura
+      preset: Aura,
+      option:{
+        cssLayer:{
+          name:'primevue',
+          order:'primevue ./style.css'
+        }
+      }
     }
   })
   .mount('#app')

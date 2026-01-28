@@ -2,3 +2,43 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+:root {
+  --primary-color: #3b82f6;
+  --text-color:black;
+  --delete-color: #ef4444;
+}
+.accordianClass .p-accordionheader{
+  padding: 0.9%;
+}
+.p-accordion{
+    margin-left: 22px;
+    margin-right: 22px;
+}
+.p-accordionheader{
+  background-color: #547792 !important;
+  color: white !important;
+}
+.p-accordioncontent-content {
+    padding: 0.5% !important;
+}
+.p-accordionheader-toggle-icon {
+    color: white !important;
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--primary-color);
+  border-radius: 5px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
