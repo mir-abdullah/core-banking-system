@@ -1,500 +1,514 @@
 <template>
-    <Accordion class="accordianClass" multiple v-model:value="activeNames">
-        <AccordionPanel v-if="openCustomer" value="0" ref="panel0">
-            <AccordionHeader>Open New Customer's Fast Account</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-3 gap-5 mb-4">
-                        <div>
-                            <Dropdown v-bind="{ ...BranchDropdownProps }" @dropdown-on-change="onDropDownchange"
-                                :isFloatableLabel="true" />
-
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-5 mb-4">
-                        <div>
-                            <TextBox name="Generic" v-bind="{ ...CustomerTextBoxProps }" :isFloatableLabel="true"
-                                @text-box-on-blur="onBlur" @text-box-on-key-press="onKeyPress"
-                                @text-box-on-key-down="onKeyDown" @text-box-on-key-up="onKeyUp"
-                                @text-box-on-input="onInput" @text-box-on-focus="onFocus" @text-box-on-paste="onPaste"
-                                @text-box-on-drop="onDrop" />
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-11"></div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" native-type="button" name="NextButton"
-                                label="Next" @Button-onClick="nextButtonClick" @Button-onFocus="buttonOnFocus"
-                                @Button-onBlur="buttonOnBlur" />
-                        </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openFastAccount" value="1" ref="panel1">
-            <AccordionHeader>Open Fast Account</AccordionHeader>
-            <AccordionContent>
-                <!-- Basic Info -->
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-3 gap-5 mb-4">
-                        <Dropdown v-bind="{ ...BranchDropdownProps }" isFloatableLabel label="Branch" />
-                        <TextBox v-bind="{ ...CustomerTextBoxProps }" isFloatableLabel label="Customer No." />
-                        <TextBox v-bind="{ ...ACOpeningTextBoxProps }" isFloatableLabel label="A/C Opening Date" />
-                    </div>
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-4">
-                            <TextBox v-bind="{ ...ReferenceNoTextBoxProps }" isFloatableLabel label="Reference No" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" @Button-onClick="fetchButtonOnClick"
-                                label="Fetch" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Ref Inquiry" />
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-11"></div>
-                        <div class="col-span-1 ">
-                            <Button @Button-onClick="fastOKButtonOnClick" :isDisabled="enableDisabledProcessButton"
-                                backgroundColor="var(--primary-color)" label="OK" />
-                        </div>
-                        <!-- <div class="col-span-1 ">
-                            <Button backgroundColor="var(--primary-color)" label="Exit" />
-                        </div> -->
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openBiometricDetails" value="2" ref="panel2">
-            <AccordionHeader>Biometric Details</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <Table name="BiometricDetailsTable" :tableColumns="biometricColumns" :tableData="biometricData"
-                        :selectedRows="onBiometricCurrentRow" @table-row-click="onBiometricRowClick" tableHeight="50"
-                        headerLabelsFontWeight="normal" headrLabelColor="blue" labelFontWeight="normal"
-                        labelColor="black" backgroundColor="white" tableMode="single" />
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-10"></div>
-                        <div class="col-span-1">
-                            <Button @Button-onClick="viewDetailsButtonOnClick" backgroundColor="var(--primary-color)"
-                                label="View Details" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Exit" />
-                        </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openBiometricVerification" value="3" ref="panel3">
-            <AccordionHeader>Biometric Verification Details</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-4 gap-4 mb-4">
-                        <Dropdown isFloatableLabel label="Identity Doc Type" />
-                        <TextBox isFloatableLabel label="Identity Doc. No." />
-                        <Dropdown isFloatableLabel label="Cust. Type" />
-                        <Dropdown isFloatableLabel label="Category of A/C" />
-                    </div>
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-3">
-                            <TextBox isFloatableLabel label="Limitation" />
-                        </div>
-                        <div class="col-span-3">
-                            <TextBox isFloatableLabel label="Reference No" />
-                        </div>
-                        <div class="col-span-3">
-                            <TextBox isFloatableLabel label="Certification Number" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button @Button-onClick="entityButtonOnClick" backgroundColor="var(--primary-color)"
-                                label="Entity Info" class="h-full" />
-                        </div>
-                        <div class="col-span-2">
-                            <div class="flex items-center">
-                                <Checkbox chekbox-label="Primary Applicant" />
+    <div class="p-5 ml-5 mr-5 bg-white rounded-xl">
+        <Accordion class="accordianClass" multiple v-model:value="activeNames">
+            <div v-if="openCustomer" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openCustomer" value="0" ref="panel0">
+                    <AccordionHeader>Open New Customer's Fast Account</AccordionHeader>
+                    <AccordionContent>
+                        <div class="grid grid-cols-2 gap-5 mb-4">
+                            <div>
+                                <Dropdown v-bind="{ ...BranchDropdownProps }" @dropdown-on-change="onDropDownchange"
+                                    :isFloatableLabel="true" />
+                            </div>
+                            <div>
+                                <TextBox backgroundColor=""  name="Generic" v-bind="{ ...CustomerTextBoxProps }" :isFloatableLabel="true"
+                                    @text-box-on-blur="onBlur" @text-box-on-key-press="onKeyPress"
+                                    @text-box-on-key-down="onKeyDown" @text-box-on-key-up="onKeyUp"
+                                    @text-box-on-input="onInput" @text-box-on-focus="onFocus"
+                                    @text-box-on-paste="onPaste" @text-box-on-drop="onDrop" />
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <TextBox isFloatableLabel label="Title of Account" />
-                        <TextBox isFloatableLabel label="Id Expiry Date" />
-                        <TextBox isFloatableLabel label="D.O.B" />
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <TextBox isFloatableLabel label="CNIC Name" />
-                        <TextBox isFloatableLabel label="Cust/Hsm Name" />
-                        <TextBox isFloatableLabel label="Fath/Husb. Name" />
-                    </div>
-                    <div class="grid grid-cols-3 gap-4">
-                        <TextBox isFloatableLabel label="Father/Husb. Name" />
-                        <TextBox isFloatableLabel label="Place Of Birth" />
-                        <div class="flex items-center">
-                            <Checkbox chekbox-label="Debarred List Checked" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <TextArea isFloatableLabel label="Permanent Address" />
-                        <TextArea isFloatableLabel label="Current Address" />
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <TextBox isFloatableLabel label="House/Flat No." />
-                        <TextBox isFloatableLabel label="Street/Lane Name" />
-                        <TextBox isFloatableLabel label="Area/Town/Village" />
-                    </div>
-                    <div class="grid grid-cols-4 gap-4">
-                        <Dropdown isFloatableLabel label="Country" />
-                        <Dropdown isFloatableLabel label="City" />
-                        <Dropdown isFloatableLabel label="Province" />
-                        <Dropdown isFloatableLabel label="Nationality" />
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-6">
-                            <Dropdown isFloatableLabel label="Occupation" />
-                        </div>
-                        <div class="col-span-2">
-                            <Checkbox chekbox-label="Other Nationality" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button @Button-onClick="addViewButtonOnClick" backgroundColor="var(--primary-color)"
-                                label="Add/View" />
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-8">
-                            <TextBox isFloatableLabel label="Purpose" />
-                        </div>
-                        <div class="col-span-2 flex flex-col justify-center text-xs">
-                            <p>Capture Time: 11:18:35</p>
-                        </div>
-                        <div class="col-span-2 flex flex-col justify-center text-xs">
-                            <p>Capture Date: 2022.11.25</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <TextBox isFloatableLabel label="Verification Status" />
-                        <TextBox isFloatableLabel label="Nadir Message" />
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-1">
-                            <Button isDisabled backgroundColor="var(--primary-color)" label="Add" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button isDisabled backgroundColor="var(--primary-color)" label="Change" />
-                        </div>
-                        <div class="col-span-8"></div>
-                        <div class="col-span-1">
-                            <Button isDisabled backgroundColor="var(--primary-color)" label="Print" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Back" />
-                        </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openEntityDetails" value="4" ref="panel4">
-            <AccordionHeader>Entity Details</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-3 text-gray-700">Entity Information</div>
-
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <TextBox isFloatableLabel label="Entity Name" v-model="entityName" />
-                        <TextBox isFloatableLabel label="Registration No." v-model="regNo" />
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <Dropdown isFloatableLabel label="Registered Country" v-model="regCountry" />
-                        <div class="grid grid-cols-12 gap-2">
-                            <div class="col-span-12">
-                                <TextBox isFloatableLabel label="NTN" v-model="ntn" />
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-11"></div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" native-type="button" name="NextButton"
+                                    label="Next" @Button-onClick="nextButtonClick" @Button-onFocus="buttonOnFocus"
+                                    @Button-onBlur="buttonOnBlur" />
                             </div>
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <TextBox isFloatableLabel label="House/Flat No., St./Lane" v-model="houseNo" />
-                        <Dropdown isFloatableLabel label="Country" v-model="country" />
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <TextBox isFloatableLabel label="Street/Lane/Ave. Name" v-model="streetName" />
-                        <Dropdown isFloatableLabel label="City" v-model="city" />
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <TextBox isFloatableLabel label="Area/Town/ Village" v-model="area" />
-                        <TextBox isFloatableLabel label="Province" v-model="province" />
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-3 text-gray-700">Tagging CIF Entity With Entity Account(s)
-                    </div>
-
-                    <div
-                        class="grid grid-cols-12 gap-4 items-center border border-gray-100 p-3 rounded-lg bg-gray-50 mb-4">
-                        <div class="col-span-1">
-                            <Button @Button-onClick="tagCIFButtonOnClick" backgroundColor="var(--primary-color)"
-                                label="Tag CIF" class="w-full" />
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openFastAccount" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openFastAccount" value="1" ref="panel1">
+                    <AccordionHeader>Open Fast Account</AccordionHeader>
+                    <AccordionContent>
+                        <div class="grid grid-cols-3 gap-5 mb-4">
+                            <Dropdown v-bind="{ ...BranchDropdownProps }" isFloatableLabel label="Branch" />
+                            <TextBox backgroundColor=""  v-bind="{ ...CustomerTextBoxProps }" isFloatableLabel label="Customer No." />
+                            <TextBox backgroundColor=""  v-bind="{ ...ACOpeningTextBoxProps }" isFloatableLabel label="A/C Opening Date" />
                         </div>
-                        <div class="col-span-2">
-                            <a href="#" class="text-blue-600 text-sm hover:underline">New CIF</a>
+                        <div class="grid grid-cols-12 gap-4 mb-4">
+                            <div class="col-span-4">
+                                <TextBox backgroundColor=""  v-bind="{ ...ReferenceNoTextBoxProps }" isFloatableLabel
+                                    label="Reference No" />
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" @Button-onClick="fetchButtonOnClick"
+                                    label="Fetch" />
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" label="Ref Inquiry" />
+                            </div>
                         </div>
-                        <div class="col-span-5"></div>
-                        <div class="col-span-4 text-right">
-                            <span class="text-blue-500 text-xs italic">Hint: Please tag the CIF first</span>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-11"></div>
+                            <div class="col-span-1 ">
+                                <Button @Button-onClick="fastOKButtonOnClick" :isDisabled="enableDisabledProcessButton"
+                                    backgroundColor="var(--primary-color)" label="OK" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-12 gap-4 mt-4">
-                        <div class="col-span-11"></div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openBiometricDetails" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openBiometricDetails" value="2" ref="panel2">
+                    <AccordionHeader>Biometric Details</AccordionHeader>
+                    <AccordionContent>
+                        <div class="mb-4">
+                            <Table name="BiometricDetailsTable" :tableColumns="biometricColumns"
+                                :tableData="biometricData" :selectedRows="onBiometricCurrentRow"
+                                @table-row-click="onBiometricRowClick" tableHeight="50" headerLabelsFontWeight="normal"
+                                headrLabelColor="blue" labelFontWeight="normal" labelColor="black"
+                                backgroundColor="white" tableMode="single" />
                         </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openTaggingCifEntity" value="5" ref="panel5">
-            <AccordionHeader>Tagging CIF Entity With Entity Account(s)</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-3 text-gray-700">Tagging CIF Entity with Entity Account</div>
-
-                    <div class="grid grid-cols-12 gap-5 mb-4">
-                        <div class="col-span-6">
-                            <TextBox isFloatableLabel label="NTN" v-model="filter.ntn" />
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-9"></div>
+                            <div class="col-span-2">
+                                <Button @Button-onClick="viewDetailsButtonOnClick"
+                                    backgroundColor="var(--primary-color)" label="View Details" />
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" label="Exit" />
+                            </div>
                         </div>
-                        <div class="col-span-6">
-                            <TextBox isFloatableLabel label="Reg No" v-model="filter.regNo" />
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-12 gap-5 mb-4">
-                        <div class="col-span-6">
-                            <Dropdown isFloatableLabel label="ID Category" v-model="filter.idCategory" />
-                        </div>
-                        <div class="col-span-6">
-                            <TextBox isFloatableLabel label="ID No" v-model="filter.idNo" />
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-12 gap-5 mb-4 items-end">
-                        <div class="col-span-4">
-                            <TextBox isFloatableLabel label="CIF" v-model="filter.cif" />
-                        </div>
-                        <div class="col-span-5">
-                            <TextBox isFloatableLabel label="Name" v-model="filter.name" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Search" class="w-full" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-4 text-gray-700">All Records</div>
-
-                    <div class="grid grid-cols-12 mb-4">
-                        <div class="col-span-12">
-                            <Table name="CIFTaggingTable" :tableColumns="cifColumns" :tableData="cifData"
-                                tableHeight="60" headerLabelsFontWeight="normal" headrLabelColor="blue"
-                                labelFontWeight="normal" labelColor="black" backgroundColor="white"
-                                tableMode="single" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <Checkbox name="NewCIF" chekbox-label="New CIF" v-model="isNewCif" />
-                    <div class="grid grid-cols-12 gap-4 items-center">
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Select" :disabled="!isNewCif"
-                                class="w-full" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Reset" class="w-full" />
-                        </div>
-                        <div class="col-span-9"></div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
-                        </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openAddandView" value="6" ref="panel6">
-            <AccordionHeader>Add/Remove Other Nationality</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-3 text-gray-700">Add/Remove Other Nationalities</div>
-
-                    <!-- //// -->
-                    <div class="grid grid-cols-12 gap-4 items-center">
-                        <div class="col-span-5">
-                            <div class="text-xs font-medium mb-1 text-gray-500 uppercase">Available</div>
-                            <div class="border border-gray-300 rounded-lg h-64 overflow-y-auto bg-gray-50 p-2">
-                                <div v-for="nat in availableNationalities" :key="nat.code"
-                                    @click="activeAvailable = nat; activeSelected = null"
-                                    :class="['text-sm p-1.5 cursor-pointer rounded mb-1 transition',
-                                        activeAvailable?.code === nat.code ? 'bg-blue-600 text-white' : 'hover:bg-blue-100']">
-                                    {{ nat.name }}-{{ nat.code }}
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openBiometricVerification" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openBiometricVerification" value="3" ref="panel3">
+                    <AccordionHeader>Biometric Verification Details</AccordionHeader>
+                    <AccordionContent>
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="grid grid-cols-4 gap-4 mb-4">
+                                <Dropdown isDisabled v-bind="{...idDocType}" isFloatableLabel label="Identity Doc Type" />
+                                <TextBox backgroundColor=""  isDisabled v-model="idDocNo" isFloatableLabel label="Identity Doc. No." />
+                                <Dropdown isDisabled v-bind="{...custType}" isFloatableLabel label="Cust. Type" />
+                                <Dropdown isDisabled v-bind="{...categoryAC}" isFloatableLabel label="Category of A/C" />
+                            </div>
+                            <div class="grid grid-cols-12 gap-4">
+                                <div class="col-span-3">
+                                    <TextBox backgroundColor=""  isDisabled v-model="limitation" isFloatableLabel label="Limitation" />
+                                </div>
+                                <div class="col-span-3">
+                                    <TextBox backgroundColor=""  isDisabled v-model="refNo" isFloatableLabel label="Reference No" />
+                                </div>
+                                <div class="col-span-3">
+                                    <TextBox backgroundColor=""  isDisabled v-model="crtNo" isFloatableLabel label="Certification Number" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button @Button-onClick="entityButtonOnClick" backgroundColor="var(--primary-color)"
+                                        label="Entity Info" class="h-full" />
+                                </div>
+                                <div class="col-span-2">
+                                    <div class="flex items-center">
+                                        <Checkbox isDisabled chekbox-label="Primary Applicant" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-span-2 flex flex-col gap-2 px-2">
-                            <Button backgroundColor="var(--primary-color)" label="Add All >>" class="w-full text-xs"
-                                :disabled="availableNationalities.length === 0" @Button-onClick="addAll" />
-
-                            <Button backgroundColor="var(--primary-color)" label="Add >" class="w-full text-xs"
-                                :disabled="!activeAvailable" @Button-onClick="addSelected" />
-
-                            <Button backgroundColor="var(--primary-color)" label="< Remove" class="w-full text-xs"
-                                :disabled="!activeSelected" @Button-onClick="removeSelected" />
-
-                            <Button backgroundColor="var(--primary-color)" label="<< Remove All" class="w-full text-xs"
-                                :disabled="selectedNationalities.length === 0" @Button-onClick="removeAll" />
-                        </div>
-
-                        <div class="col-span-5">
-                            <div class="text-xs font-medium mb-1 text-gray-500 uppercase">Selected</div>
-                            <div class="border border-gray-300 rounded-lg h-64 overflow-y-auto bg-white p-2">
-                                <div v-for="nat in selectedNationalities" :key="nat.code"
-                                    @click="activeSelected = nat; activeAvailable = null"
-                                    :class="['text-sm p-1.5 cursor-pointer rounded mb-1 font-semibold transition',
-                                        activeSelected?.code === nat.code ? 'bg-red-600 text-white' : 'hover:bg-red-50']">
-                                    {{ nat.name }}-{{ nat.code }}
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <TextBox backgroundColor=""  isDisabled v-model="TitleAC" isFloatableLabel label="Title of Account" />
+                                <TextBox backgroundColor=""  isDisabled v-model="IdExpiryDate" isFloatableLabel label="Id Expiry Date" />
+                                <TextBox backgroundColor=""  isDisabled v-model="dob" isFloatableLabel label="D.O.B" />
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <TextBox backgroundColor=""  isDisabled v-model="cnicName" isFloatableLabel label="CNIC Name" />
+                                <TextBox backgroundColor=""  isDisabled v-model="custMemName" isFloatableLabel label="Cust/Hsm Name" />
+                                <TextBox backgroundColor=""  isDisabled v-model="fathHusbName" isFloatableLabel label="Fath/Husb. Name" />
+                            </div>
+                            <div class="grid grid-cols-3 gap-4">
+                                <TextBox backgroundColor=""  isDisabled v-model="birthPlace" isFloatableLabel label="Place Of Birth" />
+                                <div class="flex items-center">
+                                    <Checkbox isDisabled chekbox-label="Debarred List Checked" />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- //// -->
 
-                    <div class="grid grid-cols-12 mt-4">
-                        <div class="col-span-11"></div>
-                        <div class="col-span-1 text-right">
-                            <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <TextArea backgroundColor=""  isDisabled v-model="permanentAdd" isFloatableLabel
+                                    label="Permanent Address" />
+                                <TextArea backgroundColor=""  isDisabled v-model="presentAdd" isFloatableLabel label="Current Address" />
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <TextBox backgroundColor=""  isDisabled v-model="houseFlatNo" isFloatableLabel label="House/Flat No." />
+                                <TextBox backgroundColor=""  isDisabled v-model="streetNo" isFloatableLabel label="Street/Lane Name" />
+                                <TextBox backgroundColor=""  isDisabled v-model="areaTown" isFloatableLabel label="Area/Town/Village" />
+                            </div>
+                            <div class="grid grid-cols-4 gap-4">
+                                <Dropdown isDisabled v-bind="{...countryBio}" isFloatableLabel label="Country" />
+                                <Dropdown isDisabled v-bind="{...cityBio}" isFloatableLabel label="City" />
+                                <Dropdown isDisabled v-bind="{...provinceBio}" isFloatableLabel label="Province" />
+                                <Dropdown isDisabled v-bind="{...nationality}" isFloatableLabel label="Nationality" />
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel v-if="openProcessFastAccount" value="7" ref="panel7">
-            <AccordionHeader>Process Fast Account</AccordionHeader>
-            <AccordionContent>
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <TextBox isFloatableLabel label="Title of A/C" />
-                        <TextBox v-bind="{ ...ACCurrencyTextBoxProps }" isFloatableLabel label="A/C Currency" />
 
-                    </div>
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                <div class="col-span-6">
+                                    <Dropdown isDisabled v-bind="{...occupation}" isFloatableLabel label="Occupation" />
+                                </div>
+                                <div class="col-span-2">
+                                    <Checkbox isDisabled chekbox-label="Other Nationality" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button @Button-onClick="addViewButtonOnClick"
+                                        backgroundColor="var(--primary-color)" label="Add/View" />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                <div class="col-span-8">
+                                    <TextBox backgroundColor=""  isDisabled v-model="purpose" isFloatableLabel label="Purpose" />
+                                </div>
+                                <div class="col-span-2 flex flex-col justify-center text-xs">
+                                    <p>Capture Time: 11:18:35</p>
+                                </div>
+                                <div class="col-span-2 flex flex-col justify-center text-xs">
+                                    <p>Capture Date: 2022.11.25</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <TextBox backgroundColor=""  isDisabled v-model="verificationStatus" isFloatableLabel
+                                    label="Verification Status" />
+                                <TextBox backgroundColor=""  isDisabled v-model="nadirMsg" isFloatableLabel label="Nadir Message" />
+                            </div>
+                        </div>
 
-                    <div class="grid grid-cols-4 gap-5 mb-4">
-                        <Dropdown @dropdown-on-change="ACTypeDropDownChange" v-bind="{ ...ACTypesDropDownProps }"
-                            isFloatableLabel label="A/C Type" />
-                        <TextBox @text-box-on-blur="onRunNoBlur" v-bind="{ ...RunNoTextBoxProps }" isFloatableLabel
-                            label="Running No" />
-                        <TextBox v-bind="{ ...CheckDigitTextBoxProps }" isFloatableLabel label="Check Digit" />
-                        <Checkbox name="ChequeBook" label="Cheque Book Required" chekbox-label="Cheque Book Required"
-                            v-model="chequeBookRequired" />
-                        <div></div>
-                    </div>
-                </div>
+                        <div class="grid grid-cols-12 gap-4 mb-4">
+                            <div class="col-span-1">
+                                <!-- <Button isDisabled backgroundColor="var(--primary-color)" label="Add" /> -->
+                            </div>
+                            <div class="col-span-1">
+                                <!-- <Button isDisabled backgroundColor="var(--primary-color)" label="Change" /> -->
+                            </div>
+                            <div class="col-span-8"></div>
+                            <div class="col-span-1">
+                                <!-- <Button isDisabled backgroundColor="var(--primary-color)" label="Print" /> -->
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" label="Back" />
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openEntityDetails" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openEntityDetails" value="4" ref="panel4">
+                    <AccordionHeader>Entity Details</AccordionHeader>
+                    <AccordionContent>
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div style="color:var(--primary-color)" class="font-semibold text-sm mb-3 text-gray-700">
+                                Entity Information</div>
 
-                <!-- A/C Classification -->
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm">A/C Classification</div>
-                    <div class="grid grid-cols-2 gap-5 mb-4">
-                        <Dropdown v-bind="{ ...CategoryDropDownProps }" isFloatableLabel label="Category" />
-                        <Dropdown v-bind="{ ...AccountNatureDropDownProps }" isFloatableLabel label="A/C Nature" />
-                    </div>
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <TextBox backgroundColor=""  isFloatableLabel label="Entity Name" v-model="entityName" />
+                                <TextBox backgroundColor=""  isFloatableLabel label="Registration No." v-model="regNo" />
+                            </div>
 
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-5">
-                            <Dropdown v-bind="{ ...MajClassificationDropDownProps }" style="margin-bottom:1%"
-                                isFloatableLabel label="Major Classification" />
-                            <Dropdown v-bind="{ ...SubClassificationDropDownProps }" isFloatableLabel
-                                label="Sub Classification" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" style="margin-bottom:6%" label="Add >" />
-                            <Button backgroundColor="var(--primary-color)" style="margin-bottom:2%" label="< Remove" />
-                            <Checkbox name="Resident" label="Resident" chekbox-label="Resident" v-model="isResident" />
-                        </div>
-                        <div class="col-span-6">
-                            <TextArea name="ACNotes" :is-floatable-label="true" v-model="acNotes" />
-                        </div>
-                    </div>
-                </div>
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <Dropdown isFloatableLabel label="Registered Country" v-model="regCountry" />
+                                <div class="grid grid-cols-12 gap-2">
+                                    <div class="col-span-12">
+                                        <TextBox backgroundColor=""  isFloatableLabel label="NTN" v-model="ntn" />
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Marketing Source -->
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-4">Marketing Source</div>
-                    <div class="grid grid-cols-12 gap-4 mb-4">
-                        <div class="col-span-5">
-                            <Dropdown style="margin-bottom:0.8%" isFloatableLabel label="Market Source" />
-                            <Dropdown style="margin-bottom:0.8%" isFloatableLabel label="Handling Unit Team" />
-                            <Dropdown isFloatableLabel label="Team" />
-                        </div>
-                        <div class="col-span-1">
-                            <Button backgroundColor="var(--primary-color)" style="margin-bottom:6%" label="Add >" />
-                            <Button backgroundColor="var(--primary-color)" style="margin-bottom:2%" label="< Remove" />
-                        </div>
-                        <div class="col-span-6">
-                            <TextArea name="MarketRemarks" :is-floatable-label="true" />
-                        </div>
-                    </div>
-                </div>
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <TextBox backgroundColor=""  isFloatableLabel label="House/Flat No., St./Lane" v-model="houseNo" />
+                                <Dropdown isFloatableLabel label="Country" v-model="country" />
+                            </div>
 
-                <!-- Introducer Information -->
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
-                    <div class="font-semibold text-sm mb-4">Introducer Information</div>
-                    <div class="grid grid-cols-4 gap-5">
-                        <Dropdown isFloatableLabel label="Bank Name" />
-                        <TextBox isFloatableLabel label="A/C No" />
-                        <Dropdown isFloatableLabel label="Branch Name" />
-                        <TextBox isFloatableLabel label="Introducer Name" />
-                    </div>
-                </div>
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <TextBox backgroundColor=""  isFloatableLabel label="Street/Lane/Ave. Name" v-model="streetName" />
+                                <Dropdown isFloatableLabel label="City" v-model="city" />
+                            </div>
 
-                <!-- Footer Buttons -->
-                <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-11"></div>
-                        <div class="col-span-1 ">
-                            <Button @Button-onClick="processOKButtonOnClick" backgroundColor="var(--primary-color)"
-                                label="OK" />
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <TextBox backgroundColor=""  isFloatableLabel label="Area/Town/ Village" v-model="area" />
+                                <TextBox backgroundColor=""  isFloatableLabel label="Province" v-model="province" />
+                            </div>
                         </div>
-                        <!-- <div class="col-span-1 ">
+
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm mb-3 text-gray-700">Tagging CIF Entity With Entity
+                                Account(s)
+                            </div>
+
+                            <div
+                                class="grid grid-cols-12 gap-4 items-center border border-gray-100 p-3 rounded-lg bg-gray-50 mb-4">
+                                <div class="col-span-1">
+                                    <Button @Button-onClick="tagCIFButtonOnClick" backgroundColor="var(--primary-color)"
+                                        label="Tag CIF" class="w-full" />
+                                </div>
+                                <div class="col-span-2">
+                                    <a href="#" class="text-blue-600 text-sm hover:underline">New CIF</a>
+                                </div>
+                                <div class="col-span-5"></div>
+                                <div class="col-span-4 text-right">
+                                    <span class="text-blue-500 text-xs italic">Hint: Please tag the CIF first</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-12 gap-4 mt-4">
+                                <div class="col-span-11"></div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
+                                </div>
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openTaggingCifEntity" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openTaggingCifEntity" value="5" ref="panel5">
+                    <AccordionHeader>Tagging CIF Entity With Entity Account(s)</AccordionHeader>
+                    <AccordionContent>
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm mb-3 text-[var(--primary-color)]">Tagging CIF Entity with
+                                Entity Account
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-5 mb-4">
+                                <div class="col-span-6">
+                                    <TextBox backgroundColor=""  isFloatableLabel label="NTN" v-model="filter.ntn" />
+                                </div>
+                                <div class="col-span-6">
+                                    <TextBox backgroundColor=""  isFloatableLabel label="Reg No" v-model="filter.regNo" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-5 mb-4">
+                                <div class="col-span-6">
+                                    <Dropdown isFloatableLabel label="ID Category" v-model="filter.idCategory" />
+                                </div>
+                                <div class="col-span-6">
+                                    <TextBox backgroundColor=""  isFloatableLabel label="ID No" v-model="filter.idNo" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-5 mb-4 items-end">
+                                <div class="col-span-4">
+                                    <TextBox backgroundColor=""  isFloatableLabel label="CIF" v-model="filter.cif" />
+                                </div>
+                                <div class="col-span-5">
+                                    <TextBox backgroundColor=""  isFloatableLabel label="Name" v-model="filter.name" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" label="Search" class="w-full" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm mb-4 text-gray-700">All Records</div>
+
+                            <div class="grid grid-cols-12 mb-4">
+                                <div class="col-span-12">
+                                    <Table name="CIFTaggingTable" :tableColumns="cifColumns" :tableData="cifData"
+                                        tableHeight="60" headerLabelsFontWeight="normal" headrLabelColor="blue"
+                                        labelFontWeight="normal" labelColor="black" backgroundColor="white"
+                                        tableMode="single" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
+                            <Checkbox name="NewCIF" chekbox-label="New CIF" v-model="isNewCif" />
+                            <div class="grid grid-cols-12 gap-4 items-center">
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" label="Select" :disabled="!isNewCif"
+                                        class="w-full" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" label="Reset" class="w-full" />
+                                </div>
+                                <div class="col-span-9"></div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
+                                </div>
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openAddandView" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openAddandView" value="6" ref="panel6">
+                    <AccordionHeader>Add/Remove Other Nationality</AccordionHeader>
+                    <AccordionContent>
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm mb-3 text-[var(--primary-color)]">Add/Remove Other
+                                Nationalities</div>
+
+                            <!-- //// -->
+                            <div class="grid grid-cols-12 gap-4 items-center">
+                                <div class="col-span-5">
+                                    <div class="text-xs font-medium mb-1 text-gray-500 uppercase">Available</div>
+                                    <div class="border border-gray-300 rounded-lg h-64 overflow-y-auto bg-gray-50 p-2">
+                                        <div v-for="nat in availableNationalities" :key="nat.code"
+                                            @click="activeAvailable = nat; activeSelected = null"
+                                            :class="['text-sm p-1.5 cursor-pointer rounded mb-1 transition',
+                                                activeAvailable?.code === nat.code ? 'bg-[var(--primary-color)] text-white' : 'hover:bg-blue-100']">
+                                            {{ nat.name }}-{{ nat.code }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-2 flex flex-col gap-2 px-2">
+                                    <Button backgroundColor="var(--primary-color)" label="Add All >>"
+                                        class="w-full text-xs" :disabled="availableNationalities.length === 0"
+                                        @Button-onClick="addAll" />
+
+                                    <Button backgroundColor="var(--primary-color)" label="Add >" class="w-full text-xs"
+                                        :disabled="!activeAvailable" @Button-onClick="addSelected" />
+
+                                    <Button backgroundColor="var(--primary-color)" label="< Remove"
+                                        class="w-full text-xs" :disabled="!activeSelected"
+                                        @Button-onClick="removeSelected" />
+
+                                    <Button backgroundColor="var(--primary-color)" label="<< Remove All"
+                                        class="w-full text-xs" :disabled="selectedNationalities.length === 0"
+                                        @Button-onClick="removeAll" />
+                                </div>
+
+                                <div class="col-span-5">
+                                    <div class="text-xs font-medium mb-1 text-gray-500 uppercase">Selected</div>
+                                    <div class="border border-gray-300 rounded-lg h-64 overflow-y-auto bg-white p-2">
+                                        <div v-for="nat in selectedNationalities" :key="nat.code"
+                                            @click="activeSelected = nat; activeAvailable = null"
+                                            :class="['text-sm p-1.5 cursor-pointer rounded mb-1 font-semibold transition',
+                                                activeSelected?.code === nat.code ? 'bg-red-600 text-white' : 'hover:bg-red-50']">
+                                            {{ nat.name }}-{{ nat.code }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //// -->
+
+                            <div class="grid grid-cols-12 mt-4">
+                                <div class="col-span-11"></div>
+                                <div class="col-span-1 text-right">
+                                    <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
+                                </div>
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <div v-if="openProcessFastAccount" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openProcessFastAccount" value="7" ref="panel7">
+                    <AccordionHeader>Process Fast Account</AccordionHeader>
+                    <AccordionContent>
+                        <div class="grid grid-cols-2 gap-5 mb-4">
+                            <TextBox backgroundColor=""  isFloatableLabel label="Title of A/C" />
+                            <TextBox backgroundColor=""  v-bind="{ ...ACCurrencyTextBoxProps }" isFloatableLabel label="A/C Currency" />
+
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-5">
+                            <Dropdown @dropdown-on-change="ACTypeDropDownChange" v-bind="{ ...ACTypesDropDownProps }"
+                                isFloatableLabel label="A/C Type" />
+                            <TextBox backgroundColor=""  @text-box-on-blur="onRunNoBlur" v-bind="{ ...RunNoTextBoxProps }" isFloatableLabel
+                                label="Running No" />
+                            <TextBox backgroundColor=""  v-bind="{ ...CheckDigitTextBoxProps }" isFloatableLabel label="Check Digit" />
+                            <Checkbox name="ChequeBook" label="Cheque Book Required"
+                                chekbox-label="Cheque Book Required" v-model="chequeBookRequired" />
+                            <div></div>
+                        </div>
+
+                        <!-- A/C Classification -->
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm text-[var(--primary-color)] mb-1">A/C Classification</div>
+                            <div class="grid grid-cols-2 gap-5 mb-4">
+                                <Dropdown v-bind="{ ...CategoryDropDownProps }" isFloatableLabel label="Category" />
+                                <Dropdown v-bind="{ ...AccountNatureDropDownProps }" isFloatableLabel
+                                    label="A/C Nature" />
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                <div class="col-span-5">
+                                    <Dropdown v-bind="{ ...MajClassificationDropDownProps }" style="margin-bottom:1%"
+                                        isFloatableLabel label="Major Classification" />
+                                    <Dropdown v-bind="{ ...SubClassificationDropDownProps }" isFloatableLabel
+                                        label="Sub Classification" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" style="margin-bottom:6%"
+                                        label="Add >" />
+                                    <Button backgroundColor="var(--primary-color)" style="margin-bottom:2%"
+                                        label="< Remove" />
+                                    <Checkbox name="Resident" label="Resident" chekbox-label="Resident"
+                                        v-model="isResident" />
+                                </div>
+                                <div class="col-span-6">
+                                    <TextArea backgroundColor=""  name="ACNotes" :is-floatable-label="true" v-model="acNotes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Marketing Source -->
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm text-[var(--primary-color)] mb-1">Marketing Source</div>
+                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                <div class="col-span-5">
+                                    <Dropdown style="margin-bottom:0.8%" isFloatableLabel label="Market Source" />
+                                    <Dropdown style="margin-bottom:0.8%" isFloatableLabel label="Handling Unit Team" />
+                                    <Dropdown isFloatableLabel label="Team" />
+                                </div>
+                                <div class="col-span-1">
+                                    <Button backgroundColor="var(--primary-color)" style="margin-bottom:6%"
+                                        label="Add >" />
+                                    <Button backgroundColor="var(--primary-color)" style="margin-bottom:2%"
+                                        label="< Remove" />
+                                </div>
+                                <div class="col-span-6">
+                                    <TextArea backgroundColor=""  name="MarketRemarks" :is-floatable-label="true" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Introducer Information -->
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+                            <div class="font-semibold text-sm mb-1 text-[var(--primary-color)]">Introducer Information
+                            </div>
+                            <div class="grid grid-cols-4 gap-5">
+                                <Dropdown isFloatableLabel label="Bank Name" />
+                                <TextBox backgroundColor=""  isFloatableLabel label="A/C No" />
+                                <Dropdown isFloatableLabel label="Branch Name" />
+                                <TextBox backgroundColor=""  isFloatableLabel label="Introducer Name" />
+                            </div>
+                        </div>
+
+                        <!-- Footer Buttons -->
+                        <div class="p-2 bg-white border border-gray-200 rounded-xl shadow-sm">
+                            <div class="grid grid-cols-12 gap-4">
+                                <div class="col-span-11"></div>
+                                <div class="col-span-1 ">
+                                    <Button @Button-onClick="processOKButtonOnClick"
+                                        backgroundColor="var(--primary-color)" label="OK" />
+                                </div>
+                                <!-- <div class="col-span-1 ">
                             <Button backgroundColor="var(--primary-color)" label="Exit" />
                         </div> -->
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-    </Accordion>
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+        </Accordion>
+    </div>
     <div v-if="successDialog" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 ">
         <!-- Modal -->
         <div class="w-full max-w-[450px] min-h-[250px] rounded-xl bg-white shadow-xl mt-[50px]">
@@ -537,7 +551,7 @@
     </div>
 </template>
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Accordion from 'primevue/accordion';
 import AccordionPanel from 'primevue/accordionpanel';
@@ -554,7 +568,17 @@ import {
     Label,
     FileUpload
 } from '@cms/ui-components';
+
 const router = useRouter();
+///////////////////////////onMounted////////////////////////////////////////////\
+onMounted(async () => {
+    const module = await import('../data/customerOnBoarding.js');
+    jsonData.value = module.default[0];
+    BranchDropdownProps.value.modelValue = jsonData.value.openNewAccount.branchName;
+    CustomerTextBoxProps.value.modelValue = Math.random().toString().slice(2, 8);
+    ACOpeningTextBoxProps.value.modelValue = jsonData.value.openNewAccount.accountOpeningDate;
+    biometricData.value = jsonData.value.openNewAccount.biometricTableData;
+});
 ///////////////////////////Panel Visibility/////////////////////////////////////
 const openCustomer = ref(true);
 const openFastAccount = ref(false);
@@ -578,6 +602,7 @@ const enableDisabledProcessButton = computed(() => {
     return !(checkBiometric.value);
 });
 ///////////////////////////model///////////////////////////////////////////////////
+const jsonData = ref([])
 const activeNames = ref(['0']);
 const successDialog = ref(false);
 const onBiometricCurrentRow = ref(null)
@@ -594,9 +619,78 @@ const province = ref('');
 const chequeBookRequired = ref(false);
 const acNotes = ref('');
 const isResident = ref(false);
+const idDocType = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'CNIC', value: 'CNIC' },
+        { label: 'Passport', value: 'Passport' },
+        { label: 'NICOP', value: 'NICOP' }
+    ],
+});
+const idDocNo = ref();
+const custType = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'DIRECTOR-15', value: 'DIRECTOR-15' }
+    ],
+});
+const categoryAC = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'TRUST-T', value: 'TRUST-T' }
+    ],
+})
+const limitation = ref()
+const refNo = ref()
+const crtNo = ref()
+const TitleAC = ref()
+const IdExpiryDate = ref()
+const dob = ref()
+const cnicName = ref()
+const custMemName = ref()
+const fathHusbName = ref()
+const birthPlace = ref()
+const permanentAdd = ref()
+const presentAdd = ref()
+const houseFlatNo = ref()
+const streetNo = ref()
+const areaTown = ref()
+const countryBio = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'USA - 840', value: 'USA - 840' }
+    ],
+})
+const cityBio = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'SAN FRANCISCO', value: 'SAN FRANCISCO' }
+    ],
+})
+const provinceBio = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'CA - 412', value: 'CA - 412' }
+    ],
+})
+const nationality = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'AMERICAN', value: 'AMERICAN' }
+    ],
+})
+const occupation = ref({
+    modelValue:null,
+    optionsList:[
+        { label: 'BUSINESSMAN', value: 'BUSINESSMAN' }
+    ],
+})
+const purpose = ref()
+const verificationStatus = ref()
+const nadirMsg = ref()
 const CustomerTextBoxProps = ref({
     mandatory: false,
-    modelValue: '000485 ',
+    modelValue: '',
     name: 'CustomerTextBox',
     label: 'Customer No.',
     isDisabled: true,
@@ -605,7 +699,7 @@ const CustomerTextBoxProps = ref({
 });
 const ACOpeningTextBoxProps = ref({
     mandatory: false,
-    modelValue: '01/12/2025',
+    modelValue: '',
     name: 'ACOpeningTextBox',
     label: 'A/C Opening Date',
     isDisabled: true,
@@ -658,7 +752,7 @@ const BranchDropdownProps = ref({
         }
     ],
     name: 'BranchDropdown',
-    modelValue: '1016 - Wells Fargo Branch',
+    modelValue: '',
     isDisabled: true,
 });
 const CategoryDropDownProps = ref({
@@ -737,19 +831,7 @@ const biometricColumns = ref([
     { prop: 'screenedDesc', label: 'Screened Description', width: 260 }
 ])
 
-const biometricData = ref([
-    {
-        idDocType: 'CNIC',
-        idDocNo: '4220141992672',
-        fingerNo: '0',
-        cnicName: '',
-        response: 'PERMANENT DISABILITY',
-        nadraStatus: 'NOT VERIFIED',
-        accountNature: 'Current',
-        screenedStatus: 'Y',
-        screenedDesc: ''
-    }
-])
+const biometricData = ref()
 // Table Columns Definition
 const cifColumns = ref([
     { prop: 'cif', label: 'CIF', width: 100 },
@@ -952,6 +1034,34 @@ const onBiometricRowClick = (event) => {
     onBiometricCurrentRow.value = event
 }
 const viewDetailsButtonOnClick = () => {
+    idDocType.value.modelValue = jsonData.value.biometricVerificationDetails.idDocType
+    idDocNo.value = jsonData.value.biometricVerificationDetails.idDocNo
+    custType.value.modelValue = jsonData.value.biometricVerificationDetails.custType
+    categoryAC.value.modelValue = jsonData.value.biometricVerificationDetails.categoryAC
+    limitation.value = jsonData.value.biometricVerificationDetails.limitation
+    refNo.value = jsonData.value.biometricVerificationDetails.refNo
+    crtNo.value = jsonData.value.biometricVerificationDetails.crtNo
+    TitleAC.value = jsonData.value.biometricVerificationDetails.TitleAC
+    IdExpiryDate.value = jsonData.value.biometricVerificationDetails.IdExpiryDate
+    dob.value = jsonData.value.biometricVerificationDetails.dob
+    cnicName.value = jsonData.value.biometricVerificationDetails.cnicName
+    custMemName.value = jsonData.value.biometricVerificationDetails.custMemName
+    fathHusbName.value = jsonData.value.biometricVerificationDetails.fathHusbName
+    birthPlace.value = jsonData.value.biometricVerificationDetails.birthPlace
+    permanentAdd.value = jsonData.value.biometricVerificationDetails.permanentAdd
+    presentAdd.value = jsonData.value.biometricVerificationDetails.presentAdd
+    houseFlatNo.value = jsonData.value.biometricVerificationDetails.houseFlatNo
+    streetNo.value = jsonData.value.biometricVerificationDetails.streetNo
+    areaTown.value = jsonData.value.biometricVerificationDetails.areaTown
+    countryBio.value.modelValue = jsonData.value.biometricVerificationDetails.countryBio
+    cityBio.value.modelValue = jsonData.value.biometricVerificationDetails.cityBio
+    provinceBio.value.modelValue = jsonData.value.biometricVerificationDetails.provinceBio
+    nationality.value.modelValue = jsonData.value.biometricVerificationDetails.nationality
+    occupation.value.modelValue = jsonData.value.biometricVerificationDetails.occupation
+    purpose.value = jsonData.value.biometricVerificationDetails.purpose
+    verificationStatus.value = jsonData.value.biometricVerificationDetails.verificationStatus
+    nadirMsg.value = jsonData.value.biometricVerificationDetails.nadirMsg
+
     if (!onBiometricCurrentRow.value) {
         return;
     }
