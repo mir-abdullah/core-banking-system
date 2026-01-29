@@ -23,6 +23,7 @@ const { activeCardId, setActiveCard } = useCardState();
 const activeDropdown = ref(null);
 const activeSubOption = ref(null);
 const activeNestedOption = ref(null);
+const activeFifthOption = ref(null);
 const cardOpen = ref(false);
 
 onMounted(() => {
@@ -40,6 +41,7 @@ const closeAll = () => {
     activeDropdown.value = null;
     activeSubOption.value = null;
     activeNestedOption.value = null;
+    activeFifthOption.value = null;
 };
 
 // Selection handler: Agar item ke children nahi hain, toh select emit karo
@@ -68,6 +70,7 @@ const toggleDropdown = (item) => {
         activeDropdown.value = activeDropdown.value === item.name ? null : item.name;
         activeSubOption.value = null;
         activeNestedOption.value = null;
+        activeFifthOption.value = null;
     } else {
         handleItemClick(item);
     }
@@ -81,6 +84,7 @@ const toggleSubOption = (sub) => {
     if (sub.options?.length) {
         activeSubOption.value = activeSubOption.value === sub.name ? null : sub.name;
         activeNestedOption.value = null;
+        activeFifthOption.value = null;
     } else {
         handleItemClick(sub);
     }
@@ -89,8 +93,17 @@ const toggleSubOption = (sub) => {
 const toggleNestedOption = (nested) => {
     if (nested.subOptions?.length) {
         activeNestedOption.value = activeNestedOption.value === nested.name ? null : nested.name;
+        activeFifthOption.value = null;
     } else {
         handleItemClick(nested);
+    }
+};
+
+const toggleFifthOption = (fifth) => {
+    if (fifth.subOptions?.length || fifth.options?.length) {
+        activeFifthOption.value = activeFifthOption.value === fifth.name ? null : fifth.name;
+    } else {
+        handleItemClick(fifth);
     }
 };
 
@@ -149,14 +162,33 @@ const cardWidth = computed(() => isCollapsed.value ? '335.2px' : '292px');
 
                                             <div v-if="activeNestedOption === nestedItem.name && nestedItem.subOptions?.length" class="absolute left-full top-0 ml-2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 min-w-[200px] z-50">
                                                 <div class="flex flex-col gap-2">
-                                                    <button
+                                                    <div
                                                         v-for="fourthItem in nestedItem.subOptions"
                                                         :key="fourthItem.name"
-                                                        @click="handleItemClick(fourthItem)"
-                                                        class="flex items-center gap-2 px-3 py-2 hover:bg-blue-50 rounded-lg transition-all text-left cursor-pointer font-semibold"
+                                                        class="relative"
                                                     >
-                                                        <span class="text-sm text-gray-800 hover:text-blue-700">{{ fourthItem.name }}</span>
-                                                    </button>
+                                                        <button
+                                                            @click="toggleFifthOption(fourthItem)"
+                                                            class="w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all text-left cursor-pointer font-semibold"
+                                                            :class="activeFifthOption === fourthItem.name ? 'bg-blue-50 border-blue-200 text-blue-700' : 'text-gray-800 hover:bg-blue-100'"
+                                                        >
+                                                            <span class="text-sm">{{ fourthItem.name }}</span>
+                                                            <i v-if="fourthItem.subOptions?.length || fourthItem.options?.length" class="pi pi-chevron-right text-xs"></i>
+                                                        </button>
+
+                                                        <div v-if="activeFifthOption === fourthItem.name && (fourthItem.subOptions?.length || fourthItem.options?.length)" class="absolute left-full top-0 ml-2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 min-w-[200px] z-[60]">
+                                                            <div class="flex flex-col gap-2">
+                                                                <button
+                                                                    v-for="fifthItem in (fourthItem.subOptions || fourthItem.options)"
+                                                                    :key="fifthItem.name"
+                                                                    @click="handleItemClick(fifthItem)"
+                                                                    class="flex items-center gap-2 px-3 py-2 hover:bg-blue-50 rounded-lg transition-all text-left cursor-pointer font-semibold"
+                                                                >
+                                                                    <span class="text-sm text-gray-800 hover:text-blue-700">{{ fifthItem.name }}</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

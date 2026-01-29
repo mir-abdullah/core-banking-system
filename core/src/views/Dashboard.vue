@@ -3,12 +3,9 @@
     import { ref, computed } from 'vue';
     import { sidebarItems } from '../data/data';
     import DashboardCard from '../components/DashboardCard.vue';
-    import { useRoute } from 'vue-router';
     import DatePicker from '../components/DatePicker.vue';
     import bankLogo from '../assets/images/icon_bank.svg'
-
-
-    const route = useRoute();
+ 
 
 
 </script>
@@ -31,6 +28,7 @@
             :icon="item.iconSrc"
             :value="item.subCategories"
             :backgroundColor="item.backgroundColor"
+            :routeName="item.routeName"
         />
     </div>
     </div>

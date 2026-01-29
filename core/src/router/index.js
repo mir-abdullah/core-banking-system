@@ -14,6 +14,8 @@ import GeneralInquiry from "../views/GeneralInquiry.vue";
 import Settings from "../views/Settings.vue";
 import OpenNewCustomerAccount from "../UseCase/openNewCustomerAccount.vue";
 import NewCustLoanApp from "../UseCase/NewCustLoanApp.vue";
+import TradeFinancingImports from "../views/TradeFinancingImports.vue";
+import TradeFinancingExports from "../views/TradeFinancingExports.vue";
 
 const routes = [
   { path: "/", name: "SignIn", component: SignUpPage, meta: { hide: true } },
@@ -34,6 +36,20 @@ const routes = [
     name: "TradeFinancing",
     component: TradeFinancing,
     meta: { title: "Trade Financing" },
+    children:[
+      { path: "imports",
+        name: "Imports",
+        component: TradeFinancingImports,
+        meta: { title: "Imports" },
+      },
+      {
+        path:"exports",
+        name:"Exports",
+        component: TradeFinancingExports,
+        meta:{ title: "Exports"}
+      }
+       
+    ]
   },
   {
     path: "/loan-origination-&-management",

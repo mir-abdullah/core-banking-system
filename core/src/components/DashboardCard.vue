@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useSidebar } from '../composables/useSidebar';
 import cardArrowIcon from '../assets/images/icon_card_arrow_right.svg';
 
@@ -24,11 +24,28 @@ const props = defineProps({
         required: true,
         default: '#ffffff',
     },
+    routeName: {
+        type: String,
+        required: false,
+    },
+    routePath: {
+        type: String,
+        required: false,
+    },
 });
 const route = useRoute();
+const router = useRouter();
 const { isCollapsed } = useSidebar();
 
 const cardWidth = computed(() => isCollapsed.value ? '333.6px' : '290.4px');
+
+const handleClick = () => {
+    if (props.routeName) {
+        router.push({ name: props.routeName });
+    } else if (props.routePath) {
+        router.push(props.routePath);
+    }
+};
 
 
 
@@ -37,8 +54,7 @@ const cardWidth = computed(() => isCollapsed.value ? '333.6px' : '290.4px');
 </script>
 
 <template>
-    <div :class="[`group relative h-93.5 cursor-pointer transition-all duration-400`]" :style="{ width: cardWidth }">
-        <router-link :to="`/${props.name.toLowerCase().replace(/ /g, '-')}`">
+    <div :class="[`group relative h-93.5 cursor-pointer transition-all duration-400`]" :style="{ width: cardWidth }" @click="handleClick">
         <div class="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-lg shadow-[0_0_20px_rgba(76,87,125,0.02)] transition-transform duration-300 ease-out "
             :style="{ backgroundColor: props.backgroundColor }">
             <div
@@ -66,7 +82,6 @@ const cardWidth = computed(() => isCollapsed.value ? '333.6px' : '290.4px');
                 <img :src="cardArrowIcon" alt="arrow icon" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 ml-auto" />
             </div>
         </div>
-         </router-link>
     </div>
 </template>
 
