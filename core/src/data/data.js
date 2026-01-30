@@ -20,6 +20,11 @@ import editProfileIcon from "../assets/images/edit-profile.svg";
 import changePasswordIcon from "../assets/images/change-password.svg";
 import notificationsIcon from "../assets/images/notifications.svg";
 
+
+
+export const layoutColors=["#0C3AA3", "#4E40D4", "#4880FF", "#00C7E2", "#12d09d"]
+
+
 export const sidebarItems = [
   {
     name: "Main Menu",
@@ -3445,16 +3450,16 @@ export const tradeFinanceExportsItems = [
       },
     ],
   },
-  {
-    title: "Cancel FDBC/FDBP Transaction",
-    color: "#dc2626",
-    options: [],
-  },
-  {
-    title: "Change Of Bank",
-    color: "#2563eb",
-    options: [],
-  },
+  // {
+  //   title: "Cancel FDBC/FDBP Transaction",
+  //   color: "#dc2626",
+  //   options: [],
+  // },
+  // {
+  //   title: "Change Of Bank",
+  //   color: "#2563eb",
+  //   options: [],
+  // },
   {
     title: "Inquiry",
     color: "#10b981",
@@ -3502,3 +3507,486 @@ export const tradeFinanceExportsItems = [
     ],
   },
 ];
+
+export const treasuryManagementItems = [
+  // {
+  //   title: "Open Term Deposit A/C",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Cancel Deal",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Term Deposit A/C Information",
+    color: "#34d399",
+    options: [
+      { name: "Maintain" },
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Maintain"
+      },
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  // {
+  //   title: "Profit Payment before Maturity",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Book Deal",
+    color: "#34d399",
+    options: [
+      { name: "Book" },
+      { name: "Authorize" }
+    ],
+    dropdown: [
+      {
+        name: "Book"
+      },
+      {
+        name: "Authorize"
+      }
+    ]
+  },
+  // {
+  //   title: "Due Date Dairy",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Deal Information",
+    color: "#34d399",
+    options: [
+      { name: "Maintain" },
+      { name: "Print Receipt" },
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Maintain"
+      },
+      {
+        name: "Print Receipt"
+      },
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  // {
+  //   title: "Summary-Due Date Dairy",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Pre Mature Deal",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Reverse Deal",
+  //   color: "#34d399",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "ZAMANAT INSURANCE",
+    color: "#34d399",
+    options: [
+      { name: "Book" },
+      { name: "Mark Status" },
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Book"
+      },
+      {
+        name: "Mark Status"
+      },
+      {
+        name: "Inquire"
+      }
+    ]
+  }
+]
+
+export const internationalTransactionsItems = [
+  {
+    title: "Bankers Cheque",
+    color: "#082e53",
+    options: [
+      { name: "Request" },
+      { name: "Issue" },
+      { name: "Print" },
+
+    ],
+    dropdown: [
+      {
+        name: "Request",
+        subOptions: [
+          { name: "Original" },
+          { name: "Authorize" },
+          { name: "Cancel" },
+          { name: "Reverse" },
+          { name: "Inquiry" }
+        ]
+      },
+      {
+        name: "Issue",
+        subOptions: [
+          {
+            name: "Original",
+
+          },
+          {
+            name: "Authorize",
+
+          },
+          {
+            name: "Cancel",
+          },
+          {
+            name: "Reversal",
+            options: [
+              { name: "Customer Request" },
+              { name: "User Request" },
+       
+
+            ]
+          },
+          {
+            name: "Duplicate",
+            options: [
+              { name: "Issue" },
+              { name: "Cancel" },
+              { name: "Authorize" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Print",
+        subOptions: [
+          { name: "Original" },
+          { name: "Duplicate" },
+       
+        ]
+      },
+      {
+        name: "Process For Payment",
+        subOptions: [
+                    { name: "Payment" },
+          { name: "Reject" },
+          { name: "Authorize" },
+      
+        ]
+      },
+      {
+        name: "Caution Payment Request",
+        subOptions: [
+                    { name: "Mark" },
+           { name: "Cancel" },
+          { name: "Authorize" },
+          { name: "Release" }
+        ]
+      },
+      {
+        name: "Revalidate / Renew"
+      },
+      {
+        name: "Inquiry"
+      }
+    ]
+  },
+  {
+    title: "Pay Order",
+    color: "#082e53",
+    options: [
+      { name: "Issue" },
+      { name: "Print" },
+      { name: "Process for Payment" },
+      // { name: "Caution Payment Request" },
+      // { name: "Cancel" },
+      // { name: "Revalidate" }
+    ],
+    dropdown: [
+      
+      {
+        name: "Issue",
+        subOptions: [
+               { name: "Original" },
+               { name: "Authorize" },
+          {
+            name: "Standing Instructions",
+            options: [
+        
+              { name: "Assign / Modify" },
+              { name: "Process Bulk (Pay Orders)" },
+              { name: "Process Transactions" },
+              { name: "Print" },
+              { name: "Inquire" }
+            ]
+          },
+          { name: "Duplicate" }
+        ]
+      },
+      {
+        name: "Print",
+        subOptions: [
+          { name: "Original" },
+          { name: "Duplicate" },
+          { name: "W/H Tax Certificate" }
+        ]
+      },
+      {
+        name: "Process for Payment"
+      },
+      {
+        name: "Caution Payment Request",
+        subOptions: [
+          { name: "Mark" },
+          { name: "Release" }
+        ]
+      },
+      {
+        name: "Cancel"
+      },
+      {
+        name: "Revalidate"
+      }
+    ]
+  },
+  {
+    title: "Demand Draft",
+    color: "#082e53",
+    options: [
+      { name: "Issue" },
+      { name: "Print" },
+      { name: "Process Incoming Advice" },
+      // { name: "Process for Payment" },
+      // { name: "Caution Payment Request" },
+      // { name: "Cancel" },
+      // { name: "Renew" }
+    ],
+    dropdown: [
+      {
+        name: "Issue",
+        subOptions: [
+          { name: "Original" },
+          { name: "Authorize" },
+          {
+            name: "Standing Instructions",
+            options: [
+          
+              { name: "Assign / Modify" },
+              { name: "Process Bulk (Demand Drafts)" },
+              { name: "Process Transactions" },
+              { name: "Authorize" },
+              { name: "Print" },
+              { name: "Inquire" }
+            ]
+          },
+          { name: "Duplicate" }
+        ]
+      },
+      {
+        name: "Print",
+        subOptions: [
+          { name: "Original" },
+          { name: "Duplicate" },
+          {
+            name: "Advices",
+            options: [
+              { name: "IBCA" },
+              { name: "IBCA not Received" },
+              { name: "Request to Mark Caution" },
+              { name: "Issuance of Duplicate DD" },
+              { name: "IBDA" },
+              { name: "Cancellation of DD" },
+              { name: "Renewal of DD" }
+            ]
+          },
+          { name: "W/H Tax Certificate" }
+        ]
+      },
+      {
+        name: "Process Incoming Advice",
+        subOptions: [
+          {
+            name: "With Advice",
+            options: [
+              { name: "Original" },
+              { name: "Duplicate Issuance Memo" },
+              { name: "Renewal Memo" },
+              {
+                name: "Caution Advice",
+                subOptions: [
+                  { name: "Mark" },
+                  { name: "Release" }
+                ]
+              }
+            ]
+          },
+          {
+            name: "Without Advice",
+            options: [
+              { name: "Process" },
+              { name: "Receive Advice of Paid DD" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Process for Payment"
+      },
+      {
+        name: "Caution Payment Request",
+        subOptions: [
+          { name: "Mark" },
+          { name: "Release" }
+        ]
+      },
+      {
+        name: "Cancel"
+      },
+      {
+        name: "Renew"
+      }
+    ]
+  },
+  {
+    title: "Call Deposit Receipt",
+    color: "#082e53",
+    options: [
+      { name: "Issue" },
+      { name: "Print" },
+      { name: "Process for Payment" },
+      // { name: "Caution Payment Request" },
+      // { name: "Cancel" },
+      // { name: "Revalidate" }
+    ],
+    dropdown: [
+      {
+        name: "Issue",
+        subOptions: [
+          { name: "Original" },
+          { name: "Authorize" },
+          {
+            name: "Standing Instructions",
+          
+          },
+          { name: "Duplicate" }
+        ]
+      },
+      {
+        name: "Print",
+        subOptions: [
+          { name: "Original" },
+          { name: "Duplicate" }
+        ]
+      },
+      {
+        name: "Process for Payment"
+      },
+      {
+        name: "Caution Payment Request",
+        subOptions: [
+          { name: "Mark" },
+          { name: "Release" }
+        ]
+      },
+      {
+        name: "Cancel"
+      },
+      {
+        name: "Revalidate"
+      }
+    ]
+  },
+  {
+    title: "Inquiry",
+    color: "#082e53",
+    options: [
+      { name: "Inflight" },
+      { name: "Issued" },
+      { name: "Outstanding" },
+      { name: "Paid" }
+    ],
+    dropdown: [
+      {
+        name: "Inflight",
+        subOptions: [
+          { name: "Pay Order" },
+          { name: "Demand Draft" },
+          { name: "CDR" }
+        ]
+      },
+      {
+        name: "Issued",
+        subOptions: [
+          {
+            name: "Pay Orders",
+            options: [
+              { name: "By Date" },
+              { name: "By Pay Order No." }
+            ]
+          },
+          {
+            name: "Demand Drafts",
+            options: [
+              { name: "By Date" },
+              { name: "By Demand Draft No." }
+            ]
+          },
+          {
+            name: "CDR",
+            options: [
+              { name: "By Date" },
+              { name: "By CDR No." }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Outstanding",
+        subOptions: [
+          { name: "Pay Orders By Date" },
+          {
+            name: "Demand Drafts for Payment",
+            options: [
+              { name: "By Demand Draft No." },
+              { name: "All" }
+            ]
+          },
+          { name: "CDR By Date" }
+        ]
+      },
+      {
+        name: "Paid",
+        subOptions: [
+          { name: "Pay Order By Date" },
+          { name: "Demand Draft By Date" },
+          { name: "CDR By Date" }
+        ]
+      }
+    ]
+  }
+]
+
+
+

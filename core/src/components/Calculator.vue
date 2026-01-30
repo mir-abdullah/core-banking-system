@@ -8,13 +8,16 @@ const display = ref('0');
 const previousValue = ref(null);
 const operation = ref(null);
 const newNumber = ref(true);
+const displayExpression = ref('0');
 
 const handleNumber = (num) => {
     if (newNumber.value) {
         display.value = num;
+        displayExpression.value = num;
         newNumber.value = false;
     } else {
         display.value = display.value === '0' ? num : display.value + num;
+        displayExpression.value = displayExpression.value === '0' ? num : displayExpression.value + num;
     }
 };
 
@@ -26,10 +29,12 @@ const handleOperation = (op) => {
     } else if (operation.value) {
         const result = calculate(previousValue.value, currentValue, operation.value);
         display.value = result.toString();
+        displayExpression.value = result.toString();
         previousValue.value = result;
     }
     
     operation.value = op;
+    displayExpression.value = displayExpression.value + ' ' + op + ' ';
     newNumber.value = true;
 };
 
@@ -54,6 +59,7 @@ const handleEquals = () => {
     if (operation.value && previousValue.value !== null) {
         const result = calculate(previousValue.value, parseFloat(display.value), operation.value);
         display.value = result.toString();
+        displayExpression.value = result.toString();
         previousValue.value = null;
         operation.value = null;
         newNumber.value = true;
@@ -62,6 +68,7 @@ const handleEquals = () => {
 
 const handleClear = () => {
     display.value = '0';
+    displayExpression.value = '0';
     previousValue.value = null;
     operation.value = null;
     newNumber.value = true;
@@ -70,17 +77,21 @@ const handleClear = () => {
 const handleDecimal = () => {
     if (newNumber.value) {
         display.value = '0.';
+        displayExpression.value = displayExpression.value === '0' ? '0.' : displayExpression.value + '0.';
         newNumber.value = false;
     } else if (!display.value.includes('.')) {
         display.value += '.';
+        displayExpression.value += '.';
     }
 };
 
 const handleBackspace = () => {
     if (display.value.length > 1) {
         display.value = display.value.slice(0, -1);
+        displayExpression.value = displayExpression.value.slice(0, -1);
     } else {
         display.value = '0';
+        displayExpression.value = displayExpression.value.endsWith(' ') ? displayExpression.value.slice(0, -3) : '0';
         newNumber.value = true;
     }
 };
@@ -99,7 +110,7 @@ const handleBackspace = () => {
         <!-- Display -->
         <div class="p-5 pb-4">
             <div class="border-b-2 border-[#E6E6E6] pt-12 p-4 mb-2 text-right min-h-16 flex items-center justify-end">
-                <p class="text-3xl font-semibold text-gray-900 break-words w-full">{{ display }}</p>
+                <p class="text-3xl font-semibold text-gray-900 break-words w-full">{{ displayExpression }}</p>
             </div>
 
             <!-- Calculator Buttons Grid -->

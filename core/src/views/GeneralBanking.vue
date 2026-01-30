@@ -1,18 +1,19 @@
 <script setup>
   import { generalBankingItems } from '../data/data';
   import LayoutCard from '../components/LayoutCard.vue';
+  import { layoutColors } from '../data/data';
 
 </script>
 
 <template>
     <div class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 h-fit">
       <LayoutCard
-        v-for="item in generalBankingItems"
+        v-for="(item, index) in generalBankingItems"
         :key="item.title"
         :name="item.title"
         :options="item.options"
         :dropdown="item.dropdown"
-        :color="item.color"
+        :color="layoutColors[index % layoutColors.length]"
       />
     </div>
 </template>

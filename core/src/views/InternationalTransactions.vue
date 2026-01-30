@@ -1,10 +1,19 @@
 <script setup>
+  import { internationalTransactionsItems } from '../data/data';
+  import LayoutCard from '../components/LayoutCard.vue';
+  import { layoutColors } from '../data/data';
+
 </script>
 
 <template>
-  <div class="p-6 bg-white rounded-lg shadow-md">
-    <h1 class="text-3xl font-bold mb-4">International Transactions</h1>
-
-   
-  </div>
+    <div class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 h-fit">
+      <LayoutCard
+        v-for="(item, index) in internationalTransactionsItems"
+        :key="item.title"
+        :name="item.title"
+        :options="item.options"
+        :dropdown="item.dropdown"
+        :color="layoutColors[index % layoutColors.length]"
+      />
+    </div>
 </template>
