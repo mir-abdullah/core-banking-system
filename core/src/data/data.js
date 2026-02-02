@@ -126,7 +126,7 @@ export const sidebarItems2 = [
 export const notifications = [
   {
     id: 1,
-    name: "Olivia Skye",
+    name: "Bonface",
     message: "Loan authorization request is currently pending, Please Review!",
     time: "Today at 9:42 AM",
     hasActions: false,
@@ -135,7 +135,7 @@ export const notifications = [
   },
   {
     id: 2,
-    name: "Olivia Skye",
+    name: "Bonface",
     message: "Loan authorization request is currently pending, Please Review!",
     time: "Today at 9:42 AM",
     hasActions: false,
@@ -144,7 +144,7 @@ export const notifications = [
   },
   {
     id: 3,
-    name: "Olivia Skye",
+    name: "Bonface",
     message: "Loan authorization request is currently pending, Please Review!",
     time: "Today at 9:42 AM",
     hasActions: false,
@@ -3988,5 +3988,2254 @@ export const internationalTransactionsItems = [
   }
 ]
 
+export const analyticsAndReportsItems = [
+  // {
+  //   title: "Generate QR Code",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Direct Debit Reporting",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Cent FT Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Cent Imports Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Charges" },
+      { name: "Documents" },
+      { name: "I Form" },
+      // { name: "IBCA and IBDA" },
+      // { name: "Import Registration of Contract" },
+      // { name: "L/C Control Card" },
+      // { name: "Others" },
+      // { name: "Payment" },
+      // { name: "Reciprocity" },
+      // { name: "SBP QTR Report" },
+      // { name: "Statement of HS Code" },
+      // { name: "Utilized L/C" },
+      // { name: "Funding Account List (User Wise)" }
+    ],
+    dropdown: [
+      {
+        name: "Miscellenous",
+        subOptions: [
+          { name: "Charges" },
+          { name: "Documents" },
+          { name: "I Form" },
+          { name: "IBCA and IBDA" },
+          { name: "Import Registration of Contract" },
+          { name: "L/C Control Card" },
+          { name: "Others" },
+          { name: "Payment" },
+          { name: "Reciprocity" },
+          { name: "SBP QTR Report" },
+          { name: "Statement of HS Code" },
+          { name: "Utilized L/C" },
+          { name: "Funding Account List (User Wise)" }
+        ]
+      },
+      {
+        name: "Voucher"
+      },
+      {
+        name: "Due Date Diary"
+      },
+      {
+        name: "Cash Commitment"
+      },
+      {
+        name: "Outstanding"
+      },
+      {
+        name: "Import Business (Customer wise)"
+      },
+      {
+        name: "Customer Advices / Swift telex"
+      },
+      {
+        name: "Import Register"
+      }
+    ]
+  },
+  {
+    title: "Generalized Reports",
+    color: "#8e44ad",
+    options: [  { name: "CTF Export Reports" },
+          { name: "Export Reports" }],
+    dropdown: [
+      {
+        name: "CTF Export Reports"
+      },
+      {
+        name: "Export Reports"
+      }
+    ]
+  },
+  {
+    title: "CTF Foreign Trade",
+    color: "#8e44ad",
+    options: [
+      { name: "LC Advising" },
+      { name: "Miscellaneous FT" },
+      { name: "Advance Payments" },
+    //   { name: "Daily Export Activites" },
+    //   { name: "E-Form" },
+    //   { name: "FDBC/FDBP" },
+    //   { name: "Letters/Certificates" },
+    //   { name: "L/C Advising" },
+    //   { name: "Miscellaneous" }
+    ],
+    dropdown: [
+      {
+        name: "LC Advising"
+      },
+      {
+        name: "Miscellaneous FT"
+      },
+      {
+        name: "Advance Payments"
+      },
+      {
+        name: "Daily Export Activites"
+      },
+      {
+        name: "E-Form"
+      },
+      {
+        name: "FDBC/FDBP"
+      },
+      {
+        name: "Letters/Certificates"
+      },
+      {
+        name: "L/C Advising"
+      },
+      {
+        name: "Miscellaneous"
+      }
+    ]
+  },
+  {
+    title: "Export Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Advance Payments" },
+      { name: "Daily Export Activites" },
+      { name: "E-Form" },
+      // { name: "FDBC/FDBP Reports" },
+      // { name: "Letters/Certificates" },
+      // { name: "L/C Advising" },
+      // { name: "Miscellaneous" }
+    ],
+    dropdown: [
+      {
+        name: "Advance Payments"
+      },
+      {
+        name: "Daily Export Activites"
+      },
+      {
+        name: "E-Form"
+      },
+      {
+        name: "FDBC/FDBP Reports"
+      },
+      {
+        name: "Letters/Certificates"
+      },
+      {
+        name: "L/C Advising"
+      },
+      {
+        name: "Miscellaneous"
+      },
+     
+    ]
+  },
+  // {
+  //   title: "Local Trade",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Beneficiary Mismatch Report",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "PSW Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "PSW FI & GD Reports" },
+      { name: "B/L-Bank Endorsement" },
+      { name: "Multiparity Consignee" }
+    ],
+    dropdown: [
+      {
+        name: "PSW FI & GD Reports"
+      },
+      {
+        name: "B/L-Bank Endorsement"
+      },
+      {
+        name: "Multiparity Consignee"
+      }
+    ]
+  },
+  // {
+  //   title: "PSW FI & GD Report",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Bank's Charges Deduction" },
+      { name: "Cash Mgmnt Reports" },
+      { name: "Cash Transaction Report" },
+      // { name: "Centralized Account Opening" },
+      // { name: "Centralized Clearing Reports" },
+      // { name: "Centralized Outward Clearing" },
+      // { name: "Clearing Advices" },
+      // { name: "Foreign Remittance Reports" },
+      // { name: "GL Fund Transfer Advices" },
+      // { name: "IBC Reports" },
+      // { name: "IBCA / IBDA For Exchange Voucher" },
+      // { name: "Inter Branch Transaction Report" },
+      // { name: "International Division Advice Report" },
+      // { name: "Misc. Advance Reports" },
+      // { name: "Misc. Teller Report" },
+      // { name: "MO Advices" },
+      // { name: "OBC Reports" },
+      // { name: "OFBC Reports" },
+      // { name: "Online Outward Clearing" },
+      // { name: "Home Remittance" }
+    ],
+    dropdown: [
+      {
+        name: "Bank's Charges Deduction"
+      },
+      {
+        name: "Cash Mgmnt Reports",
+        subOptions: [
+          { name: "Outward Clearing Report" },
+          { name: "Utility Bills Collections" }
+        ]
+      },
+      {
+        name: "Cash Transaction Report"
+      },
+      {
+        name: "Centralized Account Opening",
+        subOptions: [
+          { name: "Misc. CAO Reports" },
+          { name: "General CAO Reports" },
+          { name: "Zakat Report" }
+        ]
+      },
+      {
+        name: "Centralized Clearing Reports"
+      },
+      {
+        name: "Centralized Outward Clearing"
+      },
+      {
+        name: "Clearing Advices"
+      },
+      {
+        name: "Foreign Remittance Reports"
+      },
+      {
+        name: "GL Fund Transfer Advices"
+      },
+      {
+        name: "IBC Reports"
+      },
+      {
+        name: "IBCA / IBDA For Exchange Voucher"
+      },
+      {
+        name: "Inter Branch Transaction Report"
+      },
+      {
+        name: "International Division Advice Report"
+      },
+      {
+        name: "Misc. Advance Reports"
+      },
+      {
+        name: "Misc. Teller Report"
+      },
+      {
+        name: "MO Advices"
+      },
+      {
+        name: "OBC Reports"
+      },
+      {
+        name: "OFBC Reports"
+      },
+      {
+        name: "Online Outward Clearing",
+        subOptions: [
+          { name: "Initiate" },
+          { name: "Receive" },
+         
+        ]
+      },
+      {
+        name: "Home Remittance",
+        subOptions: [
+           { name: "COC Reports" },
+          { name: "Account Transfer Reports",
+            options: [
+              { name: "Compliance Report" },
+              { name: "Exchange Company Account Transfer Report" },
+              { name: "Proceeds Realization Certificate" },
+              { name: "Registered Agents" },
+              { name: "Transaction Processed STP" },
+              { name: "Transaction History" }
+            ]
+
+           },
+          { name: "Cash Over Counter",
+            options: [
+              { name: "Name Amendment Report" },
+        ]
+           }
+        ]
+      },
+      {
+        name: "Online Report / Advice"
+      },
+      {
+        name: "OWIC Reports"
+      },
+      {
+        name: "Pending Charges"
+      },
+      {
+        name: "Voucher"
+      },
+      {
+        name: "WHTAX Deduction / Collection Certificate Budget 2016"
+      },
+      {
+        name: "With Holding Tax Reports / Certificates"
+      },
+      {
+        name: "WHT and Certificates"
+      },
+      {
+        name: "Accounts and Balances"
+      },
+      {
+        name: "Cheque Book and Biometric Reports"
+      },
+      {
+        name: "Misc. Reports"
+      },
+      {
+        name: "Register"
+      },
+      {
+        name: "Cash Commitments"
+      },
+      {
+        name: "Customer Advices/Swift telex"
+      },
+      {
+        name: "Due date Diary"
+      },
+      {
+        name: "Import Business",
+        subOptions: [
+          { name: "Imports Business Summary ( Customer Wise )" }
+        ]
+      },
+      {
+        name: "Import Register"
+      },
+      {
+        name: "Outstanding"
+      },
+      {
+        name: "Miscellenous"
+      },
+      {
+        name: "Voucher"
+      },
+      {
+        name: "Re-print Report"
+      },
+      {
+        name: "Classification of Advances"
+      },
+      {
+        name: "Commodity Financing"
+      },
+      {
+        name: "Credit's Loans and Advices"
+      },
+      {
+        name: "Print Delivery Order"
+      },
+      {
+        name: "Fixed Investment"
+      },
+      {
+        name: "Ijarah"
+      },
+      {
+        name: "Insurance Reports"
+      },
+      {
+        name: "Leasing"
+      },
+      {
+        name: "Letter of Guarantee"
+      },
+      {
+        name: "Limits"
+      },
+      {
+        name: "Loan Installment"
+      },
+      {
+        name: "MIS-7"
+      },
+      {
+        name: "MIS-8"
+      },
+      {
+        name: "Outstanding"
+      },
+      {
+        name: "Review DM Rates"
+      },
+      {
+        name: "Securities"
+      },
+      {
+        name: "Statement of Advances"
+      },
+      {
+        name: "FATCA",
+        subOptions: [
+          { name: "Individual Report" },
+          { name: "Entity Report" },
+         
+        ]
+      },
+      {
+        name: "Back Office Reports",
+        subOptions: [
+           { name: "Generate Reports" },
+          { name: "View / Download Reports" }
+       
+        ]
+      },
+      {
+        name: "Special Reports",
+        subOptions: [
+             { name: "Generalized Reports" },
+          { name: "Financial Reports" },
+          { name: "Non-Financial Reports" },
+          { name: "Miscellaneous Reports" }
+        ]
+      },
+      {
+        name: "Global Settings"
+      },
+      {
+        name: "Branch Settings"
+      },
+      {
+        name: "Setup Codes",
+        subOptions: [
+          { name: "Module Setup" },
+          { name: "Credit Setup" }
+        ]
+      },
+      {
+        name: "GL Account Setup"
+      },
+      {
+        name: "Customer Account Setup"
+      },
+      {
+        name: "Exchange Rates"
+      }
+    ]
+  },
+  {
+    title: "TBML Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Report As Per Country" },
+      { name: "Report As Per HSCode" },
+      { name: "Report As Per Country" },
+      // { name: "Report As Per HSCode" }
+    ],
+    dropdown: [
+      {
+        name: "Report As Per Country"
+      },
+      {
+        name: "Report As Per HSCode"
+      },
+      {
+        name: "Report As Per Country"
+      },
+      {
+        name: "Report As Per HSCode"
+      }
+    ]
+  },
+  {
+    title: "Islamic Conversion Report",
+    color: "#8e44ad",
+    options: [
+      { name: "Under Migration Report" },
+      { name: "Migrated Branches Report" },
+      { name: "Migration Detail Report" },
+      // { name: "Reason Report on confirm to convert" },
+      // { name: "Log Report" },
+      // { name: "Modified Consent Report" }
+    ],
+    dropdown: [
+      {
+        name: "Under Migration Report"
+      },
+      {
+        name: "Migrated Branches Report"
+      },
+      {
+        name: "Migration Detail Report"
+      },
+      {
+        name: "Reason Report on confirm to convert"
+      },
+      {
+        name: "Log Report"
+      },
+      {
+        name: "Modified Consent Report"
+      }
+    ]
+  },
+  // {
+  //   title: "Biller Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "CRM Advance Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Advance Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "EKYC Review Turn Over Report",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Online Statement",
+    color: "#8e44ad",
+    options: [
+      { name: "Online Statement of Customer A/C" },
+      { name: "List of Customer A/C Transactions" },
+      { name: "Online Statement of GL A/C" }
+    ],
+    dropdown: [
+      {
+        name: "Online Statement of Customer A/C"
+      },
+      {
+        name: "List of Customer A/C Transactions"
+      },
+      {
+        name: "Online Statement of GL A/C"
+      }
+    ]
+  },
+  // {
+  //   title: "CIF Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "CIM Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "General",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title:"Banker's Cheque",
+    color: "#8e44ad",
+    options: [
+      { name: "BC Request Inquiry" },
+      { name: "BC Register" }
+    ],
+    dropdown: [
+      {
+        name: "BC Request Inquiry",
+        subOptions: []
+      },
+      {
+        name: "BC Register",
+        subOptions: []
+      }
+    ]
+
+  },
+  {
+    title:"Call Deposit Receipt",
+    color: "#8e44ad",
+    options: [
+      { name: "CDR General" },
+      { name: "CDR Register" }
+    ],
+    dropdown: [
+      {
+        name: "CDR General",
+        subOptions: []
+      },
+      {
+        name: "CDR Register",
+        subOptions: []
+      }
+    ]
+
+  },
+  {
+    title:"Demand Draft",
+    color: "#8e44ad",
+    options: [
+      { name: "DD General" },
+      { name: "DD Advice" },
+      { name: "DD Register" }
+    ],
+    dropdown: [
+      {
+        name: "DD General",
+        subOptions: []
+      },
+      {
+        name: "DD Advice",
+        subOptions: []
+      },
+      {
+        name: "DD Register",
+        subOptions: []
+      }
+    ]
+
+  },
+  // {
+  //   title: "IBCA/IBDA",
+  //   color: "#8e44ad",
+  //   options: [
+     
+  //   ],
+  //   dropdown: [
+      
+  //   ]
+  // },
+  {
+    title: "Pay Order",
+    color: "#8e44ad",
+    options: [
+      { name: "PO General" },
+      { name: "PO Register" } 
+    ],
+    dropdown: [
+      {
+        name: "PO General",
+        subOptions: []
+      },
+      {
+        name: "PO Register",
+        subOptions: []
+      }
+    ]
+
+  },
+  // {
+  //   title: "Standing Instructions",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "TDR Generalized Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Term Deposit Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "RTGS Inquiry",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Home Remittance",
+    color: "#8e44ad",
+    options: [
+      { name: "Account Transfer Reports" },
+      { name: "Cash Over Counter" }
+    ],
+    dropdown: [
+      {
+        name: "Account Transfer Reports",
+        subOptions: [
+          { name: "Compliance Report" },
+          { name: "Exchange Company Account Transfer Report" },
+          { name: "Proceeds Realization Certificate" },
+          { name: "Registered Agents" },
+          { name: "Transaction Processed STP" },
+          { name: "Transaction History" },
+          { name: "Name Amendment Report" }
+        ]
+      },
+      {
+        name: "Cash Over Counter"
+      }
+    ]
+  },
+  {
+    title: "ORR/FRR",
+    color: "#8e44ad",
+    options: [
+      { name: "MIS Report" },
+      { name: "MIS Report Detailed" }
+    ],
+    dropdown: [
+      {
+        name: "MIS Report"
+      },
+      {
+        name: "MIS Report Detailed"
+      }
+    ]
+  },
+  // {
+  //   title: "Conversion Feedback Report",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Pool Management",
+    color: "#8e44ad",
+    options: [
+      { name: "Pool Monthly Report" },
+      { name: "Asset Monthly Report" },
+      { name: "Monthly Reports" },
+      // { name: "Liability Monthly Reports" },
+      // { name: "Pool Balancing Report" },
+      // { name: "Musharaka Pool Report" },
+      // { name: "Inter Pool Transfer of Monthly Report" },
+      // { name: "Asset Allocation Daily Report" },
+      // { name: "Liablity Allocation daily Report" },
+      // { name: "Equity Allocation Daily Report" },
+      // { name: "Import Process Report" },
+      // { name: "Customer Wise Mudarba Pool Report" }
+    ],
+    dropdown: [
+      {
+        name: "Pool Monthly Report"
+      },
+      {
+        name: "Asset Monthly Report"
+      },
+      {
+        name: "Monthly Reports"
+      },
+      {
+        name: "Liability Monthly Reports"
+      },
+      {
+        name: "Pool Balancing Report"
+      },
+      {
+        name: "Musharaka Pool Report"
+      },
+      {
+        name: "Inter Pool Transfer of Monthly Report"
+      },
+      {
+        name: "Asset Allocation Daily Report"
+      },
+      {
+        name: "Liablity Allocation daily Report"
+      },
+      {
+        name: "Equity Allocation Daily Report"
+      },
+      {
+        name: "Import Process Report"
+      },
+      {
+        name: "Customer Wise Mudarba Pool Report"
+      }
+    ]
+  },
+  {
+    title: "FIU Watchlist",
+    color: "#8e44ad",
+    options: [
+      { name: "Audit Trail" }
+    ],
+    dropdown: [
+      {
+        name: "Audit Trail"
+      }
+    ]
+  },
+  {
+    title: "Ekyc MIS Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Pending Cases with Aging" },
+      { name: "Near/Over Due" },
+      { name: "MIS Report" },
+      // { name: "Actual/Expected Turnover Comparison Report(Beta)" },
+      // { name: "Zone Area wise Summary" },
+      // { name: "Suggested Review" },
+      // { name: "Historic Data" }
+    ],
+    dropdown: [
+      {
+        name: "Pending Cases with Aging"
+      },
+      {
+        name: "Near/Over Due"
+      },
+      {
+        name: "MIS Report"
+      },
+      {
+        name: "Actual/Expected Turnover Comparison Report(Beta)"
+      },
+      {
+        name: "Zone Area wise Summary"
+      },
+      {
+        name: "Suggested Review"
+      },
+      {
+        name: "Historic Data"
+      }
+    ]
+  },
+  // {
+  //   title: "Cheque Book Management Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "LESCO Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Advance Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "Auto Lease Recovery" },
+      { name: "Auto Rate Review" },
+      { name: "Deal Rate Revision" },
+      // { name: "Istisna Rate Revision" },
+      // { name: "Lease Rate Revision" },
+      // { name: "Lease Register" },
+      // { name: "LG Due/Overdue Report" },
+      // { name: "Musawama Rate Revision" },
+      // { name: "POST RM Review" },
+      // { name: "Refinance Reports" },
+      // { name: "Running Musharaka Review" }
+    ],
+    dropdown: [
+      {
+        name: "Auto Lease Recovery"
+      },
+      {
+        name: "Auto Rate Review"
+      },
+      {
+        name: "Deal Rate Revision"
+      },
+      {
+        name: "Istisna Rate Revision"
+      },
+      {
+        name: "Lease Rate Revision"
+      },
+      {
+        name: "Lease Register"
+      },
+      {
+        name: "LG Due/Overdue Report"
+      },
+      {
+        name: "Musawama Rate Revision"
+      },
+      {
+        name: "POST RM Review"
+      },
+      {
+        name: "Refinance Reports"
+      },
+      {
+        name: "Running Musharaka Review"
+      }
+    ]
+  },
+  {
+    title: "CPW",
+    color: "#8e44ad",
+    options: [
+      { name: "Customer Profitability Worksheet (CPW)" },
+      { name: "CPW Summary" }
+    ],
+    dropdown: [
+      {
+        name: "Customer Profitability Worksheet (CPW)"
+      },
+      {
+        name: "CPW Summary"
+      }
+    ]
+  },
+  // {
+  //   title: "Generalized Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Markup",
+    color: "#8e44ad",
+    options: [
+      { name: "Review Markup" },
+      { name: "Markup Latest Position" }
+    ],
+    dropdown: [
+      {
+        name: "Review Markup"
+      },
+      {
+        name: "Markup Latest Position"
+      }
+    ]
+  },
+  // {
+  //   title: "Miscellaneous Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Register",
+    color: "#8e44ad",
+    options: [
+      { name: "Credit Loan Register" },
+      { name: "Delivery Order Register" },
+      // { name: "Leasing" },
+      // { name: "LG Register" },
+      // { name: "PUT Option Register" }
+    ],
+    dropdown: [
+      {
+        name: "Credit Loan Register"
+      },
+      {
+        name: "Delivery Order Register"
+      },
+      {
+        name: "Leasing"
+      },
+      {
+        name: "LG Register"
+      },
+      {
+        name: "PUT Option Register"
+      }
+    ]
+  },
+  // {
+  //   title: "Voucher",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Generalized Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "MIS Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "SBP Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "PICH Reports",
+    color: "#8e44ad",
+    options: [
+      { name: "PICH Report" },
+      { name: "PRC PICH Report" }
+    ],
+    dropdown: [
+      {
+        name: "PICH Report"
+      },
+      {
+        name: "PRC PICH Report"
+      }
+    ]
+  },
+  {
+    title: "Account Verification",
+    color: "#8e44ad",
+    options: [
+      { name: "Account Verification" },
+      { name: "Account Verification Updated" }
+    ],
+    dropdown: [
+      {
+        name: "Account Verification"
+      },
+      {
+        name: "Account Verification Updated"
+      }
+    ]
+  },
+  // {
+  //   title: "SIDA Reports",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Auto Hold/Unhold Report",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "ATM File Pending Records",
+  //   color: "#8e44ad",
+  //   options: [],
+  //   dropdown: []
+  // }
+]
+
+export const customerProfileItems = [
+  {
+    title: "User Group",
+    color: "#059669",
+    options: [
+      { name: "Add" },
+      { name: "Delete" },
+      { name: "Inquire" },
+      { name: "List of Users" }
+    ],
+    dropdown: [
+      {
+        name: "Add"
+      },
+      {
+        name: "Delete"
+      },
+      {
+        name: "Inquire"
+      },
+      {
+        name: "List of Users"
+      }
+    ]
+  },
+  
+
+  {
+    title: "User Profile",
+    color: "#059669",
+    options: [
+      {name:"Online UPM"},
+      { name: "Create" },
+      { name: "Modify" },
+      { name: "Delete" },
+      // { name: "Enable" },
+      // { name: "Disable" },
+      // { name: "Re-Certify" },
+      // { name: "Inquire" },
+      // { name: "Change User IP address" },
+      // { name: "Inter Branch User" },
+      // {name:"Inter Branch Profile Setup"}
+    ],
+    dropdown: [
+      {name:"Online UPM",
+        subOptions:[
+          { name: "Create" },
+          { name: "Modify" },
+          { name: "Authorized" },
+          { name: "Sign Off User" },
+          { name: "Enable" },
+          { name: "Disable" },
+          { name: "Re-Certify" },
+          { name: "Inquire" },
+          { name: "Generate Code" }
+        ]
+      },
+      {
+        name: "Create"
+      },
+      {
+        name: "Modify"
+      },
+      {
+        name: "Delete"
+      },
+      {
+        name: "Enable"
+      },
+      {
+        name: "Disable"
+      },
+      {
+        name: "Re-Certify"
+      },
+      {
+        name: "Inquire"
+      },
+      {
+        name: "Change User IP address"
+      },
+      {
+        name: "Inter Branch User"
+      },
+      {
+        name: "Inter Branch Profile Setup",
+        subOptions: [
+          { name: "Profile Query Setup",
+            subOptions: [
+              { name: "Add" },
+              { name: "Modify" }
+            ]
+           },
+          { name: "Profile User Setup" },
+          { name: "Profile User Inquiry" }
+        ]
+      },
+      {
+        name:"DB User Profile",
+        subOptions:[
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Delete" },
+          { name: "Inquire" }
+        ]
+      }
+    ]
+  },
+
+ 
+  {
+    title: "Sign Off",
+    color: "#059669",
+    options: [
+      { name: "A User" },
+      { name: "All Users" },
+      { name: "A Branch" },
+      { name: "All Branches" }
+    ],
+    dropdown: [
+      {
+        name: "A User"
+      },
+      {
+        name: "All Users"
+      },
+      {
+        name: "A Branch"
+      },
+      {
+        name: "All Branches"
+      }
+    ]
+  },
+  // {
+  //   title: "Reset User Password",
+  //   color: "#059669",
+  //   options: [],
+  //   dropdown: []
+  // }
+]
+
+export const setupItems = [
+  // {
+  //   title: "SPECIAL SETUP FINANCIAL",
+  //   color: "#7c3aed",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Global Settings",
+    color: "#7c3aed",
+    options: [
+      { name: "Country" },
+      { name: "Forex Setup" },
+      { name: "Province" },
+      // { name: "District" },
+      // { name: "City" },
+      // { name: "Zone" },
+      // { name: "Area" },
+      // { name: "Bank" },
+      // { name: "Branch" },
+      // { name: "Utility Company" },
+      // { name: "Close Online Check List" }
+    ],
+    dropdown: [
+      {
+        name: "Country",
+        subOptions: [
+          {
+            name: "Country information",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "External Rating",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Forex Setup",
+        subOptions: [
+          {
+            name: "Country",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Department",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Purpose",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Province",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "District",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "City",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Zone",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Area",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Bank",
+        subOptions: [
+          {
+            name: "Bank Information",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "External Rating",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Branch",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Utility Company",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Close Online Check List"
+      }
+    ]
+  },
+    {
+    title: "SPECIAL SETUP NON FINANCIAL",
+    color: "#7c3aed",
+    options: [
+      {name:"NPFF1"},
+      {name:"FILER DATA AIK - SETUP"},
+      // {name:"FILER DATA FBR - SETUP"},
+      // {name:"IMDSETUP AUTHORIZATION"},
+      // {name:"NPFFI-SETUP SCREEN"},
+      // {name:"PRINT SLIP"},
+      // {name:"SETUP SCREEN - AUTHORIZE"}
 
 
+      
+    ],
+    dropdown: [
+      {name:"NPFF1",
+        subOptions:[
+          { name: "Code Generation Screen" },
+          { name: "Setup Screen" },
+          { name: "Inquiry" }
+        ]
+      },
+      {name:"FILER DATA AIK - SETUP"},
+      {name:"FILER DATA FBR - SETUP"},
+      {name:"IMDSETUP AUTHORIZATION"},
+      {name:"NPFFI-SETUP SCREEN"},
+      {name:"PRINT SLIP"},
+      {name:"SETUP SCREEN - AUTHORIZE"}
+    ]
+  },
+  {
+    title: "Setup Codes",
+    color: "#7c3aed",
+    options: [
+      { name: "Scheduled Charges" },
+      { name: "Facility Type" },
+      { name: "Depreciation Rate" },
+      // { name: "Asset Details" },
+      // { name: "Insurance Company" },
+      // { name: "Risk Category" },
+      // { name: "Risk Type" },
+      // { name: "Security Type" },
+      // { name: "Title/Charge Over Security" },
+      // { name: "Security item" },
+      // { name: "Security Item Against Charge Over Security" },
+      // { name: "Document" },
+      // { name: "Limit Type" },
+      // { name: "Credit Codes" }
+    ],
+    dropdown: [
+      {
+        name: "Scheduled Charges",
+        subOptions: [
+          { name: "Inquire" },
+          {
+            name: "Bank's Charges",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Facility Type",
+        subOptions: [
+          {
+            name: "Major Facility Type",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Sub Facility Type",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Depreciation Rate",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Asset Details",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Insurance Company",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Risk Category",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Risk Type",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Security Type",
+        subOptions: [
+          { name: "Inquire" },
+          {
+            name: "Facility Assign",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Title/Charge Over Security",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Security item",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Security Item Against Charge Over Security",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Document",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Limit Type",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Credit Codes",
+        subOptions: [
+          {
+            name: "DSCs",
+            options: [
+              { name: "DSCs Rate", subOptions: [{ name: "Inquire" }] },
+              { name: "Lost DSCs", subOptions: [{ name: "Inquire" }] }
+            ]
+          },
+          {
+            name: "Cost of Funds",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Muccadam",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Facilities Purpose",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Type of Property",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Stock Exchange",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Stock Exchange Index",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Valuation Company",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Clearing & Forwarding Agent",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Rating Agency",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Internal Rating",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "External Rating",
+            options: [
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Scrip Sector",
+            options: [
+              { name: "Add" },
+              { name: "Change" },
+              { name: "Delete" },
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Unit",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Currency",
+    color: "#7c3aed",
+    options: [
+      { name: "Currency Information" },
+      { name: "External Rating" }
+    ],
+    dropdown: [
+      {
+        name: "Currency Information",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "External Rating",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Condition Code",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Department",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Document",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Transaction Code",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Cheque Book Leaves",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Reason",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Markup Formula & Review Formula Linkage",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Special Receipt Company Setup",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  {
+    title: "Special Receipt Dealer Setup",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquire" }
+    ],
+    dropdown: [
+      {
+        name: "Inquire"
+      }
+    ]
+  },
+  // {
+  //   title: "EXECUTE SEQUENCES",
+  //   color: "#7c3aed",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "GL A/C Setup",
+    color: "#7c3aed",
+    options: [
+      { name: "Iden" },
+      { name: "Main Head" },
+      { name: "Sub Head 1" },
+      // { name: "Sub Head 2" },
+      // { name: "Open GL A/C" },
+      // { name: "Online GL Settlement" },
+      // { name: "GL A/C Accrual" },
+      // { name: "GL A/C Rate" },
+      // { name: "GL A/C Limit" }
+    ],
+    dropdown: [
+      {
+        name: "Iden",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Main Head",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Sub Head 1",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Sub Head 2",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Open GL A/C",
+        subOptions: [
+          { name: "Change" },
+          { name: "Add" },
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Online GL Settlement",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "GL A/C Accrual",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "GL A/C Rate",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "GL A/C Limit",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      }
+    ]
+  },
+  {
+    title: "PRINT SETUP",
+    color: "#7c3aed",
+    options: [
+      { name: "Add" },
+      { name: "Delete" },
+      { name: "Modify" },
+      // { name: "Inquiry" }
+    ],
+    dropdown: [
+      {
+        name: "Add"
+      },
+      {
+        name: "Delete"
+      },
+      {
+        name: "Modify"
+      },
+      {
+        name: "Inquiry"
+      }
+    ]
+  },
+  {
+    title: "Customer A/C Setup",
+    color: "#7c3aed",
+    options: [
+      { name: "A/C Type" },
+      { name: "A/C Nature" },
+      { name: "Customer Category" },
+      // { name: "Major Classification" },
+      // { name: "Sub Classification" }
+    ],
+    dropdown: [
+      {
+        name: "A/C Type",
+        subOptions: [
+          { name: "Change" },
+          { name: "Add" },
+          { name: "Inquire" },
+          {
+            name: "Pft/Mkup Rate",
+            options: [
+              { name: "Inquire" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "A/C Nature",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Customer Category",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Major Classification",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Sub Classification",
+        subOptions: [
+          { name: "Inquire" }
+        ]
+      }
+    ]
+  },
+  {
+    title: "MiddleWare",
+    color: "#7c3aed",
+    options: [
+      { name: "Inquiry" },
+      { name: "UBPS Report" }
+    ],
+    dropdown: [
+      {
+        name: "Inquiry"
+      },
+      {
+        name: "UBPS Report"
+      }
+    ]
+  },
+  {
+    title: "Currency Exchange Rate",
+    color: "#7c3aed",
+    options: [
+      { name: "Rate 1" },
+      { name: "Rate 2" },
+      { name: "Rate R" }
+    ],
+    dropdown: [
+      {
+        name: "Rate 1",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Rate 2",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Inquire" }
+        ]
+      },
+      {
+        name: "Rate R",
+        subOptions: [
+          { name: "Add" },
+          { name: "Change" },
+          { name: "Inquire" }
+        ]
+      }
+    ]
+  },
+  // {
+  //   title: "Profit Post Date Setup",
+  //   color: "#7c3aed",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Remittance Instrument Control",
+  //   color: "#7c3aed",
+  //   options: [],
+  //   dropdown: []
+  // }
+ 
+]
+
+export const backOfficeItems = [
+  // {
+  //   title: "Start of Day",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Signed-On Users",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Close Online",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Batch Status",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "Start End of Day",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  // {
+  //   title: "System Status",
+  //   color: "#0b5380",
+  //   options: [],
+  //   dropdown: []
+  // },
+  {
+    title: "Special Processes",
+    color: "#0b5380",
+    options: [
+      { name: "BILLED FILL UPLOAD" },
+      { name: "R-LOG Time Extend" },
+      { name: "Cancel Posted Transaction Inquiry" },
+    //   { name: "Zakat Deduction" },
+    //   { name: "Savings Pft/Mkup Accrual" },
+    //   { name: "Re-Calculation of Accrual" },
+    //   { name: "Offline Transactions" },
+    //   { name: "Online Outward Clearing Settlement" },
+    //   { name: "Debit Stop removal from ATM A/Cs" },
+    //   { name: "Year End Process" },
+    //   { name: "Archival of Signature Information" },
+    //   { name: "Currency Exchange Rates" },
+    //   { name: "Markup/Items Rates" }
+     ],
+    dropdown: [
+      { name: "BILLED FILL UPLOAD" },
+      { name: "R-LOG Time Extend" },
+      { name: "Cancel Posted Transaction Inquiry" },
+      { name: "Zakat Deduction" },
+      { name: "Savings Pft/Mkup Accrual" },
+      { name: "Re-Calculation of Accrual" },
+      {
+        name: "Offline Transactions",
+        subOptions: [
+          {
+            name: "General SAF Settlement",
+           
+          },
+          {
+            name: "Inquire",
+            
+          }
+        ]
+      },
+      { name: "Online Outward Clearing Settlement",
+        subOptions: [
+          { name: "Settlement" },
+          { name: "Inquire" }
+        ]
+          
+       },
+      { name: "Debit Stop removal from ATM A/Cs" },
+      { name: "Year End Process" },
+      {
+        name: "Archival of Signature Information",
+        subOptions: [
+          { name: "Activity Log" },
+          { name: "Cancelled Signatures" }
+        ]
+      },
+      {
+        name: "Currency Exchange Rates",
+        subOptions: [
+          {
+            name: "Rate 1",
+            options: [
+              { name: "Add" },
+              { name: "Change" },
+              { name: "Inquire" }
+            ]
+          },
+          {
+            name: "Rate 2",
+            options: [
+              { name: "Add" },
+              { name: "Change" },
+              { name: "Inquire" }
+            ]
+          },
+                    { name: "Upload from File" },
+                              { name: "Download from Central Server" },
+
+
+
+        ]
+      },
+      {
+        name: "Markup/Items Rates",
+        subOptions: [
+          { name: "Stock Exchange Rates",
+            options: [
+              {name:"Upload from File"},
+              {name:"Download from Central Server"}
+            ]
+           },
+          { name: "Download Markup Rates" }
+        ]
+      },
+      { name: "Download Centralized Bank Setup" },
+      { name: "Download Cost of Whd Tax" },
+      { name: "Download PDC Penalty" },
+      { name: "Dormant A/c-Marking" },
+      { name: "Dormant A/c-Charges" },
+      { name: "C. I. B. Process / CBR Worksheet" },
+      { name: "C. I. B. Process / OLD Structure 1" },
+      { name: "C. I. B. Process / NEW Structure 1" },
+      { name: "Data Backup & Recovery" },
+      { name: "Over Size Signature Report" },
+      { name: "Database Restore" },
+      { name: "IB Transactions Del File" },
+
+      {
+        name: "Monthly Statement of Account",
+        subOptions: [
+          { name: "Stmt_Import Data Files" },
+          { name: "Stmt_Generate LSVU File" },
+          { name: "Stmt_Generate TCS File" },
+          { name: "View & Print PDF Statements" }
+        ]
+      },
+      {
+        name: "POS Acquiring",
+        subOptions: [
+          {
+            name: "Setup",
+            options: [
+              {
+                name: "Merchant Setup",
+                subOptions: [
+                  { name: "Add Merchant" },
+                  { name: "Update Merchant Before Authorization" },
+                  { name: "Update/Maintain Merchant" },
+                  { name: "Authorize Merchant" },
+                  { name: "CPR & Deposit Date Setup" },
+                  { name: "Authorize CPR" }
+                ]
+              },
+              {
+                name:"Payment Method Setup",
+              },
+              {
+                name:"IBFT Mapping Setup",
+              },
+              {
+                name:"GL Setup"
+              }
+            ]
+          },
+          { name: "Process" },
+          { name: "Reports" },
+          { name: "IBFT Reattempt" },
+          {name:"File Setup"},
+          {
+        name: "Dashboard Tool",
+        subOptions: [
+          {
+            name: "Report Upload",
+            options: [
+              { name: "Upload Aquirer Extract" },
+              { name: "Upload Merchant Extract" },
+              { name: "Upload TRD File" },
+              { name: "Upload MPY File" }
+            ]
+          },
+         
+        ]
+      },
+       { name: "Report Status" },
+          { name: "Reports" },
+          { name: "IReports" }
+        ]
+      },
+      
+     
+      { name: "RRD Settlements" },
+      { name: "Base 2 Settlements" },
+      {
+        name: "GEM",
+        subOptions: [
+          {
+            name: "GEM Setup",
+            options: [
+              { name: "File Setup" },
+              { name: "Activity Code" },
+              { name: "File Setup /Activity Code Mapping" }
+            ]
+          },
+          { name: "Process" },
+          { name: "Reports" }
+        ]
+      },
+      { name: "Keenu NetConnect" },
+      { name: "ESB Service Synchronization" },
+      { name: "FCDB Service Synchronization" },
+      { name: "PSW Settlement" },
+      { name: "Condition Marking" },
+      { name: "RAAST Registration" ,
+        subOptions: [{
+          name: "RAAST ID Creation"
+        }]
+      },
+      {
+        name: "CIF Management",
+        subOptions: [
+          { name: "CIF Create / Update Process" },
+          { name: "Sync CIF" },
+          {
+            name: "CIF Surround System Utilities",
+            options: [
+              { name: "Import IRIS Data For CIF" },
+              { name: "Import Credit Card Data For CIF" },
+              { name: "Import Locker Data For CIF" },
+              { name: "Beneficial Owner and Fund Provider Data For CIF" }
+            ]
+          }
+        ]
+      },
+      { name: "MPG Settlement" },
+      {
+        name: "CBD Settlement",
+        subOptions: [
+          { name: "Upload File" },
+          { name: "Authorize" },
+          { name: "Report" }
+        ]
+      },
+      { name: "Finance Centralized FED" },
+    
+    ]
+  },
+  {
+    title:"ITRS",
+    color: "#0b5380",
+    options:[
+       {name:"Generate Data Old"},
+      {name:"Generate Data"}]
+      ,
+    dropdown:[
+      {
+        name:"Generate Data Old"
+      },
+      {
+        name:"Generate Data"
+      }
+
+]
+  }
+]
+
+export const menueCardItems=[
+  {heading:"User Profile Management Group (UPM)",
+    subheading:"View and manage user details",
+    buttons:[
+      "User Group", "User Profile", "Sign Off" , "Reset User Password"
+    ]
+  },
+  {
+    heading:"General Inquiries",
+    subheading:"Inquiries related to customers,accounts and instruments",
+    buttons:[ "Customer Profile", "General Ledger", "Exchnage Rates","Instrumnet Inquiry"]
+  }
+  
+]

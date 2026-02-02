@@ -5,6 +5,8 @@
     import DashboardCard from '../components/DashboardCard.vue';
     import DatePicker from '../components/DatePicker.vue';
     import bankLogo from '../assets/images/icon_bank.svg'
+    import MenuCard from '../components/MenuCard.vue';
+    import { menueCardItems } from '../data/data';
  
 
 
@@ -29,6 +31,14 @@
             :value="item.subCategories"
             :backgroundColor="item.backgroundColor"
             :routeName="item.routeName"
+        />
+        <MenuCard
+            v-for="(card, index) in menueCardItems"
+            :key="index"
+            :heading="card.heading"
+            :subheading="card.subheading"
+            :buttons="card.buttons"
+            @button-click="(buttonName) => console.log(`Button clicked: ${buttonName}`)"
         />
     </div>
     </div>

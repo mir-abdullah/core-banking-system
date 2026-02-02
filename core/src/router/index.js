@@ -16,6 +16,10 @@ import OpenNewCustomerAccount from "../UseCase/openNewCustomerAccount.vue";
 import NewCustLoanApp from "../UseCase/NewCustLoanApp.vue";
 import TradeFinancingImports from "../views/TradeFinancingImports.vue";
 import TradeFinancingExports from "../views/TradeFinancingExports.vue";
+import Setup from "../views/Setup.vue";
+import UserGroup from "../views/UserGroup.vue";
+
+
 
 const routes = [
   { path: "/", name: "SignIn", component: SignUpPage, meta: { hide: true } },
@@ -115,6 +119,18 @@ const routes = [
     component: Settings,
     meta: { title: "Settings" },
   },
+  {
+    path: "/setup",
+    name: "Setup",
+    component: Setup,
+    meta: { title: "Setup" },
+  },
+  {
+    path: "/user",
+    name: "UserGroup",
+    component: UserGroup,
+    meta: { title: " User Group" },
+  }
 ];
 
 const router = createRouter({

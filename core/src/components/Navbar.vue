@@ -5,7 +5,7 @@ import Breadcrumb from 'primevue/breadcrumb';
 import DatePicker from './DatePicker.vue';
 import Calculator from './Calculator.vue';
 import { notifications, profileMenuItems } from '../data/data';
-import profilePic from "../assets/images/icon_profile_picture.svg";
+import profilePic from "../assets/images/Profile_Picture.png";
 import calculatorIcon from "../assets/images/icon_calculator.svg";
 import notificationIcon from "../assets/images/icon_notification.svg";
 import branchIcon from "../assets/images/icon_bank.svg";
@@ -219,7 +219,7 @@ const handleProfileMenuClick = (action) => {
             <div class="relative flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-gray-200">
                 <img :src="profilePic" alt="Profile" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg" />
                 <div class="hidden md:block">
-                    <p class="text-lg font-semibold text-gray-900">Olivia Skye</p>
+                    <p class="text-lg font-semibold text-gray-900">Bonface</p>
                     <p class="text-xs sm:text-sm text-gray-500">Operational Manager</p>
                 </div>
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">
@@ -233,7 +233,7 @@ const handleProfileMenuClick = (action) => {
                         <div class="flex items-center gap-2 sm:gap-3 p-5">
                             <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-lg" />
                             <div class="flex-1">
-                                <p class="text-sm sm:text-sm font-semibold text-gray-900">Olivia Skye</p>
+                                <p class="text-sm sm:text-sm font-semibold text-gray-900">Bonface</p>
                                 <p class="text-xs font-medium mt-1 text-[#666D80]">Operational Manager</p>
                             </div>
                         </div>
