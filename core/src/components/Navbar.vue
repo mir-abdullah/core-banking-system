@@ -172,10 +172,10 @@ const handleProfileMenuClick = (action) => {
             </div>
 
             <div class="relative">
-                <button class="relative p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                <button class="relative p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
                     @click="showNotifications = !showNotifications">
                     <img :src="notificationIcon" alt="Notification Icon"
-                        class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 cursor-pointer" />
+                        class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 " />
                 </button>
 
                 <!-- Notifications Dropdown -->
@@ -194,7 +194,7 @@ const handleProfileMenuClick = (action) => {
                             <div v-if="!notification.read"
                                 class="absolute top-3 sm:top-4 right-3 sm:right-4 w-2 h-2  bg-red-500 rounded-full">
                             </div>
-                            <div class="flex gap-2 sm:gap-3 pr-5 sm:pr-6">
+                            <div class="flex gap-2 sm:gap-3 pr-5 sm:pr-6 ">
                                 <img :src="notification.Img" :alt="notification.name"
                                     class="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0" />
                                 <div class="flex-1 cursor-pointer">

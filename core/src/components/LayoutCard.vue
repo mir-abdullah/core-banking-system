@@ -25,10 +25,21 @@ const activeSubOption = ref(null);
 const activeNestedOption = ref(null);
 const activeFifthOption = ref(null);
 const cardOpen = ref(false);
+const cardContainer = ref(null);
 
 onMounted(() => {
     cardId.value = `${props.name}-${Math.random().toString(36).substr(2, 9)}`;
+    document.addEventListener('click', handleDocumentClick);
 });
+
+const handleDocumentClick = (event) => {
+    if (cardContainer.value && !cardContainer.value.contains(event.target)) {
+        if (cardOpen.value) {
+            closeAll();
+            setActiveCard(null);
+        }
+    }
+};
 
 watch(activeCardId, (newActiveId) => {
     if (newActiveId !== cardId.value && cardOpen.value) {
@@ -116,7 +127,9 @@ const cardWidth = computed(() => isCollapsed.value ? '335.2px' : '292px');
 
 <template>
     <div class="group relative bg-white border-transparent rounded-xl items-center p-5 sm:p-5 md:p-6 hover:bg-gray-100 border-2 transition-all duration-400 cursor-pointer hover:shadow-lg w-73 h-fit" 
-        :style="{ '--card-color': color, '--shadow-color': color , width: cardWidth }">
+        :style="{ '--card-color': color, '--shadow-color': color , width: cardWidth }"
+        ref="cardContainer"
+        @click.stop>
         
         <div class="flex justify-between items-center mb-4 cursor-pointer" @click="toggleCard">
             <h3 class="text-xl font-semibold " :style="{ color: color }">{{ name }}</h3>
@@ -127,7 +140,7 @@ const cardWidth = computed(() => isCollapsed.value ? '335.2px' : '292px');
 
         <div class="h-[3px]" :style="{ backgroundColor: color }"></div>
 
-        <div v-if="cardOpen && dropdown && dropdown.length" class="absolute left-0 right-0 top-[60px] z-20 px-2">
+        <div v-if="cardOpen && dropdown && dropdown.length" class="absolute left-0 right-0 top-[60px] z-20 px-2" @click.stop>
             <div class="flex flex-col gap-1 bg-white rounded-xl shadow-xl border border-gray-200 p-2">
                 <div v-for="item in dropdown" :key="item.name" class="relative">
                     <button

@@ -29,38 +29,8 @@
                     </AccordionContent>
                 </AccordionPanel>
             </div>
-            <div v-if="openFastAccount" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
-                <AccordionPanel v-if="openFastAccount" value="1" ref="panel1">
-                    <AccordionHeader>Open Fast Account</AccordionHeader>
-                    <AccordionContent>
-                        <div class="grid grid-cols-3 gap-5 mb-4">
-                            <Dropdown v-bind="{ ...BranchDropdownProps }" isFloatableLabel label="Branch" />
-                            <TextBox backgroundColor=""  v-bind="{ ...CustomerTextBoxProps }" isFloatableLabel label="Customer No." />
-                            <TextBox backgroundColor=""  v-bind="{ ...ACOpeningTextBoxProps }" isFloatableLabel label="A/C Opening Date" />
-                        </div>
-                        <div class="grid grid-cols-12 gap-4 mb-4">
-                            <div class="col-span-4">
-                                <TextBox backgroundColor=""  v-bind="{ ...ReferenceNoTextBoxProps }" isFloatableLabel
-                                    label="Reference No" />
-                            </div>
-                            <div class="col-span-1">
-                                <Button backgroundColor="var(--primary-color)" @Button-onClick="fetchButtonOnClick"
-                                    label="Fetch" />
-                            </div>
-                            <div class="col-span-1">
-                                <Button backgroundColor="var(--primary-color)" label="Ref Inquiry" />
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-12 gap-4">
-                            <div class="col-span-11"></div>
-                            <div class="col-span-1 ">
-                                <Button @Button-onClick="fastOKButtonOnClick" :isDisabled="enableDisabledProcessButton"
-                                    backgroundColor="var(--primary-color)" label="OK" />
-                            </div>
-                        </div>
-                    </AccordionContent>
-                </AccordionPanel>
-            </div>
+            <!-- //2nd panel ye ha isko akhir ma ana ha -->
+         
             <div v-if="openBiometricDetails" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
                 <AccordionPanel v-if="openBiometricDetails" value="2" ref="panel2">
                     <AccordionHeader>Biometric Details</AccordionHeader>
@@ -402,6 +372,39 @@
                                 <div class="col-span-1 text-right">
                                     <Button backgroundColor="var(--primary-color)" label="Back" class="w-full" />
                                 </div>
+                            </div>
+                        </div>
+                    </AccordionContent>
+                </AccordionPanel>
+            </div>
+            <!-- //idhar fadd kardia -->
+                <div v-if="openFastAccount" class="p-4 mb-8 bg-white rounded-xl border border-gray-200">
+                <AccordionPanel v-if="openFastAccount" value="1" ref="panel1">
+                    <AccordionHeader>Open Fast Account</AccordionHeader>
+                    <AccordionContent>
+                        <div class="grid grid-cols-3 gap-5 mb-4">
+                            <Dropdown v-bind="{ ...BranchDropdownProps }" isFloatableLabel label="Branch" />
+                            <TextBox backgroundColor=""  v-bind="{ ...CustomerTextBoxProps }" isFloatableLabel label="Customer No." />
+                            <TextBox backgroundColor=""  v-bind="{ ...ACOpeningTextBoxProps }" isFloatableLabel label="A/C Opening Date" />
+                        </div>
+                        <div class="grid grid-cols-12 gap-4 mb-4">
+                            <div class="col-span-4">
+                                <TextBox backgroundColor=""  v-bind="{ ...ReferenceNoTextBoxProps }" isFloatableLabel
+                                    label="Reference No" />
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" @Button-onClick="fetchButtonOnClick"
+                                    label="Fetch" />
+                            </div>
+                            <div class="col-span-1">
+                                <Button backgroundColor="var(--primary-color)" label="Ref Inquiry" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-11"></div>
+                            <div class="col-span-1 ">
+                                <Button @Button-onClick="fastOKButtonOnClick" :isDisabled="enableDisabledProcessButton"
+                                    backgroundColor="var(--primary-color)" label="OK" />
                             </div>
                         </div>
                     </AccordionContent>
