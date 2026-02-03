@@ -11,7 +11,7 @@
           v-for="(button, index) in buttons"
           :key="index"
           @click="handleButtonClick(button)"
-          class="w-full py-2 px-3 border border-blue-500 text-blue-500 rounded-lg hover:text-white hover:bg-blue-500 transition-colors duration-200 font-medium cursor-pointer"
+          class="w-full py-2 px-3 border border-[#4880ff] text-[#4880ff] rounded-lg hover:text-white hover:bg-[#4880ff] transition-colors duration-200 font-medium cursor-pointer"
         >
           {{ button }}
         </button>

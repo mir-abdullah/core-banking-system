@@ -3,7 +3,7 @@
     <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 bg-transparent">
       <div class="flex items-center gap-2 sm:gap-3 md:gap-4 ml-2 sm:ml-5 mt-2 sm:mt-5 ">
         <img :src="bankLogo" alt="Bank Logo" class="w-[42.5px] h-[34px]" />
-        <h1 class="text-[24px] sm:text-2xl font-semibold font-inter">Core Banking System</h1>
+        <h1 class="text-[24px] sm:text-2xl font-semibold font-inter">Core Banking System - TL1</h1>
       </div>
 
       <div class="flex items-center gap-2 bg-white rounded-md shadow-sm px-2 ">
@@ -71,8 +71,9 @@
         </button>
       </div>
     </main>
-    <footer class="fixed bottom-0 left-0 right-0 py-2 sm:py-3 md:py-4">
-      <p class="text-center text-gray-500 text-xs sm:text-sm md:text-base">©2025 Core Banking System</p>
+    <footer class="fixed bottom-0 left-0 right-0 sm:py-3 md:py-4 py-2 ">
+      <img :src="badgeImage" alt="Badge" class="mx-auto mb-8 w-48 h-17" />
+      <p class="text-center text-gray-500 sm:text-sm md:text-base">©{{ currentYear }} Core Banking System</p>
     </footer>
   </div>
 </template>
@@ -82,8 +83,15 @@ import 'primeicons/primeicons.css'
 import bgSignin from '../assets/images/bg_signin.png'
 import signup from '../assets/images/icon_sigin_grouped.svg'
 import bankLogo from "../assets/images/icon_logo.svg"
+import badge from  '../assets/images/Badge.svg'
+
+
+  const year = new Date().getFullYear()
+
 
 export default {
+
+
   data() {
     return {
       userId: '',
@@ -92,13 +100,17 @@ export default {
       backgroundImage: bgSignin,
      signupImage: signup,
      bankLogo: bankLogo,
+     currentYear: year,
+     badgeImage: badge,
     }
   },
   methods: {
     handleSignUp() {
       this.$router.push('/dashboard')
     },
+
   },
+  
 }
 </script>
 

@@ -1,6 +1,6 @@
 <script setup>
 import DashboardCard from '../components/DashboardCard.vue';
-import { tradeFinanceMenuItems } from '../data/data'; 
+import { loanOriginationMenuItems } from '../data/data'; 
 import {  useRoute } from 'vue-router';
  const route = useRoute();
 
@@ -9,9 +9,9 @@ import {  useRoute } from 'vue-router';
 
 
 <template>
-     <div v-if="route.name === 'TradeFinancing'" class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 lg:mt-10 ">
+     <div v-if="route.name === 'LoanOrigination&Management'" class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 lg:mt-10 ">
      <DashboardCard
-        v-for="(item, index) in tradeFinanceMenuItems"
+        v-for="(item, index) in loanOriginationMenuItems"
         :key="index"
         :name="item.name"
         :icon="item.iconSrc"

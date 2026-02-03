@@ -39,6 +39,7 @@ const formattedRouteName = computed(() => {
 
 const displayTitle = computed(() => {
     if (route.path === '/dashboard') return 'Main Menu';
+    if(route.path === '/loan-origination-&-management/SME-Agri-Corporate-Loan') return 'SME Agri Corporate Loan';
     return formattedRouteName.value || 'Main Menu';
 });
 
@@ -52,7 +53,9 @@ const breadcrumbItems = computed(() => {
             let label = '';
             if (matched.name) {
                 label = matched.name;
-                label = label.replace(/([A-Z])/g, ' $1').trim();
+                // Split camelCase but preserve acronyms
+                label = label.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+                label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
                 label = label.replace(/&/g, ' & ');
                 label = label.replace(/\s+/g, ' ').trim();
             } else if (matched.path) {
@@ -70,8 +73,8 @@ const breadcrumbItems = computed(() => {
             }
         });
     }
-    // console.log(items);
-    return items;
+    // Return only the last 3 items
+    return items.slice(-3);
 });
 
 const breadcrumbHome = computed(() => ({
@@ -128,12 +131,12 @@ const handleProfileMenuClick = (action) => {
             </svg>
         </button>
 
-        <div class="flex flex-col flex-1 min-w-0">
-            <h1 class="text-sm sm:text-base md:text-lg lg:text-2xl font-semibold text-gray-900">
+        <div class="flex flex-col flex-1 min-w-0 overflow-hidden">
+            <h1 class="text-sm sm:text-base md:text-lg lg:text-2xl font-semibold text-gray-900 truncate">
                 {{ displayTitle }}
             </h1>
             <Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems"
-                class="hidden sm:block  sm:text-xs md:text-sm bg-gray-50 overflow-hidden"
+                class="hidden sm:block sm:text-xs md:text-sm bg-gray-50"
                 style="background-color: #f9fafb; padding: 0;">
                 <template #separator>
                     <span class="px-1 text-gray-400">/</span>
@@ -220,7 +223,7 @@ const handleProfileMenuClick = (action) => {
                 <img :src="profilePic" alt="Profile" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg" />
                 <div class="hidden md:block">
                     <p class="text-lg font-semibold text-gray-900">Bonface</p>
-                    <p class="text-xs sm:text-sm text-gray-500">Operational Manager</p>
+                    <p class="text-xs sm:text-sm text-gray-500">Operation Manager</p>
                 </div>
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">
                     <i class="pi pi-chevron-down text-xs sm:text-sm"></i>
@@ -234,7 +237,7 @@ const handleProfileMenuClick = (action) => {
                             <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-lg" />
                             <div class="flex-1">
                                 <p class="text-sm sm:text-sm font-semibold text-gray-900">Bonface</p>
-                                <p class="text-xs font-medium mt-1 text-[#666D80]">Operational Manager</p>
+                                <p class="text-xs font-medium mt-1 text-[#666D80]">Operation Manager</p>
                             </div>
                         </div>
                     </div>

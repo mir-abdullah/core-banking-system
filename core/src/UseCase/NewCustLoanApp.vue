@@ -28,7 +28,7 @@
 
                             </div>
 
-                            <div v-if="isAccountHolder == 'no'" class="info-box">
+                            <div v-if="isAccountHolder == 'no'" class="info-box mt-4">
                                 <div class="info-header">
                                     <span class="info-icon">ℹ️</span>
                                     <div>
@@ -43,9 +43,9 @@
                             <div v-else class="grid grid-cols-12 mt-4">
                                 <div class="col-span-8">
                                     <TextBox name="AccountNumberTextBox" label="Account number or IBAN"
-                                        dataType="Numeric" maxLength=25 :mandatory=true mask="****-****-******-**-*"
-                                        :modelValue=accountNumberValue labelColor="var(--primary-color)"
-                                        @text-box-on-key-up="AccountNumberTextBox" />
+                                        dataType="numericDashes" maxLength=25 :mandatory=true
+                                        mask="****-****-******-**-*" :modelValue=accountNumberValue
+                                        labelColor="var(--primary-color)" @text-box-on-key-up="AccountNumberTextBox" />
                                 </div>
                             </div>
                             <!-- //////////////////////////////// -->
@@ -75,7 +75,7 @@
                             <div v-if="isAccountHolder == 'no'" class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="mobileNoTextBox" label="Enter Mobile Number" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true :modelValue=mobileNo
+                                        dataType="numericDashes" maxLength=12 :mandatory=true :modelValue=mobileNo
                                         @text-box-on-key-up="mobileNoTextBox" />
 
                                 </div>
@@ -97,26 +97,29 @@
                             <div v-if="OTPFlag || isAccountHolder == 'yes'">
                                 <!-- //////////////////////////////// -->
                                 <div class="grid grid-cols-12 gap-4 mb-4">
-                                    <div class="col-span-1">
-                                    </div>
+                                    <!-- <div class="col-span-1">
+                                    </div> -->
                                     <div class="col-span-10">
                                         <h4>
                                             <b>A verification code has been sent to your registered email address and
-                                                mobile
-                                                number. Please enter the 6-digit code to proceed with your
+                                                mobile number. Please enter the 6-digit code to proceed with your
                                                 application.</b>
                                         </h4>
                                     </div>
                                 </div>
-                                <div class="info-box">
-                                    <div class="info-header">
-                                        <span class="info-icon">ℹ️</span>
-                                        <div>
-                                            <strong>Example: XXX XXX</strong>
-                                            <p>
-                                                XXX - First 3 digits received on SMS
-                                                XXX - Last 3 digits received on Email
-                                            </p>
+                                <div class="grid grid-cols-12 gap-4 mb-4">
+                                    <div class="col-span-10">
+                                        <div class="info-box">
+                                            <div class="info-header">
+                                                <span class="info-icon">ℹ️</span>
+                                                <div>
+                                                    <strong>Example: XXX XXX</strong>
+                                                    <p>
+                                                        XXX - First 3 digits received on SMS<br>
+                                                        XXX - Last 3 digits received on Email
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +151,7 @@
                                     <p>
                                         Didn't receive code?
                                         <span class="text-blue-600 cursor-pointer hover:underline"
-                                            @click.stop="onResendClick">
+                                            @click="onResendClick">
                                             Resend
                                         </span>
                                     </p>
@@ -192,7 +195,7 @@
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cnicPassportNumberTextBox" label="CNIC / Passport Number"
-                                        dataType="Numeric" maxLength=25 :mandatory=true mask="*****-*******-*"
+                                        dataType="numericDashes" maxLength=25 :mandatory=true mask="*****-*******-*"
                                         :modelValue=cnicNo @text-box-on-key-up="cnicPassportNumberTextBox" />
                                 </div>
                                 <div class="col-span-2">
@@ -216,16 +219,16 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="cnicPassportIssueDateTextBox" label="CNIC / Passport Issue Date"
-                                        :isDisabled=false dataType="Numeric" maxLength=10 :mandatory=true
+                                        :isDisabled=false dataType="date" maxLength=10 :mandatory=true
                                         :modelValue=cnicIssueDate mask="**/**/****" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cnicExpiryDateTextBox" label="CNIC / Passport Expiry Date"
-                                        dataType="Numeric" :isDisabled=true maxLength=10 :mandatory=true
+                                        dataType="date" :isDisabled=true maxLength=10 :mandatory=true
                                         :modelValue=cnicExpiryDate mask="**/**/****" />
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="ntnNumberTextBox" label="NTN Number" dataType="Numeric" maxLength=10
+                                    <TextBox name="ntnNumberTextBox" label="NTN Number" dataType="numeric" maxLength=10
                                         :isDisabled=true :mandatory=true :modelValue=ntnNumber />
                                 </div>
                             </div>
@@ -248,8 +251,8 @@
                                         @dropdown-on-change="maritalStatusDropDown" />
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="dateOfBirthTextBox" label="Date of Birth" dataType="Numeric"
-                                        maxLength=10 :isDisabled=true :mandatory=false :modelValue=ntnNumber
+                                    <TextBox name="dateOfBirthTextBox" label="Date of Birth" dataType="date"
+                                        maxLength=10 :isDisabled=true :mandatory=false :modelValue=DobTextBox
                                         mask="**/**/****" />
                                 </div>
                             </div>
@@ -279,20 +282,21 @@
                             </div>
                             <!-- //////////////////////////////// -->
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-2">
+                                <div class="col-span-3">
                                     <label for="">Number of Dependents <span class="text-red-600">*</span> </label>
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="childrenTextBox" label="Children" dataType="Numeric" maxLength=30
+                                    <TextBox name="childrenTextBox" label="Children" dataType="numeric" maxLength=30
                                         :mandatory=false :modelValue=children />
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="childrenTextBox" label="Others" dataType="Numeric" maxLength=12
+                                    <TextBox name="childrenTextBox" label="Others" dataType="numeric" maxLength=12
                                         :mandatory=false :modelValue=otherDependent />
                                 </div>
-                                <div class="col-span-4">
-                                    <TextBox name="otherPhoneNoTextBox" label="Other Phone Number" dataType="Numeric"
-                                        maxLength=12 :mandatory=true :modelValue=otherPhoneNo mask="****-*******" />
+                                <div class="col-span-3">
+                                    <TextBox name="otherPhoneNoTextBox" label="Other Phone Number"
+                                        dataType="numericDashes" maxLength=12 :mandatory=true :modelValue=otherPhoneNo
+                                        mask="****-*******" />
                                 </div>
                             </div>
 
@@ -309,8 +313,9 @@
 
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="nextOfKinCnicTextBox" label="Next of Kin CNIC" dataType="Numeric"
-                                        maxLength=17 :mandatory=true :modelValue=nextOfKinCnic mask="*****-*******-*" />
+                                    <TextBox name="nextOfKinCnicTextBox" label="Next of Kin CNIC"
+                                        dataType="numericSpecial" maxLength=17 :mandatory=true :modelValue=nextOfKinCnic
+                                        mask="*****-*******-*" />
 
                                 </div>
                             </div>
@@ -474,7 +479,7 @@
 
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="highestBalanceTextBox" label="Highest Balance" dataType="Numeric"
+                                    <TextBox name="highestBalanceTextBox" label="Highest Balance" dataType="numeric"
                                         maxLength=20 :mandatory=true :modelValue=highestBalance
                                         @text-box-on-blur="highestBalanceTextBox" />
                                 </div>
@@ -484,7 +489,7 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
 
                                 <div class="col-span-4">
-                                    <TextBox name="depositPerMonthTextBox" label="Deposit per Month" dataType="Numeric"
+                                    <TextBox name="depositPerMonthTextBox" label="Deposit per Month" dataType="numeric"
                                         maxLength=20 :mandatory=true :modelValue=depositPerMonth
                                         @text-box-on-blur="depositPerMonthTextBox" />
                                 </div>
@@ -643,7 +648,7 @@
                                 <div class="grid grid-cols-12 gap-4 mb-4">
                                     <div class="col-span-6">
                                         <TextBox name="TaxIdenNumberTextBox" label="Tax Identification Number"
-                                            dataType="Numeric" maxLength=20 :mandatory=true :modelValue=TaxIdenNumber />
+                                            dataType="numeric" maxLength=20 :mandatory=true :modelValue=TaxIdenNumber />
                                     </div>
                                 </div>
                             </div>
@@ -687,30 +692,34 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=CurrAddCountry :optionsList=CountryList />
+                                        :modelValue=CurrAddCountry :optionsList=CountryList
+                                        @dropdown-on-change="CurrAddCountryDropDown" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=Province :optionsList=ProvinceList />
+                                        :modelValue=Province :optionsList=ProvinceList
+                                        @dropdown-on-change="CurrAddProvinceDropDown" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=City
-                                        :optionsList=CityList />
+                                        :optionsList=CityList @dropdown-on-change="CurrAddCityDropDown" />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=Area />
+                                        :mandatory=true :modelValue=Area @text-box-on-key-up="CurrAddAreaTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=BlockTextBoxValue />
+                                        maxLength=30 :mandatory=true :modelValue=BlockTextBoxValue
+                                        @text-box-on-key-up="CurrAddBlockTextBox" />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=HouseNo />
+                                        maxLength=30 :mandatory=true :modelValue=HouseNo
+                                        @text-box-on-key-up="CurrAddHouseNoTextBox" />
 
                                 </div>
                             </div>
@@ -718,11 +727,13 @@
                                 <div class="col-span-6">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
                                         dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=NearestLandMark />
+                                        :modelValue=NearestLandMark
+                                        @text-box-on-key-up="CurrAddNearestLandMarkTextBox" />
                                 </div>
                                 <div class="col-span-6">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=ResidenceStatus :optionsList=ResidenceStatusList />
+                                        :modelValue=ResidenceStatus :optionsList=ResidenceStatusList
+                                        @dropdown-on-change="CurrAddResidenceStatusDropDown" />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
@@ -730,16 +741,18 @@
                                     <TextBox name="timeAtCurrentAddressTextBox"
                                         label="How long have you been living at the current address?"
                                         dataType="alphaNumericSpecial" maxLength=30 :mandatory=true
-                                        :modelValue=timeAtCurrentAddress />
+                                        :modelValue=timeAtCurrentAddress
+                                        @text-box-on-key-up="CurrAddtimeAtCurrentAddressTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
-                                        :mandatory=true :modelValue=AccomodationType
-                                        :optionsList=AccomodationTypeList />
+                                        :mandatory=true :modelValue=AccomodationType :optionsList=AccomodationTypeList
+                                        @dropdown-on-change="CurrAddAccomodationTypeDropDown" />
                                 </div>
-                                <div class="col-span-4">
+                                <div class="col-span-4" v-if="AccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
-                                        dataType="numericSpecial" maxLength=17 :mandatory=true :modelValue=rentInRs />
+                                        dataType="numericSpecial" maxLength=17 :mandatory=true :modelValue=rentInRs
+                                        @text-box-on-key-up="CurrAddrentInRsTextBox" />
 
                                 </div>
                             </div>
@@ -747,7 +760,7 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-2">
-                                <div class="section-header col-span-2">
+                                <div class="section-header col-span-3">
                                     <h3>Permanent Address</h3>
                                 </div>
                                 <div class="col-span-9">
@@ -762,30 +775,34 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=PermanentAddCountry :optionsList=CountryList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentAddCountry
+                                        :optionsList=CountryList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=PermanentProvince :optionsList=ProvinceList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentProvince
+                                        :optionsList=ProvinceList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=PermanentCity
-                                        :optionsList=CityList />
+                                        :isDisabled="PermanentAddress" :optionsList=CityList />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=PermanentArea />
+                                        :isDisabled="PermanentAddress" :mandatory=true :modelValue=PermanentArea />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=PermanentBlockTextBoxValue />
+                                        :isDisabled="PermanentAddress" maxLength=30 :mandatory=true
+                                        :modelValue=PermanentBlockTextBoxValue />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=PermanentHouseNo />
+                                        :isDisabled="PermanentAddress" maxLength=30 :mandatory=true
+                                        :modelValue=PermanentHouseNo />
 
                                 </div>
                             </div>
@@ -793,21 +810,22 @@
                                 <div class="col-span-3">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
                                         dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=PermanentNearestLandMark />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentNearestLandMark />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=PermanentResidenceStatus :optionsList=ResidenceStatusList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentResidenceStatus
+                                        :optionsList=ResidenceStatusList />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
                                         :mandatory=true :modelValue=PermanentAccomodationType
-                                        :optionsList=AccomodationTypeList />
+                                        :isDisabled="PermanentAddress" :optionsList=AccomodationTypeList />
                                 </div>
-                                <div class="col-span-3">
+                                <div class="col-span-3" v-if="PermanentAccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
                                         dataType="numericSpecial" maxLength=17 :mandatory=true
-                                        :modelValue=PermanentrentInRs />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentrentInRs />
 
                                 </div>
                             </div>
@@ -815,7 +833,7 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-2">
-                                <div class="section-header col-span-2">
+                                <div class="section-header col-span-3">
                                     <h3>Temporary Address</h3>
                                 </div>
                                 <div class="col-span-9">
@@ -829,51 +847,54 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=TempAddCountry :optionsList=CountryList />
+                                        :isDisabled="TempAddress" :modelValue=TempAddCountry :optionsList=CountryList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=Province :optionsList=ProvinceList />
+                                        :isDisabled="TempAddress" :modelValue=Province :optionsList=ProvinceList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=TempCity
-                                        :optionsList=CityList />
+                                        :isDisabled="TempAddress" :optionsList=CityList />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=TempArea />
+                                        :isDisabled="TempAddress" :mandatory=true :modelValue=TempArea />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=TempBlockTextBoxValue />
+                                        :isDisabled="TempAddress" maxLength=30 :mandatory=true
+                                        :modelValue=TempBlockTextBoxValue />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=TempHouseNo />
+                                        :isDisabled="TempAddress" maxLength=30 :mandatory=true
+                                        :modelValue=TempHouseNo />
 
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-3">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
-                                        dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=TempNearestLandMark />
+                                        :isDisabled="TempAddress" dataType="alphaNumericSpecial" maxLength=50
+                                        :mandatory=true :modelValue=TempNearestLandMark />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=TempResidenceStatus :optionsList=ResidenceStatusList />
+                                        :isDisabled="TempAddress" :modelValue=TempResidenceStatus
+                                        :optionsList=ResidenceStatusList />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
-                                        :mandatory=true :modelValue=TempAccomodationType
+                                        :isDisabled="TempAddress" :mandatory=true :modelValue=TempAccomodationType
                                         :optionsList=AccomodationTypeList />
                                 </div>
-                                <div class="col-span-3">
+                                <div class="col-span-3" v-if="TempAccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
-                                        dataType="numericSpecial" maxLength=17 :mandatory=true
+                                        :isDisabled="TempAddress" dataType="numericSpecial" maxLength=17 :mandatory=true
                                         :modelValue=TemprentInRs />
 
                                 </div>
@@ -910,7 +931,7 @@
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cnicPassportNumberTextBox" label="CNIC / Passport Number"
-                                        dataType="Numeric" maxLength=25 :mandatory=true mask="*****-*******-*"
+                                        dataType="numericDashes" maxLength=25 :mandatory=true mask="*****-*******-*"
                                         :modelValue=cnicNo />
 
                                 </div>
@@ -930,18 +951,18 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="cnicPassportIssueDateTextBox" label="CNIC / Passport Issue Date"
-                                        dataType="Numeric" maxLength=10 :mandatory=true :modelValue=cnicIssueDate
+                                        dataType="date" maxLength=10 :mandatory=true :modelValue=cnicIssueDate
                                         :isDisabled=true mask="**/**/****" />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cnicExpiryDateTextBox" label="CNIC / Passport Expiry Date"
-                                        dataType="Numeric" :isDisabled=true maxLength=10 :mandatory=true
+                                        dataType="date" :isDisabled=true maxLength=10 :mandatory=true
                                         :modelValue=cnicExpiryDate mask="**/**/****" />
 
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="ntnNumberTextBox" label="NTN Number" dataType="Numeric" maxLength=10
+                                    <TextBox name="ntnNumberTextBox" label="NTN Number" dataType="numeric" maxLength=10
                                         :isDisabled=true :mandatory=true :modelValue=ntnNumber />
                                 </div>
                             </div>
@@ -967,8 +988,8 @@
                                         @dropdown-on-change="maritalStatusDropDown" />
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="dateOfBirthTextBox" label="Date of Birth" dataType="Numeric"
-                                        maxLength=10 :isDisabled=true :mandatory=false :modelValue=ntnNumber
+                                    <TextBox name="dateOfBirthTextBox" label="Date of Birth" dataType="date"
+                                        maxLength=10 :isDisabled=true :mandatory=false :modelValue=DobTextBox
                                         mask="**/**/****" />
 
                                 </div>
@@ -976,7 +997,7 @@
 
                             <!-- //////////////////////////////// -->
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-2">
+                                <div class="col-span-4">
                                     <RadioButton name="fatherSpouseRadioButton" :options=fatherSpouseRadioBtnList
                                         :modelValue=fatherSpouseRadioBtn label=""
                                         @radio-button-on-change="fatherSpouseRadioBtnOnChange" />
@@ -1004,18 +1025,19 @@
                                     <label for="">Number of Dependents <span class="text-red-600">*</span> </label>
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="childrenTextBox" label="Children" dataType="Numeric" maxLength=30
+                                    <TextBox name="childrenTextBox" label="Children" dataType="numeric" maxLength=30
                                         :mandatory=false :modelValue=children />
 
                                 </div>
                                 <div class="col-span-3">
-                                    <TextBox name="childrenTextBox" label="Others" dataType="Numeric" maxLength=12
+                                    <TextBox name="childrenTextBox" label="Others" dataType="numeric" maxLength=12
                                         :mandatory=false :modelValue=otherDependent />
 
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="otherPhoneNoTextBox" label="Other Phone Number" dataType="Numeric"
-                                        maxLength=12 :mandatory=true :modelValue=otherPhoneNo mask="****-*******" />
+                                    <TextBox name="otherPhoneNoTextBox" label="Other Phone Number"
+                                        dataType="numericDashes" maxLength=12 :mandatory=true :modelValue=otherPhoneNo
+                                        mask="****-*******" />
 
                                 </div>
                             </div>
@@ -1047,12 +1069,12 @@
 
                             <!-- //////////////////////////////// -->
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-3">
+                                <div class="col-span-4">
                                     <label>
                                         Mode of Communication by Bank <span class="text-red-600">*</span>
                                     </label>
                                 </div>
-                                <div class="col-span-2">
+                                <div class="col-span-3">
                                     <RadioButton name="bankModeOfCoomunicationRadioButton"
                                         :options=bankModeOfCoomunicationList :modelValue=bankModeOfCoomunication
                                         label="" @radio-button-on-change="bankModeOfCoomunicationOnChange" />
@@ -1067,30 +1089,34 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=CurrAddCountry :optionsList=CountryList />
+                                        :modelValue=CurrAddCountry :optionsList=CountryList
+                                        @dropdown-on-change="CurrAddCountryDropDown" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=Province :optionsList=ProvinceList />
+                                        :modelValue=Province :optionsList=ProvinceList
+                                        @dropdown-on-change="CurrAddProvinceDropDown" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=City
-                                        :optionsList=CityList />
+                                        :optionsList=CityList @dropdown-on-change="CurrAddCityDropDown" />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=Area />
+                                        :mandatory=true :modelValue=Area @text-box-on-key-up="CurrAddAreaTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=BlockTextBoxValue />
+                                        maxLength=30 :mandatory=true :modelValue=BlockTextBoxValue
+                                        @text-box-on-key-up="CurrAddBlockTextBox" />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=HouseNo />
+                                        maxLength=30 :mandatory=true :modelValue=HouseNo
+                                        @text-box-on-key-up="CurrAddHouseNoTextBox" />
 
                                 </div>
                             </div>
@@ -1098,11 +1124,13 @@
                                 <div class="col-span-6">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
                                         dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=NearestLandMark />
+                                        :modelValue=NearestLandMark
+                                        @text-box-on-key-up="CurrAddNearestLandMarkTextBox" />
                                 </div>
                                 <div class="col-span-6">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=ResidenceStatus :optionsList=ResidenceStatusList />
+                                        :modelValue=ResidenceStatus :optionsList=ResidenceStatusList
+                                        @dropdown-on-change="CurrAddResidenceStatusDropDown" />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
@@ -1110,16 +1138,18 @@
                                     <TextBox name="timeAtCurrentAddressTextBox"
                                         label="How long have you been living at the current address?"
                                         dataType="alphaNumericSpecial" maxLength=30 :mandatory=true
-                                        :modelValue=timeAtCurrentAddress />
+                                        :modelValue=timeAtCurrentAddress
+                                        @text-box-on-key-up="CurrAddtimeAtCurrentAddressTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
-                                        :mandatory=true :modelValue=AccomodationType
-                                        :optionsList=AccomodationTypeList />
+                                        :mandatory=true :modelValue=AccomodationType :optionsList=AccomodationTypeList
+                                        @dropdown-on-change="CurrAddAccomodationTypeDropDown" />
                                 </div>
-                                <div class="col-span-4">
+                                <div class="col-span-4" v-if="AccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
-                                        dataType="numericSpecial" maxLength=17 :mandatory=true :modelValue=rentInRs />
+                                        dataType="numericSpecial" maxLength=17 :mandatory=true :modelValue=rentInRs
+                                        @text-box-on-key-up="CurrAddrentInRsTextBox" />
 
                                 </div>
                             </div>
@@ -1127,7 +1157,7 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-2">
-                                <div class="section-header col-span-2">
+                                <div class="section-header col-span-3">
                                     <h3>Permanent Address</h3>
                                 </div>
                                 <div class="col-span-9">
@@ -1142,52 +1172,58 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=PermanentAddCountry :optionsList=CountryList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentAddCountry
+                                        :optionsList=CountryList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=PermanentProvince :optionsList=ProvinceList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentProvince
+                                        :optionsList=ProvinceList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=PermanentCity
-                                        :optionsList=CityList />
+                                        :isDisabled="PermanentAddress" :optionsList=CityList />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=PermanentArea />
+                                        :isDisabled="PermanentAddress" :mandatory=true :modelValue=PermanentArea />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=PermanentBlockTextBoxValue />
+                                        :isDisabled="PermanentAddress" maxLength=30 :mandatory=true
+                                        :modelValue=PermanentBlockTextBoxValue />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=PermanentHouseNo />
+                                        :isDisabled="PermanentAddress" maxLength=30 :mandatory=true
+                                        :modelValue=PermanentHouseNo />
 
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-3">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
-                                        dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=PermanentNearestLandMark />
+                                        :isDisabled="PermanentAddress" dataType="alphaNumericSpecial" maxLength=50
+                                        :mandatory=true :modelValue=PermanentNearestLandMark />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=PermanentResidenceStatus :optionsList=ResidenceStatusList />
+                                        :isDisabled="PermanentAddress" :modelValue=PermanentResidenceStatus
+                                        :optionsList=ResidenceStatusList />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
-                                        :mandatory=true :modelValue=PermanentAccomodationType
-                                        :optionsList=AccomodationTypeList />
+                                        :isDisabled="PermanentAddress" :mandatory=true
+                                        :modelValue=PermanentAccomodationType :optionsList=AccomodationTypeList
+                                        @dropdown-on-change="PerAddAccomodationTypeDropDown" />
                                 </div>
-                                <div class="col-span-3">
+                                <div class="col-span-3" v-if="PermanentAccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
-                                        dataType="numericSpecial" maxLength=17 :mandatory=true
-                                        :modelValue=PermanentrentInRs />
+                                        :isDisabled="PermanentAddress" dataType="numericSpecial" maxLength=17
+                                        :mandatory=true :modelValue=PermanentrentInRs />
 
                                 </div>
                             </div>
@@ -1195,7 +1231,7 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-2">
-                                <div class="section-header col-span-2">
+                                <div class="section-header col-span-3">
                                     <h3>Temporary Address</h3>
                                 </div>
                                 <div class="col-span-9">
@@ -1209,51 +1245,55 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <Dropdown name="CountryDropDown" label="Country" :mandatory=true
-                                        :modelValue=TempAddCountry :optionsList=CountryList />
+                                        :isDisabled="TempAddress" :modelValue=TempAddCountry :optionsList=CountryList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="ProvinceDropDown" label="Province" :mandatory=true
-                                        :modelValue=TempProvince :optionsList=ProvinceList />
+                                        :isDisabled="TempAddress" :modelValue=TempProvince :optionsList=ProvinceList />
                                 </div>
                                 <div class="col-span-4">
                                     <Dropdown name="CityDropDown" label="City" :mandatory=true :modelValue=TempCity
-                                        :optionsList=CityList />
+                                        :isDisabled="TempAddress" :optionsList=CityList />
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="AreaTextBox" label="Area" dataType="alphaNumericSpecial" maxLength=30
-                                        :mandatory=true :modelValue=TempArea />
+                                        :isDisabled="TempAddress" :mandatory=true :modelValue=TempArea />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BlockTextBox" label="Block" dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=TempBlockTextBoxValue />
+                                        :isDisabled="TempAddress" maxLength=30 :mandatory=true
+                                        :modelValue=TempBlockTextBoxValue />
 
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="HouseNoTextBox" label="House No." dataType="alphaNumericSpecial"
-                                        maxLength=30 :mandatory=true :modelValue=TempHouseNo />
+                                        :isDisabled="TempAddress" maxLength=30 :mandatory=true
+                                        :modelValue=TempHouseNo />
 
                                 </div>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-3">
                                     <TextBox name="NearestLandMarkTextBox" label="Nearest Landmark"
-                                        dataType="alphaNumericSpecial" maxLength=50 :mandatory=true
-                                        :modelValue=TempNearestLandMark />
+                                        :isDisabled="TempAddress" dataType="alphaNumericSpecial" maxLength=50
+                                        :mandatory=true :modelValue=TempNearestLandMark />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="ResidenceStatusDropDown" label="Residence Status" :mandatory=true
-                                        :modelValue=TempResidenceStatus :optionsList=ResidenceStatusList />
+                                        :isDisabled="TempAddress" :modelValue=TempResidenceStatus
+                                        :optionsList=ResidenceStatusList />
                                 </div>
                                 <div class="col-span-3">
                                     <Dropdown name="AccomodationTypeDropDown" label="Type of Accomodation"
-                                        :mandatory=true :modelValue=TempAccomodationType
-                                        :optionsList=AccomodationTypeList />
+                                        :isDisabled="TempAddress" :mandatory=true :modelValue=TempAccomodationType
+                                        :optionsList=AccomodationTypeList
+                                        @dropdown-on-change="TempAddAccomodationTypeDropDown" />
                                 </div>
-                                <div class="col-span-3">
+                                <div class="col-span-3" v-if="TempAccomodationType == 'Rented' ? true : false">
                                     <TextBox name="rentInRsTextBox" label="If rented, monthly rent in Rs."
-                                        dataType="numericSpecial" maxLength=17 :mandatory=true
+                                        :isDisabled="TempAddress" dataType="numericSpecial" maxLength=17 :mandatory=true
                                         :modelValue=TemprentInRs />
 
                                 </div>
@@ -1264,6 +1304,7 @@
                                 <div class="col-span-11"></div>
                                 <div class="col-span-1">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="isNextButtonAcPersonalDetailsExistingDisabled"
                                         @button-on-click="nextButtonAcPersonalDetails" />
                                 </div>
                             </div>
@@ -1288,14 +1329,14 @@
                                 </div>
                                 <div class="col-span-3">
                                     <TextBox name="occupationProfessionTextBox" label="Occupation / Profession"
-                                        dataType="alphaNumericSpecial" maxLength=20 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=20 :mandatory=false
                                         :modelValue=occupationProfession
                                         @text-box-on-key-up="occupationProfessionTextBox" />
 
                                 </div>
                                 <div class="col-span-3">
                                     <TextBox name="employmemntLengthTextBox" label="Length of Employment"
-                                        dataType="alphaNumericSpecial" maxLength=20 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=20 :mandatory=false
                                         :modelValue=employmemntLength @text-box-on-key-up="employmemntLengthTextBox" />
 
                                 </div>
@@ -1327,17 +1368,18 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="phoneTextBox" label="Phone" dataType="alphaNumericSpecial"
-                                        maxLength=12 :mandatory=true :modelValue=phone mask="****-*******"
+                                        maxLength=12 :mandatory=false :modelValue=phone mask="****-*******"
                                         @text-box-on-key-up="cnicNoTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="faxTextBox" label="Fax" dataType="alphaNumericSpecial" maxLength=12
-                                        :modelValue=fax mask="***-*******" @text-box-on-key-up="cnicNoTextBox" />
+                                        :mandatory=false :modelValue=fax mask="***-*******"
+                                        @text-box-on-key-up="cnicNoTextBox" />
                                 </div>
                                 <div class="col-span-4">
-                                    <TextBox name="officeEmailTextBox" label="Office Email"
+                                    <TextBox name="officeEmailTextBox" label="Office Email" :mandatory=false
                                         dataType="alphaNumericSpecial" maxLength=20 :modelValue=officeEmail
-                                        mask="***-*******" @text-box-on-key-up="cnicNoTextBox" />
+                                        @text-box-on-key-up="cnicNoTextBox" />
                                 </div>
                             </div>
 
@@ -1361,12 +1403,12 @@
                                 </div>
                                 <div class="col-span-3">
                                     <TextBox name="phone2TextBox" label="Phone" dataType="alphaNumericSpecial"
-                                        maxLength=12 :mandatory=true :modelValue=phone2 mask="****-*******"
+                                        :mandatory=false maxLength=12 :modelValue=phone2 mask="****-*******"
                                         @text-box-on-key-up="cnicNoTextBox" />
                                 </div>
                                 <div class="col-span-3">
                                     <TextBox name="fax2TextBox" label="Fax" dataType="alphaNumericSpecial" maxLength=12
-                                        :mandatory=true :modelValue=fax2 mask="***-*******"
+                                        :mandatory=false :modelValue=fax2 mask="***-*******"
                                         @text-box-on-key-up="cnicNoTextBox" />
                                 </div>
                                 <div class="col-span-3">
@@ -1427,24 +1469,26 @@
                                 <div class="col-span-4">
                                     <TextBox name="grossMonthlySalaryTextBox" label="Gross Monthly Salary"
                                         dataType="NumericSpecial" maxLength=40 :mandatory=true
-                                        :modelValue=grossMonthlySalary />
+                                        :modelValue=grossMonthlySalary
+                                        @text-box-on-key-up="grossMonthlySalaryTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="netMonthlyIncomeTextBox" label="Net Monthly Income"
                                         dataType="NumericSpecial" maxLength=40 :mandatory=true
-                                        :modelValue=netMonthlyIncome />
+                                        :modelValue=netMonthlyIncome @text-box-on-key-up="netMonthlyIncomeTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="monthlyIncomeFromOtherSourcesTabularTextBox"
                                         label="Monthly Income from Other Sources Tabular" dataType="NumericSpecial"
-                                        maxLength=40 :mandatory=true :modelValue=monthlyIncomeFromOtherSourcesTabular />
+                                        maxLength=40 :mandatory=false :modelValue=monthlyIncomeFromOtherSourcesTabular
+                                        @text-box-on-key-up="monthlyIncomeFromOtherSourcesTabularTextBox" />
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="otherIncomeSourcesTextBox" label="Sources of Other Income"
-                                        dataType="NumericSpecial" maxLength=40 :mandatory=true
+                                        dataType="NumericSpecial" maxLength=40 :mandatory=false
                                         :modelValue=otherIncomeSources />
                                 </div>
                                 <div class="col-span-4">
@@ -1455,7 +1499,7 @@
                                 <div class="col-span-4">
                                     <TextBox name="endOfServiceBenefitsTextBox"
                                         label="End of Service Benefits as of last month (for Salaried)"
-                                        dataType="NumericSpecial" maxLength=40 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=40 :mandatory=false
                                         :modelValue=endOfServiceBenefits />
                                 </div>
                             </div>
@@ -1468,6 +1512,7 @@
                                 <div class="col-span-11" :lg="21"></div>
                                 <div class="col-span-1" :lg="3">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="nextButtonIncomeDetailsDisabled"
                                         @button-on-click="nextButtonIncomeDetails" />
                                 </div>
                             </div>
@@ -1494,12 +1539,13 @@
 
                                 <div :lg="7" class="col-span-3">
                                     <TextBox name="makeTextBox" label="Make" dataType="NumericSpecial" maxLength=40
-                                        :mandatory=true :modelValue=make />
+                                        :mandatory=true :modelValue=make @text-box-on-key-up="makeTextBox" />
                                 </div>
 
                                 <div class="col-span-3">
                                     <TextBox name="modelTextBox" label="Model" dataType="alphaNumericSpecial"
-                                        maxLength=40 :mandatory=true :modelValue=model />
+                                        maxLength=40 :mandatory=true :modelValue=model
+                                        @text-box-on-key-up="modelTextBox" />
                                 </div>
 
 
@@ -1510,17 +1556,18 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="colorTextBox" label="Color" dataType="alphaumericSpecial"
-                                        maxLength=40 :mandatory=true :modelValue=color />
+                                        maxLength=40 :mandatory=false :modelValue=color
+                                        @text-box-on-key-up="colorTextBox" />
                                 </div>
                                 <div :lg="7" class="col-span-4">
                                     <TextBox name="downPaymentTextBox" label="Equity / Down Payment"
                                         dataType="alphaumericSpecial" maxLength=40 :mandatory=true
-                                        :modelValue=downPayment />
+                                        :modelValue=downPayment @text-box-on-key-up="downPaymentTextBox" />
                                 </div>
 
                                 <div class="col-span-4">
                                     <TextBox name="priceTextBox" label="Price (Rs.)" dataType="alphaumericSpecial"
-                                        maxLength=40 :mandatory=true :modelValue=price />
+                                        maxLength=40 :mandatory=false :modelValue=price />
                                 </div>
 
                             </div>
@@ -1531,7 +1578,7 @@
                                 <div :lg="3" class="col-span-2">
                                     <label>Mode of Financing <span class="text-red-600">*</span> </label>
                                 </div>
-                                <div class="col-span-2">
+                                <div class="col-span-3">
                                     <RadioButton name="modeOfFinancingRadioButton" :options=modeOfFinancingList
                                         :modelValue=modeOfFinancing label=""
                                         @radio-button-on-change="modeOfFinancingOnChange" />
@@ -1539,7 +1586,7 @@
 
                                 <div :lg="15" class="col-span-4">
                                     <TextBox name="desiredFinancingAmountTextBox" label="Desired Financing Amount"
-                                        dataType="alphaumericSpecial" maxLength=40 :mandatory=true
+                                        dataType="alphaumericSpecial" maxLength=40 :mandatory=false
                                         :modelValue=desiredFinancingAmount />
                                 </div>
 
@@ -1551,19 +1598,19 @@
                                 <div :lg="3" class="col-span-2">
                                     <label>Mark-up Mode <span class="text-red-600">*</span> </label>
                                 </div>
-                                <div class="col-span-2">
+                                <div class="col-span-3">
                                     <RadioButton name="markUpModeRadioButton" :options=markUpModeList
                                         :modelValue=markUpMode label="" @radio-button-on-change="markUpModeOnChange" />
                                 </div>
 
-                                <div :lg="7" class="col-span-4">
-                                    <Dropdown name="modeOfRepaymentDropDown" label="Modes of Repayment" :mandatory=true
+                                <div :lg="7" class="col-span-3">
+                                    <Dropdown name="modeOfRepaymentDropDown" label="Modes of Repayment" :mandatory=false
                                         :modelValue=modeOfRepayment :optionsList=modeOfRepaymentList />
 
                                 </div>
-                                <div class="col-span-4">
+                                <div class="col-span-3">
                                     <Dropdown name="desiredFinancingDropDown" label="Desired Financing Tenure"
-                                        :mandatory=true :modelValue=desiredFinancing
+                                        :mandatory=false :modelValue=desiredFinancing
                                         :optionsList=desiredFinancingList />
 
                                 </div>
@@ -1588,6 +1635,7 @@
                                 <div class="col-span-11" :lg="21"></div>
                                 <div class="col-span-1" :lg="3">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="isNextButtonDesiredFinancingDetailsDisabled"
                                         @button-on-click="nextButtonDesiredFinancingDetails" />
                                 </div>
                             </div>
@@ -1613,41 +1661,47 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference1NameTextBox" label="Name" dataType="alphabetsOnly"
-                                        maxLength=30 :mandatory=true :modelValue=Reference1Name />
+                                        maxLength=30 :mandatory=true :modelValue=Reference1Name
+                                        @text-box-on-key-up="Reference1NameTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference1RelationshipTextBox" label="Relationship"
                                         dataType="alphabetsOnly" maxLength=30 :mandatory=true
-                                        :modelValue=Reference1Relationship />
+                                        :modelValue=Reference1Relationship
+                                        @text-box-on-key-up="Reference1RelationshipTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference1CNICTextBox" label="CNIC" mask="*****-*******-*"
-                                        dataType="Numeric" maxLength=15 :mandatory=true :modelValue=Reference1CNIC />
+                                        dataType="numericDashes" maxLength=15 :mandatory=true :modelValue=Reference1CNIC
+                                        @text-box-on-key-up="Reference1CNICTextBox" />
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference1HomePhoneTextBox" label="Home Phone" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true
-                                        :modelValue=Reference1HomePhone />
+                                        dataType="numericDashes" maxLength=12 :mandatory=false
+                                        :modelValue=Reference1HomePhone
+                                        @text-box-on-key-up="Reference1HomePhoneTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference1OtherPhoneTextBox" label="Other Phone" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true
-                                        :modelValue=Reference1OtherPhone />
+                                        dataType="numericDashes" maxLength=12 :mandatory=false
+                                        :modelValue=Reference1OtherPhone
+                                        @text-box-on-key-up="Reference1OtherPhoneTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference1MobileTextBox" label="Mobile" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true :modelValue=Reference1Mobile />
+                                        dataType="numericDashes" maxLength=12 :mandatory=true
+                                        :modelValue=Reference1Mobile @text-box-on-key-up="Reference1MobileTextBox" />
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference1AddressTextBox" label="Address"
-                                        dataType="alphaNumericSpecial" maxLength=12 :mandatory=true
-                                        :modelValue=Reference1Address />
+                                        dataType="alphaNumericSpecial" maxLength=50 :mandatory=false
+                                        :modelValue=Reference1Address @text-box-on-key-up="Reference1AddressTextBox" />
                                 </div>
                             </div>
 
@@ -1666,41 +1720,47 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference2NameTextBox" label="Name" dataType="alphabetsOnly"
-                                        maxLength=30 :mandatory=true :modelValue=Reference2Name />
+                                        maxLength=30 :mandatory=true :modelValue=Reference2Name
+                                        @text-box-on-key-up="Reference2NameTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference2RelationshipTextBox" label="Relationship"
                                         dataType="alphabetsOnly" maxLength=30 :mandatory=true
-                                        :modelValue=Reference2Relationship />
+                                        :modelValue=Reference2Relationship
+                                        @text-box-on-key-up="Reference2RelationshipTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference2CNICTextBox" label="CNIC" mask="*****-*******-*"
-                                        dataType="Numeric" maxLength=15 :mandatory=true :modelValue=Reference2CNIC />
+                                        dataType="numericDashes" maxLength=15 :mandatory=true :modelValue=Reference2CNIC
+                                        @text-box-on-key-up="Reference2CNICTextBox" />
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference2HomePhoneTextBox" label="Home Phone" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true
-                                        :modelValue=Reference2HomePhone />
+                                        dataType="numericDashes" maxLength=12 :mandatory=false
+                                        :modelValue=Reference2HomePhone
+                                        @text-box-on-key-up="Reference2HomePhoneTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference2OtherPhoneTextBox" label="Other Phone" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true
-                                        :modelValue=Reference2OtherPhone />
+                                        dataType="numericDashes" maxLength=12 :mandatory=false
+                                        :modelValue=Reference2OtherPhone
+                                        @text-box-on-key-up="Reference2OtherPhoneTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="Reference2MobileTextBox" label="Mobile" mask="****-*******"
-                                        dataType="Numeric" maxLength=12 :mandatory=true :modelValue=Reference2Mobile />
+                                        dataType="numericDashes" maxLength=12 :mandatory=true
+                                        :modelValue=Reference2Mobile @text-box-on-key-up="Reference2MobileTextBox" />
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="Reference2AddressTextBox" label="Address"
-                                        dataType="alphaNumericSpecial" maxLength=12 :mandatory=true
-                                        :modelValue=Reference2Address />
+                                        dataType="alphaNumericSpecial" maxLength=50 :mandatory=false
+                                        :modelValue=Reference2Address @text-box-on-key-up="Reference2AddressTextBox" />
                                 </div>
                             </div>
 
@@ -1712,6 +1772,7 @@
                                 <div class="col-span-11" :lg="21"></div>
                                 <div class="col-span-1" :lg="3">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="isNextButtonReferencesDisabled"
                                         @button-on-click="nextButtonReferences" />
                                 </div>
                             </div>
@@ -1727,13 +1788,13 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-5" :lg="12">
+                                <div class="col-span-5" >
                                     <h3>
                                         <b>Are You a Salaried Individual or Self Employed / Business
                                             Individual? <span class="text-red-600">*</span></b>
                                     </h3>
                                 </div>
-                                <div class="col-span-4">
+                                <div class="col-span-5">
                                     <RadioButton name="SalariedOrselfEmployedRadioButton" :options=RadioBtnDocumentList
                                         :modelValue=SalariedOrselfEmployed label=""
                                         @radio-button-on-change="SalariedOrselfEmployedChange" />
@@ -2004,13 +2065,13 @@
                             <div v-if="coApplicantValue == 'yes' ? true : false">
                                 <div class="grid grid-cols-12 gap-4 mb-4">
                                     <div class="col-span-3">
-                                        <TextBox name="nameCoApplicantTextBox" label="Name" dataType="alphabetsOnly"
-                                            maxLength=30 :mandatory=true :modelValue=nameCoApplicant
-                                            @text-box-on-key-up="nameCoApplicantTextBox" />
+                                        <TextBox name="nameCoApplicantTextBox" label="Name"
+                                            dataType="alphabetsNumericSpecial" maxLength=30 :mandatory=true
+                                            :modelValue=nameCoApplicant @text-box-on-key-up="nameCoApplicantTextBox" />
                                     </div>
                                     <div class="col-span-3">
                                         <TextBox name="mobileCoApplicantTextBox" label="Mobile" mask="****-*******"
-                                            dataType="Numeric" maxLength=12 :mandatory=true
+                                            dataType="numericDashes" maxLength=12 :mandatory=true
                                             :modelValue=mobileCoApplicant
                                             @text-box-on-key-up="mobileCoApplicantTextBox" />
                                     </div>
@@ -2046,6 +2107,7 @@
                                 <div class="col-span-11" :lg="21"></div>
                                 <div class="col-span-1" :lg="3">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="isNextButtonCoApplicantsDisabled"
                                         @button-on-click="nextButtonCoApplicant" />
                                 </div>
                             </div>
@@ -2068,8 +2130,8 @@
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="accountNoBranchSelectionTextBox" label="Account Number"
-                                        mask="****-****-******-**-*" dataType="Numeric" maxLength=30 :mandatory=false
-                                        :modelValue=accountNoBranchSelection />
+                                        mask="****-****-******-**-*" dataType="numericDashes" maxLength=30
+                                        :mandatory=false :modelValue=accountNoBranchSelection />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="BranchTextBox" label="Branch" dataType="alphaNumericSpecial"
@@ -2151,13 +2213,13 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div :lg="12" class="col-span-4">
                                     <TextBox name="cleanCreditCardBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=cleanCreditCardBankName
                                         @text-box-on-key-up="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div :lg="12" class="col-span-4">
                                     <TextBox name="cleanCreditCardApprovedLimitTextBox" label="Approved Limit"
-                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=cleanCreditCardApprovedLimit
                                         @text-box-on-blur="AccountNumberTextBox" />
                                 </div>
@@ -2175,13 +2237,13 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div :lg="12" class="col-span-4">
                                     <TextBox name="securedCreditCardBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=securedCreditCardBankName
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div :lg="12" class="col-span-4">
                                     <TextBox name="securedCreditCardApprovedLimitTextBox" label="Approved Limit"
-                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=securedCreditCardApprovedLimit
                                         @text-box-on-blur="AccountNumberTextBox" />
                                 </div>
@@ -2199,20 +2261,20 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="cleanPersonalLoanBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=cleanPersonalLoanBankName
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cleanPersonalLoanApprovedLimitTextBox" label="Approved Limit"
-                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=cleanPersonalLoanApprovedLimit
                                         @text-box-on-blur="AccountNumberTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="cleanPersonalLoanOutstandingAmountTextBox"
                                         label="Amount Outstanding on Application Date" dataType="alphaNumericSpecial"
-                                        maxLength=45 :mandatory=true :modelValue=cleanPersonalLoanOutstandingAmount
+                                        maxLength=45 :mandatory=false :modelValue=cleanPersonalLoanOutstandingAmount
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                             </div>
@@ -2229,20 +2291,20 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="securedPersonalLoanBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=securedPersonalLoanBankName
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="securedPersonalLoanApprovedLimitTextBox" label="Approved Limit"
-                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=securedPersonalLoanApprovedLimit
                                         @text-box-on-blur="AccountNumberTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="securedPersonalLoanOutstandingAmountTextBox"
                                         label="Amount Outstanding on Application Date" dataType="alphaNumericSpecial"
-                                        maxLength=45 :mandatory=true :modelValue=securedPersonalLoanOutstandingAmount
+                                        maxLength=45 :mandatory=false :modelValue=securedPersonalLoanOutstandingAmount
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                             </div>
@@ -2250,7 +2312,7 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-12">
                                     <h4>
-                                        <b>Details of other fcilities if any (Clean & Secured) being availed from other
+                                        <b>Details of other facilities if any (Clean & Secured) being availed from other
                                             banks /
                                             DFIs</b>
                                     </h4>
@@ -2260,13 +2322,13 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-3">
                                     <TextBox name="otherFacilitiesBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=otherFacilitiesBankName
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div class="col-span-3">
                                     <TextBox name="otherFacilitiesApprovedLimitTextBox" label="Approved Limit"
-                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=otherFacilitiesApprovedLimit
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
@@ -2278,7 +2340,7 @@
                                 <div class="col-span-3">
                                     <TextBox name="otherFacilitiesOutstandingAmountTextBox"
                                         label="Amount Outstanding on Application Date" dataType="alphaNumericSpecial"
-                                        maxLength=45 :mandatory=true :modelValue=otherFacilitiesOutstandingAmount
+                                        maxLength=45 :mandatory=false :modelValue=otherFacilitiesOutstandingAmount
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                             </div>
@@ -2294,13 +2356,13 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-4">
                                     <TextBox name="appliedLimitsBankNameTextBox" label="Name of the Bank"
-                                        dataType="Numeric" maxLength=45 :mandatory=true
+                                        dataType="alphaNumericSpecial" maxLength=45 :mandatory=false
                                         :modelValue=appliedLimitsBankName
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
                                 <div class="col-span-4">
                                     <TextBox name="appliedLimitsFacilityUnderProcessTextBox"
-                                        label="Facility under Process" dataType="Numeric" maxLength=45 :mandatory=true
+                                        label="Facility under Process" dataType="numeric" maxLength=45 :mandatory=false
                                         :modelValue=appliedLimitsFacilityUnderProcess
                                         @text-box-on-blur="cleanCreditCardBankNameTextBox" />
                                 </div>
@@ -2337,13 +2399,13 @@
                                 <h3>Letter of Understanding</h3>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-12">
+                                <div class="col-span-10">
                                     <p>
                                         Reference to my application of Auto Finance Facility from the Bank,
                                         I hereby acknowledge and confirm that:
                                     </p>
                                     <br>
-                                    <ul class="list-disc list-inside ml-6 space-y-1">
+                                    <ul class="list-disc list-outside pl-5 space-y-1">
                                         <li>
                                             The applicable IRR (Internal Rate of Return) on the Facility is 2%, which
                                             shall be
@@ -2352,9 +2414,9 @@
                                         </li>
                                     </ul>
 
-                                    <p class="ml-6 space-y-1">OR</p>
+                                    <p class="ml-4">OR</p>
 
-                                    <ul class="list-disc list-inside ml-6 space-y-1">
+                                    <ul class="list-disc list-outside pl-5 space-y-1 text-justify">
                                         <li>
                                             Applicable Floating Rate on the facility is 1 YR KIBOR (Base Rate) plus
                                             1.50%
@@ -2416,10 +2478,10 @@
                                 <h3>Terms & Conditions</h3>
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-12">
+                                <div class="col-span-10">
                                     <p>We acknowledge and confirm that:</p>
 
-                                    <ol class="list-decimal list-inside space-y-2 ml-4">
+                                    <ol class="list-decimal list-outside pl-8 space-y-1">
                                         <li>No legal proceedings have been threatened or commenced or underway against
                                             me/us.
                                         </li>
@@ -2449,22 +2511,30 @@
                                             and income or business status, personal profiles, age, occupation, or any
                                             other
                                             factors.
-                                            <br />
-                                            We further undertake that Bank, without assigning any reason or burden may
-                                            refuse or
-                                            discontinue/reduce to me/us.
-                                            <br />
-                                            We further acknowledge that Bank may share/receive information with credit
-                                            information
-                                            bureau i.e. SBP, CIB/other institutions/members of these bureaus and other
-                                            banks/financial
-                                            institutions and agents etc.
-                                            <br />
-                                            We undertake to provide and submit/update complete information subject to
-                                            their full
-                                            being,
-                                            terms and conditions regarding the payment schedule, penalty or any other
-                                            dues.
+                                            <p class="mt-2">
+                                                We further undertake that Bank, without assigning any reason or burden
+                                                may
+                                                refuse or
+                                                discontinue/reduce to me/us.
+                                            </p>
+                                            <p class="mt-2">
+                                                We further acknowledge that Bank may share/receive information with
+                                                credit
+                                                information
+                                                bureau i.e. SBP, CIB/other institutions/members of these bureaus and
+                                                other
+                                                banks/financial
+                                                institutions and agents etc.
+                                            </p>
+                                            <p class="mt-2">
+                                                We undertake to provide and submit/update complete information subject
+                                                to
+                                                their full
+                                                being,
+                                                terms and conditions regarding the payment schedule, penalty or any
+                                                other
+                                                dues.
+                                            </p>
                                         </li>
 
                                         <li>
@@ -2501,14 +2571,14 @@
                                         <li>
                                             The interest/profit rate on our Personal Facility is:
                                             <ul>
-                                                <p>
+                                                <p class="mt-2">
                                                     (i) The fixed interest rate shall be the Fixed Rate offered by
                                                     Bank.
                                                 </p>
-                                                <p>
+                                                <p class="ml-4">
                                                     OR
                                                 </p>
-                                                <p>
+                                                <p class="">
                                                     (ii) Applicable Floating Rate on the Facility is _____ i.e. KIBOR
                                                     Base
                                                     (fixed) plus _____
@@ -2623,7 +2693,7 @@
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-12">
+                                <div class="col-span-10">
                                     <p>
                                         Bank has always provided financial products with a customer-centric
                                         approach,
@@ -2639,7 +2709,7 @@
                                     </p>
                                     <br>
 
-                                    <ol class="list-decimal list-inside space-y-2 ml-4">
+                                    <ol class="list-decimal list-outside pl-5 space-y-1">
                                         <li>
                                             Be Honest with the Information Provided:<br />
                                             Provide accurate information when filling any Bank documents. The customer
@@ -2757,22 +2827,23 @@
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-12">
+                                <div class="col-span-10">
                                     <!-- <div class="flex flex-col gap-4 mb-4"> -->
-                                    <Checkbox name="undertakingCheckBox"
+                                    <Checkbox name="undertaking1CheckBox"
                                         chekboxLabel="I / We hereby apply for Consumer Finance (Facility) from the Bank as indicated in this application."
                                         :mandatory=false chekboxLabelColor=var(--primary-dark) :modelValue=undertaking1
-                                        @update:modelValue="onCheckBoxChange" />
+                                        chekboxLabelFontWeight="bold" @update:modelValue="undertaking1CheckBox" />
                                     <!-- </div> -->
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-12">
+                                <div class="col-span-10">
                                     <!-- <div class="flex flex-col gap-4 mb-4"> -->
-                                    <Checkbox name="undertakingCheckBox" chekboxLabel="I / We undertake that this Facility will be utilized for
-                                    Personal Use Only." :mandatory=false chekboxLabelColor=var(--primary-dark)
-                                        :modelValue=undertaking1 @update:modelValue="onCheckBoxChange" />
+                                    <Checkbox name="undertaking2CheckBox" chekboxLabelColor=var(--primary-dark)
+                                        chekboxLabel="I / We undertake that this Facility will be utilized for
+                                    Personal Use Only." :mandatory=false chekboxLabelFontWeight="bold"
+                                        :modelValue=undertaking2 @update:modelValue="undertaking2CheckBox" />
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -2784,6 +2855,7 @@
                                 <div class="col-span-11" :lg="21"></div>
                                 <div class="col-span-1" :lg="3">
                                     <Button label="Next" backgroundColor="var(--primary-color)" name="NextButton"
+                                        :isDisabled="isNextButtonReviewAndVerifyDisabled"
                                         @button-on-click="nextReviewAndVerify" />
                                 </div>
                             </div>
@@ -2798,111 +2870,163 @@
 
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
-                            <!-- Tabs -->
-                            <TabView v-model:activeIndex="activeTab" @tab-change="onTabChange">
-                                <!-- ================= PHYSICAL SIGNATURE TAB ================= -->
-                                <TabPanel header="Physical Signature">
-
-                                    <div class="grid grid-cols-12 gap-4 mb-4">
-                                        <div class="col-span-1" :lg="1">
+                            <Tabs value=0 class="mt-4">
+                                <TabList class="flex gap-0.8">
+                                    <Tab style="min-width:12rem" class="custom-tab" value=0>Physical Signature
+                                    </Tab>
+                                    <Tab style="min-width:12rem" class="custom-tab" value=1>E-Signature</Tab>
+                                </TabList>
+                                <TabPanels>
+                                    <TabPanel value=0>
+                                        <div class="grid grid-cols-12 gap-4 mb-4">
+                                            <div class="col-span-1" :lg="1">
+                                            </div>
+                                            <div class="col-span-11" :lg="23">
+                                                <label>
+                                                    You have successfully completed your loan application form.
+                                                    Please <strong>download</strong> the form,
+                                                    <strong>print it</strong>, <strong>sign the physical copy</strong>,
+                                                    and then <strong>upload the scanned signed document</strong>.
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="col-span-11" :lg="23">
-                                            <label>
-                                                You have successfully completed your loan application form.
-                                                Please <strong>download</strong> the form,
-                                                <strong>print it</strong>, <strong>sign the physical copy</strong>,
-                                                and then <strong>upload the scanned signed document</strong>.
-                                            </label>
+
+                                        <div class="grid grid-cols-12 gap-4 mb-4">
+                                            <div class="col-span-5" :lg="10"></div>
+                                            <div class="col-span-2" :lg="3">
+                                                <Button label="Download Form" backgroundColor="var(--primary-color)"
+                                                    name="DownloadFormButton" @button-on-click="downloadForm" />
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="grid grid-cols-12 gap-4 mb-4">
-                                        <div class="col-span-5" :lg="10"></div>
-                                        <div class="col-span-2" :lg="3">
-                                            <Button label="Download Form" backgroundColor="var(--primary-color)"
-                                                name="DownloadFormButton" @button-on-click="downloadForm" />
-                                        </div>
-                                    </div>
+                                        <div class="mt-5 w-full border-t border-gray-200"></div>
 
-                                    <div class="mt-5 w-full border-t border-gray-200"></div>
-
-                                    <!-- Upload -->
-                                    <div>
-                                        <div class="col-span-6"></div>
-                                        <div class="col-span-5">
-                                            <h3>
-                                                Please Upload Scanned Signed Document
-                                            </h3>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="col-span-4" :lg="7"></div>
-                                        <div class="col-span-4">
-                                            <FileUpload name="uploadDocumentSelfEmployed" label="" icon="pi pi-file-pdf"
-                                                @file-selected="handleFile" />
-                                        </div>
-                                    </div>
-                                </TabPanel>
-
-                                <!-- ================= E-SIGNATURE TAB ================= -->
-                                <TabPanel header="E-Signature">
-
-                                    <!-- Header Card -->
-                                    <div class="esign-header">
+                                        <!-- Upload -->
                                         <div>
-                                            <h2>Reference ID: APJ22545566</h2>
-                                            <p>User Name | Auto Loan</p>
-                                        </div>
-                                        <span>
-                                            Date: 12/12/2025 12:00 AM
-                                        </span>
-                                    </div>
-
-
-                                    <!-- Loan Info -->
-                                    <div class="grid grid-cols-12 gap-4 mb-4">
-                                        <div class="col-span-4" :lg="12">
-                                            <p><strong>Loan Amount:</strong> 100,000</p>
-                                            <p><strong>Loan Period:</strong> 36 months</p>
-                                            <p><strong>Total Repayment:</strong> 114,026.4</p>
+                                            <div class="col-span-6"></div>
+                                            <div class="col-span-5">
+                                                <h3>
+                                                    Please Upload Scanned Signed Document
+                                                </h3>
+                                            </div>
                                         </div>
 
-                                        <div class="col-span-4" :lg="12">
-                                            <p><strong>Interest Rate:</strong> 8.5%</p>
-                                            <p><strong>Monthly Repayment:</strong> 3167.4</p>
-                                            <p><strong>Outstanding Balance:</strong> 63,348</p>
+                                        <div>
+                                            <div class="col-span-4" :lg="7"></div>
+                                            <div class="col-span-4">
+                                                <FileUpload name="uploadDocumentSelfEmployed" label=""
+                                                    icon="pi pi-file-pdf" @file-selected="handleFile" />
+                                            </div>
                                         </div>
-                                    </div>
+                                    </TabPanel>
+                                    <TabPanel value=1>
+                                        <div class="esign-header">
+                                            <div>
+                                                <h2>Reference ID: APJ22545566</h2>
+                                                <p>User Name | Auto Loan</p>
+                                            </div>
+                                            <span>
+                                                Date: 12/12/2025 12:00 AM
+                                            </span>
+                                        </div>
 
-                                    <!-- Signature Area -->
-                                    <div class="my-4 h-px w-full bg-gray-300"></div>
 
-                                    <h3 class="esign-title">E-Signature</h3>
+                                        <!-- Loan Info -->
+                                        <fieldset class="mb-4 mt-4">
+                                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                                <div class="col-span-2">
+                                                    <Label name="loanAmountLabel" label="Loan Amount:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="loanAmountValueLabel" label="100,000"
+                                                        labelColor="gray" />
+                                                </div>
+                                                <div class="col-span-3"></div>
+                                                <div class="col-span-2">
+                                                    <Label name="interestRateLabel" label="Interest Rate:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="interestRateValueLabel" label="8.5%"
+                                                        labelColor="gray" />
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                                <div class="col-span-2">
+                                                    <Label name="loanPeriodLabel" label="Loan Period:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="loanPeriodValueLabel" label="36 months"
+                                                        labelColor="gray" />
+                                                </div>
+                                                <div class="col-span-3"></div>
+                                                <div class="col-span-2">
+                                                    <Label name="MonthlyRepaymenteLabel" label="Monthly Repayment:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="MonthlyRepaymenteValueLabel" label="3167.4"
+                                                        labelColor="gray" />
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-12 gap-4 mb-4">
+                                                <div class="col-span-2">
+                                                    <Label name="totalRepaymentLabel" label="Total Repayment:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="totalRepaymentValueLabel" label="114,026.4"
+                                                        labelColor="gray" />
+                                                </div>
+                                                <div class="col-span-3"></div>
+                                                <div class="col-span-2">
+                                                    <Label name="outstandingBalanceLabel" label="Outstanding Balance:"
+                                                        labelFontWeight="bold" />
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <Label name="outstandingBalanceValueLabel" label="63,348"
+                                                        labelColor="gray" />
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <!-- Signature Area -->
+                                         <div class="grid grid-cols-12 gap-4 mb-4">
+                                            <div class="col-span-12">
+                                        <div class="font-bold  my-4 h-px w-full text-[var(--primary-color)]">
 
-                                    <TabView v-model:activeIndex="activeSubTab">
-                                        <!-- <TabPanel header="Draw">
+                                        <span><i class="pi pi-pen-to-square" /></span>
+                                        <span class="ml-1"> E-Signature</span>
+
+                                        </div>
+                                        </div>
+                                        </div>
+
+                                        <TabView v-model:activeIndex="activeSubTab">
+                                            <!-- <TabPanel header="Draw">
                                     <div class="signature-pad">
                                         <p class="placeholder">Signature canvas here</p>
                                     </div>
                                 </TabPanel> -->
 
-                                        <TabPanel header="Type">
-                                            <!-- <el-input placeholder="Type your signature" /> -->
-                                            <TextBox name="TypeyourSignatureTextBox" label="Type your signature"
-                                                dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
-                                                :modelValue=TypeyourSignatureTextBox
-                                                @text-box-on-blur="TypeyourSignatureTextBoxonBlur" />
-                                        </TabPanel>
+                                            <TabPanel header="Type">
+                                                <!-- <el-input placeholder="Type your signature" /> -->
+                                                <TextBox name="TypeyourSignatureTextBox" label="Type your signature"
+                                                    dataType="alphaNumericSpecial" maxLength=45 :mandatory=true
+                                                    :modelValue=TypeyourSignatureTextBox
+                                                    @text-box-on-blur="TypeyourSignatureTextBoxonBlur" />
+                                            </TabPanel>
 
-                                        <TabPanel header="Upload">
-                                            <FileUpload name="signatureImage" label="Upload signature image"
-                                                icon="pi pi-file-pdf" @file-selected="handleFile" />
-                                        </TabPanel>
-                                    </TabView>
-
-                                </TabPanel>
-                            </TabView>
+                                            <TabPanel header="Upload">
+                                                <FileUpload name="signatureImage" label="Upload signature image"
+                                                    icon="pi pi-file-pdf" @file-selected="handleFile" />
+                                            </TabPanel>
+                                        </TabView>
+                                    </TabPanel>
+                                </TabPanels>
+                            </Tabs>
+                            <!-- Tabs -->
                         </fieldset>
                     </AccordionContent>
                     <fieldset>
@@ -2985,6 +3109,10 @@ import { useRouter } from 'vue-router'
 const router = useRouter();
 import TabView from 'primevue/tabview'
 import TabPanel from 'primevue/tabpanel'
+import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import TabPanels from 'primevue/tabpanels';
+import Tab from 'primevue/tab';
 // import axios from 'axios';
 const resetter = (() => {
     const trackedRefs = []; // store all refs with initial values
@@ -3086,6 +3214,12 @@ const isNextButtonAcPersonalDetailsDisabled = ref(true)
 //     highestBalance.value == "" || depositPerMonth.value == "" || NumberOfDepositPerMonth.value == "" || NumberOfWithdrawalPerMonth.value == "" || NumberOfWithdrawalPerMonth.value == "") ||
 //     (TaxResidentCountry.value == 'yes' && (Country.value == '' || CRSTin.value == "" || Reason.value == ""))
 // })
+const isNextButtonAcPersonalDetailsExistingDisabled = ref(true)
+// computed(() => {
+// return (purposeOfAccount.value == "" || accountCategory.value == "" || currency.value == "" || modeOfTransaction.value == "" || deliveryChannels.value == "" ||
+//     highestBalance.value == "" || depositPerMonth.value == "" || NumberOfDepositPerMonth.value == "" || NumberOfWithdrawalPerMonth.value == "" || NumberOfWithdrawalPerMonth.value == "") ||
+//     (TaxResidentCountry.value == 'yes' && (Country.value == '' || CRSTin.value == "" || Reason.value == ""))
+// })
 const OTPFlag = resetter.ref(false);
 
 //////////////////////////
@@ -3109,6 +3243,7 @@ const fullName = resetter.ref('');
 const cnicIssueDate = resetter.ref('');
 const cnicExpiryDate = resetter.ref('');
 const ntnNumber = resetter.ref('');
+const DobTextBox = resetter.ref('');
 const salutationList = resetter.ref([{ label: 'Mr.', value: 'Mr.' },
 { label: 'Mrs.', value: 'Mrs.' },
 { label: 'Ms.', value: 'Ms.' }]);
@@ -3221,6 +3356,46 @@ const timeAtCurrentAddress = resetter.ref('');
 const AccomodationType = resetter.ref('');
 const AccomodationTypeList = resetter.ref([{ label: 'Rented', value: 'Rented' }, { label: 'Own', value: 'Own' }]);
 const rentInRs = resetter.ref('');
+const CurrAddCountryDropDown = (val) => {
+    CurrAddCountry.value = val.value;
+}
+const CurrAddProvinceDropDown = (val) => {
+    Province.value = val.value;
+}
+const CurrAddCityDropDown = (val) => {
+    City.value = val.value;
+}
+const CurrAddResidenceStatusDropDown = (val) => {
+    ResidenceStatus.value = val.value;
+}
+const CurrAddAccomodationTypeDropDown = (val) => {
+    AccomodationType.value = val.value;
+}
+const CurrAddAreaTextBox = (event, val) => {
+    Area.value = val;
+}
+const CurrAddBlockTextBox = (event, val) => {
+    BlockTextBoxValue.value = val;
+}
+const CurrAddHouseNoTextBox = (event, val) => {
+    HouseNo.value = val;
+}
+const CurrAddNearestLandMarkTextBox = (event, val) => {
+
+    NearestLandMark.value = val;
+}
+const CurrAddtimeAtCurrentAddressTextBox = (event, val) => {
+    timeAtCurrentAddress.value = val;
+}
+const CurrAddrentInRsTextBox = (event, val) => {
+    rentInRs.value = val;
+}
+const PerAddAccomodationTypeDropDown = (val) => {
+    PermanentAccomodationType.value = val.value;
+}
+const TempAddAccomodationTypeDropDown = (val) => {
+    TempAccomodationType.value = val.value;
+}
 //
 const PermanentAddCountry = resetter.ref();
 const PermanentProvince = resetter.ref();
@@ -3380,8 +3555,10 @@ const preferredMailingAddressList = [
 
 ];
 const isDisabledNextButtonOccupationalDetails = computed(() => {
-    return false;
-    // return OccupationalStatusValue.value == "" || occupationProfession.value == "" || employmemntLength.value == "" || employerName.value == "" || employmentYears.value == "" || position.value == "" || officeAddress.value == ""
+    return OccupationalStatusValue.value == "" || employerName.value == "" || employmentYears.value == "" || position.value == "" || officeAddress.value == ""
+})
+const nextButtonIncomeDetailsDisabled = computed(() => {
+    return grossMonthlySalary.value == "" || netMonthlyIncome.value == ""
 })
 const occupationalStatusDropDown = (val) => {
     OccupationalStatusValue.value = val?.value;
@@ -3412,8 +3589,17 @@ const monthlyIncomeFromOtherSourcesTabular = resetter.ref('');
 const otherIncomeSources = resetter.ref('');
 const totalGrossMonthlyIncome = resetter.ref('');
 const endOfServiceBenefits = resetter.ref('');
+const grossMonthlySalaryTextBox = (event, val) => {
+    grossMonthlySalary.value = val;
+}
+const netMonthlyIncomeTextBox = (event, val) => {
+    netMonthlyIncome.value = val;
+}
+const monthlyIncomeFromOtherSourcesTabularTextBox = (event, val) => {
+    monthlyIncomeFromOtherSourcesTabular.value = val;
+}
 /////Desired Financing
-const vehicleType = resetter.ref('');
+const vehicleType = resetter.ref('New');
 const vehicleTypeList = [
     { label: 'New', value: 'New' },
     { label: 'Used', value: 'Used' },
@@ -3437,20 +3623,32 @@ const markUpModeList = [
 ];
 const modeOfRepayment = resetter.ref('');
 const modeOfRepaymentList = [
-    { option: 'Online', value: 'Online' },
-    { option: 'Cash', value: 'Cash' }
+    { label: 'Online', value: 'Online' },
+    { label: 'Cash', value: 'Cash' }
 ];
 const desiredFinancing = resetter.ref('');
 const desiredFinancingList = [
-    { option: '1-year', value: '1-year' },
-    { option: '2-year', value: '2-year' },
-    { option: '3-year', value: '3-year' },
-    { option: '4-year', value: '4-year' },
+    { label: '1-year', value: '1-year' },
+    { label: '2-year', value: '2-year' },
+    { label: '3-year', value: '3-year' },
+    { label: '4-year', value: '4-year' },
 
 ];
-
-
-
+const makeTextBox = (event, val) => {
+    make.value = val;
+}
+const modelTextBox = (event, val) => {
+    model.value = val;
+}
+const colorTextBox = (event, val) => {
+    color.value = val;
+}
+const downPaymentTextBox = (event, val) => {
+    downPayment.value = val;
+}
+const isNextButtonDesiredFinancingDetailsDisabled = computed(() => {
+    return make.value == '' || model.value == '' || downPayment.value == '';
+})
 
 ////Refrences
 const Reference1Name = resetter.ref('');
@@ -3468,6 +3666,51 @@ const Reference2Address = resetter.ref('');
 const Reference2HomePhone = resetter.ref('');
 const Reference2OtherPhone = resetter.ref('');
 const Reference2Mobile = resetter.ref('');
+const Reference1NameTextBox = (event, val) => {
+    Reference1Name.value = val;
+}
+const Reference1RelationshipTextBox = (event, val) => {
+    Reference1Relationship.value = val;
+}
+const Reference1CNICTextBox = (event, val) => {
+    Reference1CNIC.value = val;
+}
+const Reference1HomePhoneTextBox = (event, val) => {
+    Reference1HomePhone.value = val;
+}
+const Reference1OtherPhoneTextBox = (event, val) => {
+    Reference1OtherPhone.value = val;
+}
+const Reference1MobileTextBox = (event, val) => {
+    Reference1Mobile.value = val;
+}
+const Reference1AddressTextBox = (event, val) => {
+    Reference1Address.value = val;
+}
+const Reference2NameTextBox = (event, val) => {
+    Reference2Name.value = val;
+}
+const Reference2RelationshipTextBox = (event, val) => {
+    Reference2Relationship.value = val;
+}
+const Reference2CNICTextBox = (event, val) => {
+    Reference2CNIC.value = val;
+}
+const Reference2HomePhoneTextBox = (event, val) => {
+    Reference2HomePhone.value = val;
+}
+const Reference2OtherPhoneTextBox = (event, val) => {
+    Reference2OtherPhone.value = val;
+}
+const Reference2MobileTextBox = (event, val) => {
+    Reference2Mobile.value = val;
+}
+const Reference2AddressTextBox = (event, val) => {
+    Reference2Address.value = val;
+}
+const isNextButtonReferencesDisabled = computed(() => {
+    return Reference1Name.value == '' || Reference1Relationship.value == '' || Reference1CNIC.value == '' || Reference1Mobile.value == '' || Reference2Name.value == '' || Reference2Relationship.value == '' || Reference2CNIC.value == '' || Reference2Mobile.value == '';
+})
 ///Document
 const SalariedOrselfEmployed = resetter.ref("salariedIndividual");
 const RadioBtnDocumentList = [
@@ -3485,6 +3728,9 @@ const coApplicantValue = resetter.ref('no');
 const nameCoApplicant = resetter.ref('');
 const mobileCoApplicant = resetter.ref('');
 const emailCoApplicant = resetter.ref('');
+const isNextButtonCoApplicantsDisabled = computed(() => {
+    return coApplicantValue.value == 'no' ? false : (coApplicantList.value.length > 0 ? false : true);
+})
 /////Branch
 const accountTitleBranchSelection = resetter.ref('');
 const accountNoBranchSelection = resetter.ref('');
@@ -3528,8 +3774,10 @@ const appliedLimitsnatureOfFacilityList = resetter.ref([{ label: 'Clean', value:
 { label: 'Secured', value: 'Secured' }]);
 /////Undertaking
 const undertaking1 = resetter.ref(false);
-const PermanentAddress = resetter.ref(false);
-const TempAddress = resetter.ref(false);
+const undertaking2 = resetter.ref(false);
+
+const PermanentAddress = resetter.ref(true);
+const TempAddress = resetter.ref(true);
 const signaturePreview = resetter.ref(null);
 const activeTab = resetter.ref(0);
 const activeSubTab = resetter.ref(0);
@@ -3538,6 +3786,17 @@ const successDialog = resetter.ref(false)
 const cleanCreditCardBankNameTextBox = (val) => {
 
 }
+
+const undertaking1CheckBox = (val) => {
+    undertaking1.value = val;
+}
+const undertaking2CheckBox = (val) => {
+    undertaking2.value = val;
+}
+
+const isNextButtonReviewAndVerifyDisabled = computed(() => {
+    return !(undertaking1.value == true && undertaking2.value == true);
+})
 /////////////////////////
 const accountInfo = resetter.ref(true);
 const verification = resetter.ref(false);
@@ -3687,6 +3946,7 @@ const markUpModeOnChange = (val) => {
     markUpMode.value = val;
 }
 const onTemporaryAddressCheckBoxChange = (val) => {
+    TempAddress.value = val
     if (val == false) {
         TempAddCountry.value = "";
         TempProvince.value = "";
@@ -3714,6 +3974,8 @@ const onTemporaryAddressCheckBoxChange = (val) => {
     }
 }
 const onCheckBoxPermanentAddressChange = (val) => {
+    debugger;
+    PermanentAddress.value = val
     if (val == false) {
         PermanentAddCountry.value = "";
         PermanentProvince.value = "";
@@ -3762,10 +4024,85 @@ const FetchButton = async () => {
     // vehicleModel.value = res.data?.[0]?.vehicleModel;
     // vehicleStatus.value = res.data?.[0]?.vehicleStatus;
     isNextButtonAcPersonalDetailsDisabled.value = false;
+    isNextButtonAcPersonalDetailsExistingDisabled.value = false;
+
     if (isAccountHolder.value == 'yes') {
         identificationType.value = 'CNIC';
         cnicNo.value = "82313-2135678-2";
-        CurrAddCountry.value = "Pakistan"
+        
+
+        TempAddress.value = true;
+        PermanentAddress.value = true;
+
+        OccupationalStatusValue.value = "Salaried";
+        occupationProfession.value = "Engineer";
+        employmemntLength.value = "3 years";
+        employerName.value = "Teresol";
+        employmentYears.value = "2 years";
+        position.value = "Manager";
+        officeAddress.value = "DHA Islamabad";
+        phone.value = "051-4680886";
+        fax.value = "051-4680886";
+        officeEmail.value = "izaheer@teresol.com";
+
+        // employerName2.value = "";
+        // phone2.value = "";
+        // fax2.value = "";
+        // inEmploymentSince.value = "";
+
+        ///
+        grossMonthlySalary.value = '3,00,000';
+        netMonthlyIncome.value = '4,00,000';
+        monthlyIncomeFromOtherSourcesTabular.value = '1,00,000';
+        totalGrossMonthlyIncome.value = '4,00,000';
+        endOfServiceBenefits.value = 'N/A';
+
+
+        ///
+        make.value = 'TOYOTA';
+        model.value = '2023';
+        color.value = 'Silver';
+        downPayment.value = '20,000,00';
+        modeOfRepayment.value = 'Cash';
+        desiredFinancing.value = '1-year'
+        ////
+        Reference1Name.value = 'Sameer';
+        Reference1Relationship.value = 'Brother';
+        Reference1CNIC.value = '81102-0532684-2';
+        Reference1Address.value = 'Islamabad,Pakistan';
+        Reference1HomePhone.value = '051-4680886';
+        Reference1OtherPhone.value = '0345-8269854';
+        Reference1Mobile.value = '0347-1235876';
+        Reference2Name.value = 'Ali';
+        Reference2Relationship.value = 'Friend';
+        Reference2CNIC.value = '81402-4569852-4';
+        Reference2Address.value = 'Karachi,Pakistan';
+        Reference2HomePhone.value = '';
+        Reference2OtherPhone.value = '0348-2563458';
+        Reference2Mobile.value = '0349-5142456';
+    }
+    fullName.value = "Izza Zaheer";
+    cnicIssueDate.value = "02/02/2020";
+    cnicExpiryDate.value = "02/02/2030";
+    ntnNumber.value = "78965425";
+    DobTextBox.value = "02//02/2025";
+    salutation.value = "Ms.";
+    qualification.value = "Bachelor";
+    maritalStatus.value = "Single";
+    dateOfBirth.value = "02/02/2011";
+    fatherSpouseName.value = "Muhammad Ali";
+    motherName.value = "Nisa Khan";
+    children.value = '0';
+    otherDependent.value = '0';
+    otherPhoneNo.value = "0351-5442088";
+    nextOfKin.value = "Ali";
+    nextOfKinRelation.value = "Brother";
+    nextOfKinCnic.value = "37402-0961617-7";
+    nextOfKinAddress.value = "Rawalpindi, Pakistan.";
+    vehicleModel.value = "MX255";
+    vehicleStatus.value = "Old"
+
+    CurrAddCountry.value = "Pakistan"
         Province.value = "Sindh"
         City.value = "Islamabad"
         Area.value = "Bahria"
@@ -3801,30 +4138,6 @@ const FetchButton = async () => {
         TemptimeAtCurrentAddress.value = "1 year";
         TemprentInRs.value = "50,000";
 
-        TempAddress.value = true;
-        PermanentAddress.value = true;
-
-    }
-    fullName.value = "Izza Zaheer";
-    cnicIssueDate.value = "02/02/2020";
-    cnicExpiryDate.value = "02/02/2030";
-    ntnNumber.value = "78965425";
-    salutation.value = "Ms.";
-    qualification.value = "Bachelor";
-    maritalStatus.value = "Single";
-    dateOfBirth.value = "02/02/2011";
-    fatherSpouseName.value = "Muhammad Ali";
-    motherName.value = "Nisa Khan";
-    children.value = '0';
-    otherDependent.value = '0';
-    otherPhoneNo.value = "0351-5442088";
-    nextOfKin.value = "Ali";
-    nextOfKinRelation.value = "Brother";
-    nextOfKinCnic.value = "37402-0961617-7";
-    nextOfKinAddress.value = "Rawalpindi, Pakistan.";
-    vehicleModel.value = "MX255";
-    vehicleStatus.value = "Old"
-
 }
 
 const coApplicantRadioButtonOnChange = (val) => {
@@ -3845,7 +4158,7 @@ const onTabChange = (event) => {
     activeSubTab.value = 0
 }
 const CancelForm = () => {
-    router.push("/loan-origination-&-management")
+    router.push("/dashboard")
 }
 const SubmitForm = () => {
     successDialog.value = true
@@ -3853,20 +4166,17 @@ const SubmitForm = () => {
 
 const handleOk = () => {
     successDialog.value = false
-    router.push('/loan-origination-&-management') // 👈 change route
+    router.push('/dashboard') // 👈 change route
 }
 </script>
 <style scoped>
 /* ---------- Info Box ---------- */
 .info-box {
+    max-width: 600px;
     background-color: #fffbe6;
     border: 1px solid #f0e1a0;
     border-radius: 8px;
     padding: 10px;
-    margin: 20px auto;
-    max-width: 960px;
-    /* ✅ fixed readable width */
-    width: 100%;
 }
 
 /* ---------- Header ---------- */
@@ -3874,9 +4184,9 @@ const handleOk = () => {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    max-width: 720px;
+    /* max-width: 720px; */
     /* ✅ keeps text compact */
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .info-icon {
@@ -3894,6 +4204,7 @@ const handleOk = () => {
     font-size: 14px;
     color: #6b7280;
 }
+
 
 /* ---------- Divider ---------- */
 .info-box hr {
@@ -4026,5 +4337,28 @@ fieldset {
     padding: 0.99% !important;
     border: 1px solid var(--border-color) !important;
 
+}
+
+/* tabs */
+.custom-tab {
+    flex: 0.8;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    font-weight: bold;
+    color: var(--border-color);
+    border-right: 1px solid #e5e7eb;
+    background: #f9fafb;
+    transition: all 0.2s ease;
+}
+
+.custom-tab:hover {
+    background: #f3f4f6;
+}
+
+.custom-tab.p-tab-active {
+    /* background: var(--primary-color); */
+    color: var(--primary-color);
+    border-right: 1px var(--primary-color);
+    font-weight: bold;
 }
 </style>

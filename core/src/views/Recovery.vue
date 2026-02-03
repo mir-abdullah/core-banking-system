@@ -1,6 +1,6 @@
 <script setup>
-  import { loanOriginationAndManagementItems } from '../data/data';
-  import LayoutCard from '../components/LayoutCard.vue';
+  import { recoveryItems } from '../data/data';
+  import LayoutCard from '../components/LayoutCardCopy.vue';
   import { useRouter, useRoute } from 'vue-router';
   import { layoutColors } from '../data/data';
   
@@ -17,11 +17,11 @@
 
 <template>
     <div
-      v-if="route.name === 'ConsumerLoan' || route.name === 'SMEAgriCorporateLoan'"
+      v-if="route.name === 'ConsumerRecovery' || route.name === 'SMERecovery'"
       class="ml-5.5 flex flex-wrap gap-x-5 gap-y-5 h-fit"
     >
       <LayoutCard
-        v-for="(item, index) in loanOriginationAndManagementItems"
+        v-for="(item, index) in recoveryItems"
         :key="item.title"
         :name="item.title"
         :options="item.options"

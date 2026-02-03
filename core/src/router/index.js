@@ -18,6 +18,11 @@ import TradeFinancingImports from "../views/TradeFinancingImports.vue";
 import TradeFinancingExports from "../views/TradeFinancingExports.vue";
 import Setup from "../views/Setup.vue";
 import UserGroup from "../views/UserGroup.vue";
+import Origination from "../views/Origination.vue";
+import LoanOriginationMainScreen from "../views/LoanOriginationMainScreen.vue";
+import Disbursement from "../views/Disbursement.vue";
+import Recovery from "../views/Recovery.vue";
+import Approval from "../views/Approval.vue";
 
 
 
@@ -58,16 +63,106 @@ const routes = [
   {
     path: "/loan-origination-&-management",
     name: "LoanOrigination&Management",
-    component: LoanOrigination,
+    component: LoanOriginationMainScreen,
     meta: { title: "Loan Origination & Management" },
     children: [
       {
-        path: "new-customer-loan-application",
+        path: "Consumer-Loan",
+        name: "ConsumerLoan",
+        component: LoanOrigination,
+        meta: { title: "Consumer Loans" },
+        children: [
+          {
+            path:"-origination",
+            name:"ConsumerOrigination",
+            component: Origination,
+            meta:{ title: "Origination"},
+            children:[
+                {
+        path: "loan-application-submission",
         name: "NewCustomerLoanApplication",
         component: NewCustLoanApp,
         meta: { title: "Auto Loan Application" },
+      }
+            ]
+
+          },
+          {
+            path:"-disbursement",
+            name:"ConsumerDisbursement",
+            component: Disbursement,
+            meta:{ title: "Disbursement"}
+
+          },
+          {
+            path:"recovery-&-settlement",
+            name:"ConsumerRecovery",
+            component: Recovery,
+            meta:{ title: "Recovery"}
+          },
+          {
+            path:"-approval",
+            name:"ConsumerApproval",
+            component: Approval,
+            meta:{ title: "Approval"}
+          },
+         
+        ]
       },
-    ],
+      {
+        path: "SME-Agri-Corporate-Loan",
+        name: "SMEAgriCorporateLoan",
+        component: LoanOrigination,
+        meta: { title: "SME, Agri & Corporate Loans" },
+
+        children: [
+           {
+            path:"-origination",
+            name:"SMEOrigination",
+            component: Origination,
+            meta:{ title: "Origination"},
+            children:[
+                 {
+        path: "loan-application-submission",
+        name: "SMENewCustomerLoanApplication",
+        component: NewCustLoanApp,
+        meta: { title: "Auto Loan Application" },
+                 }
+               
+            ]
+
+          },
+          {
+            path:"-disbursement",
+            name:"SMEDisbursement",
+            component: Disbursement,
+            meta:{ title: "Disbursement"}
+
+          },
+          {
+           path:"recovery-&-settlement",
+            name:"SMERecovery",
+            component: Recovery,
+            meta:{ title: "Recovery"}
+          },
+          {
+            path:"-approval",
+            name:"SMEApproval",
+            component: Approval,
+            meta:{ title: "Approval"},
+            
+          },
+        
+      
+      // {
+      //   path: "new-customer-loan-application",
+      //   name: "NewCustomerLoanApplication",
+      //   component: NewCustLoanApp,
+      //   meta: { title: "Auto Loan Application" },
+      // },
+    ]
+      }
+    ]
   },
   {
     path: "/international-transactions",

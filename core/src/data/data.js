@@ -6239,3 +6239,451 @@ export const menueCardItems=[
   }
   
 ]
+
+export const loanOriginationAndManagementItems = [
+  {
+    title:" Origination",
+    color:"#b45309",
+    options:[
+      {name:"Lead Asssignment"},
+      {name:"Assigned Leads"},
+      {name:"Loan Application Submission"},
+      {name:"Application Authorization"},
+    ],
+   
+  },
+  // {
+  //   title:"Lead Management",
+  //   color:"#b45309",
+  //   options:[
+  //     {name:"Lead Assigment"},
+  //     {name:"Lead Authorization"},
+  //   ],
+  //   dropdown:[
+  //     {
+  //       name:"Lead Assigment"
+  //     },
+  //     {
+  //       name:"Lead Authorization"
+  //     }
+  //   ]
+  // },
+  {
+    title:" Approval",
+    color:"#b45309",
+    options:[
+      {name:"Application Authorizer"},
+      {name:"Telephonic Verification Processor"},
+      { name:"Credit Analyst"},
+      // {name :"Data Check Verification"}
+    ],
+    dropdown:[
+      
+    ]
+  },
+  {
+    title:" Disbursement",
+    color:"#b45309",
+    options:[
+      {name:"Review Documents"},
+      {name:"Disbursement Authorization"},
+    ],
+    dropdown:[
+     
+      
+    ]
+  },
+  {
+    title:"Recovery & Settlement",
+    color:"#b45309",
+    options:[
+      {name:"Loan Repayment"},
+      {name:"Repayment Authorization"},
+      {name:"Rescheduling "},
+      // {name:"Rescheduling Authorization"},
+    ],
+    dropdown:[
+     
+    ]
+  },
+  {
+    title:"Loan Management",
+    color:"#b45309",
+    options:[
+      {name:"Balloon Payment"},
+      {name:"Settlement"},
+      {name:"Loan Product Inquiry"}
+    ],
+    dropdown:[
+    
+    ]
+  },
+  {
+    title:"Asset Management",
+    color:"#b45309",
+    options:[
+      {name:"NPL Reporting"},
+      {name:"Charge-off"},
+      {name:"Write-off"},
+    ],
+    dropdown:[
+     
+    ]
+  },
+  
+
+  
+  
+]
+
+
+export const loanOriginationMenuItems = [
+  {
+    name: "Consumer Loan",
+    icon: "pi-home",
+    iconSrc: iconNavbarLoanOrigination,
+    backgroundColor: "#2dbe60",
+    subCategories: " ",
+    routeName: "ConsumerLoan",
+  },
+  {
+    name: "SME, Agri,     Corporate Loan",
+    icon: "pi-building-columns",
+    iconSrc: iconNavbarLoanOrigination,
+    backgroundColor: "#2dbe60",
+    subCategories: "10",
+    routeName: "SMEAgriCorporateLoan",
+  },
+];
+
+export const originationItems=[
+  {
+    title:"Lead Assignment",
+    color:"#b45309",
+    options:[]
+  },
+  {
+    title:"Assigned Leads",
+    color:"#b45309",
+    options:[]
+  },
+  {
+    title:"Loan Application Submission",
+    color:"#b45309",
+    options:[]
+  },
+  {
+    title:"Application Authorization",  
+    color:"#b45309",
+    options:[]  
+  }
+]
+
+export const approvalItems=[
+  {
+    title:"KYC, CPW,Suitability Assessment Checklist",
+    color:"#b45309",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"FIU/ Debarred List Verfications",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"ECIB/NADRA Verifications",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"Data Check Verification",
+    color:"#ec4899",
+    pendingTasks: 4,
+    options:[]
+  },
+  {
+    title:"Application Authorizer",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Telephonic Verification Processor",
+    color:"#16a34a",
+    pendingTasks: 7,
+    options:[]
+  },
+  {
+    title:"Telephonic Verification Verifier",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Physical Verification Processor",
+    color:"#ec4899",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Physical Verification Verifier",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Credit Analyst",
+    color:"#16a34a",
+    pendingTasks: 4,
+    options:[]
+  },
+  {
+    title:"CBD-CC",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"SME Approvals",
+    color:"#ec4899",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"CCC Approvals",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Asset Valuation",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+]
+
+export const disbursementItems=[
+  {
+    title:"Review Case",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Legal Documents Generation",
+    color:"#16a34a",
+    pendingTasks: 4,
+    options:[]
+  },
+  {
+    title:"Dealer's Quotation",
+    color:"#ec4899",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Cheque Information",
+    color:"#16a34a",
+    pendingTasks: 6,
+    options:[]
+  },
+  {
+    title:"Review Documents",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"Disbursement Instructions",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Limit Feeding",
+    color:"#ec4899",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Loan Disbursement",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Loan Disbursement Authorize",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Banker's Cheque",
+    color:"#16a34a",
+    pendingTasks: 6,
+    options:[]
+  },
+  {
+    title:"Purchase Order",
+    color:"#ec4899",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"CAD Document Checklist",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Vehicle Arrival",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Vehicle Info",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Insurance Coverage",
+    color:"#ec4899",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Vehicle Registration",
+    color:"#16a34a",
+    pendingTasks: 6,
+    options:[]
+  },
+  {
+    title:"Insurance Payment",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Delivery Order",
+    color:"#16a34a",
+    pendingTasks: 4,
+    options:[]
+  },
+]
+
+export const recoveryItems=[
+  {
+    title:"Insurance Claims",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Insurance Details",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Tenure Change",
+    color:"#ec4899",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Insurance Payment Reversal",
+    color:"#16a34a",
+    pendingTasks: 4,
+    options:[]
+  },
+  {
+    title:"Insurance Change Authorizer",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Balloon Payment",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"Limit Cancel",
+    color:"#ec4899",
+    pendingTasks: 6,
+    options:[]
+  },
+  {
+    title:"DPD",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"DPD-1",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"DPD-2",
+    color:"#16a34a",
+    pendingTasks: 4,
+    options:[]
+  },
+  {
+    title:"DPD-3",
+    color:"#ec4899",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Vehicle Repossession",
+    color:"#16a34a",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"EAMU Assignment",
+    color:"#16a34a",
+    pendingTasks: 3,
+    options:[]
+  },
+  {
+    title:"Asset Assessment",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+  {
+    title:"Repossessed Vehicle Release",
+    color:"#ec4899",
+    pendingTasks: 2,
+    options:[]
+  },
+  {
+    title:"Bid Registration",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"Sale of Repossessed Vehicle",
+    color:"#16a34a",
+    pendingTasks: 5,
+    options:[]
+  },
+  {
+    title:"Lawyer",
+    color:"#16a34a",
+    pendingTasks: 1,
+    options:[]
+  },
+]
