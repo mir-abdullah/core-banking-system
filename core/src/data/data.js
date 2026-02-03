@@ -3604,7 +3604,7 @@ export const treasuryManagementItems = [
   //   dropdown: []
   // },
   {
-    title: "ZAMANAT INSURANCE",
+    title: "Zamanat Insurance",
     color: "#34d399",
     options: [
       { name: "Book" },

@@ -7,6 +7,9 @@ body {
   --text-color:black;
   --delete-color: #ef4444;
 }
+.p-select.p-disabled .p-select-label{
+  color: black !important;
+}
 .accordianClass .p-accordionheader{
   padding: 14px 32px !important;
 }
