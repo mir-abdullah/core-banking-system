@@ -38,7 +38,6 @@
             :heading="card.heading"
             :subheading="card.subheading"
             :buttons="card.buttons"
-            @button-click="(buttonName) => console.log(`Button clicked: ${buttonName}`)"
         />
     </div>
     </div>

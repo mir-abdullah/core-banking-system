@@ -1816,7 +1816,7 @@
                                     </div>
                                     <div class="grid grid-cols-12 gap-4 mb-4">
                                         <div class="col-span-5">
-                                            <FileUpload name="CNICFront" label="CNIC Front" icon="pi pi-id-card" 
+                                            <FileUpload name="CNICFront" label="CNIC Front" icon="pi pi-id-card"
                                                 @file-selected="handleFile" />
 
                                         </div>
@@ -1842,7 +1842,8 @@
                                         </div>
 
                                         <!-- OR Divider -->
-                                        <div class="col-span-2 flex justify-center"  v-if="isAccountHolder == 'yes' ? true : false">
+                                        <div class="col-span-2 flex justify-center"
+                                            v-if="isAccountHolder == 'yes' ? true : false">
                                             <Divider layout="vertical" class="!hidden md:!flex">
                                                 <b>OR</b>
                                             </Divider>
@@ -1852,7 +1853,8 @@
                                         </div>
 
                                         <!-- Fetch Button -->
-                                        <div class="col-span-5 flex justify-center"  v-if="isAccountHolder == 'yes' ? true : false">
+                                        <div class="col-span-5 flex justify-center"
+                                            v-if="isAccountHolder == 'yes' ? true : false">
                                             <Button label="Fetch Bank Statement" backgroundColor="var(--primary-color)"
                                                 name="fetchBankStatementButton"
                                                 @button-on-click="fetchBankStatementButton" />
@@ -1865,7 +1867,7 @@
                                     <div class="section-header">
                                         <h3>Passport Photograph</h3>
                                     </div>
-                                     <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
                                         <!-- Upload -->
                                         <div class="col-span-5">
                                             <FileUpload name="takePhoto" label="Take Photo" icon="pi pi-camera"
@@ -1889,7 +1891,7 @@
                                                 icon="pi pi-image" @file-selected="handleFile" />
                                         </div>
                                     </div>
-                                   
+
                                 </fieldset>
 
                                 <fieldset class="mt-4">
@@ -1919,7 +1921,7 @@
                                                 @file-selected="handleFile" />
                                         </div>
                                     </div>
-                                    
+
                                 </fieldset>
 
                                 <fieldset class="mt-4">
@@ -1986,7 +1988,8 @@
                                         </div>
 
                                         <!-- OR Divider -->
-                                        <div class="col-span-2 flex justify-center" v-if="isAccountHolder == 'yes' ? true : false">
+                                        <div class="col-span-2 flex justify-center"
+                                            v-if="isAccountHolder == 'yes' ? true : false">
                                             <Divider layout="vertical" class="!hidden md:!flex">
                                                 <b>OR</b>
                                             </Divider>
@@ -1995,13 +1998,14 @@
                                             </Divider>
                                         </div>
 
-                                        <div class="col-span-5 flex justify-center" v-if="isAccountHolder == 'yes' ? true : false">
+                                        <div class="col-span-5 flex justify-center"
+                                            v-if="isAccountHolder == 'yes' ? true : false">
                                             <Button label="Fetch Bank Statement" backgroundColor="var(--primary-color)"
                                                 name="fetchBankStatementButton"
                                                 @button-on-click="fetchBankStatementButton" />
                                         </div>
                                     </div>
-                                    
+
                                 </fieldset>
 
                                 <fieldset class="mt-4">
@@ -2028,7 +2032,7 @@
                                         </div>
 
                                         <div class="col-span-5">
-                                           <FileUpload name="uploadFromGallerySelfEmployed" label="Upload from Gallery"
+                                            <FileUpload name="uploadFromGallerySelfEmployed" label="Upload from Gallery"
                                                 icon="pi pi-image" @file-selected="handleFile" />
                                         </div>
                                     </div>
@@ -2056,7 +2060,7 @@
                                         </div>
 
                                         <div class="col-span-5">
-                                           <FileUpload name="anyOtherDocumentSelfEmployed"
+                                            <FileUpload name="anyOtherDocumentSelfEmployed"
                                                 label="Any other document required by Bank" icon="pi pi-plus"
                                                 @file-selected="handleFile" />
                                         </div>
@@ -2467,19 +2471,19 @@
                                             Upon approval of the facility, I shall provide post dated cheques/debit
                                             authority
                                             for the
-                                            repayments of my monthly instalments to the bank.
+                                            repayments of my monthly installments to the bank.
                                         </li>
                                         <li>
                                             Processing Fee of Rs. 2000/- shall be paid by me to the bank.
                                         </li>
                                         <li>
-                                            My 1st total monthly instalment may vary from the repayment schedule which
+                                            My 1st total monthly installment may vary from the repayment schedule which
                                             shall be
                                             based
                                             on the date of the disbursement. Furthermore, I understand that if the
                                             facility is
                                             disbursed
-                                            before 16th of the month my 1st monthly instalment shall be due on the 1st
+                                            before 16th of the month my 1st monthly installment shall be due on the 1st
                                             of the
                                             following month.
                                         </li>
@@ -2517,6 +2521,10 @@
                             </div>
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-10">
+                                    <p>I/We hereby apply for Customer Finance(Facility) from Bank AL Habib
+                                        Limited(BAHL), as indicated in this application.</p>
+                                    <p>I/We undertake that this Facility will be utilized for personal use only.</p>
+                                    <br>
                                     <p>We acknowledge and confirm that:</p>
 
                                     <ol class="list-decimal list-outside pl-8 space-y-1">
@@ -2526,206 +2534,91 @@
 
                                         <li>
                                             All information furnished by me/us in this application is true, complete and
-                                            accurate
-                                            to the best of my/our knowledge.
+                                            accurate and I/We have not withheld any material fact.
                                         </li>
 
                                         <li>
-                                            The documents which are attached/mentioned in the Application Form are aware
-                                            to
-                                            me/us
-                                            and will be responsibly used.
+                                            The references whose particulars are mentioned in the Application Form are
+                                            aware of
+                                            this transaction and will oblidge BAHL for confirmation of the same.
                                         </li>
 
                                         <li>
-                                            The Facility is only a revolving nature. The term or conditions contained in
-                                            the
-                                            Application Form shall always be binding on me/us.
+                                            The Facility will be provided subject to the terms and conditions contained in the
+                Offer Letter (if issued by BAHL) and/or the Facility.
                                         </li>
 
                                         <li>
-                                            The letter of sanction by Bank for the said facility, my regular
-                                            financial
-                                            and income or business status, personal profiles, age, occupation, or any
-                                            other
-                                            factors.
-                                            <p class="mt-2">
-                                                We further undertake that Bank, without assigning any reason or burden
-                                                may
-                                                refuse or
-                                                discontinue/reduce to me/us.
-                                            </p>
-                                            <p class="mt-2">
-                                                We further acknowledge that Bank may share/receive information with
-                                                credit
-                                                information
-                                                bureau i.e. SBP, CIB/other institutions/members of these bureaus and
-                                                other
-                                                banks/financial
-                                                institutions and agents etc.
-                                            </p>
-                                            <p class="mt-2">
-                                                We undertake to provide and submit/update complete information subject
-                                                to
-                                                their full
-                                                being,
-                                                terms and conditions regarding the payment schedule, penalty or any
-                                                other
-                                                dues.
-                                            </p>
+                                             I/We hereby authorize you to obtain information/data regarding my/our financial and personal details from any credit bureau, agent, banks, financial institutions, or companies for the purposes of processing my application and monitoring my facilities/account. Further, I/we authorize you to disclose and share the information in connection with my application with any other credit bureau, agent, banks, financial institutions or companies as you BAHL considers appropriate from time to time in accordance with the Applicable Laws.
                                         </li>
 
                                         <li>
-                                            We acknowledge the fact that the Facility requested by me/us in the
-                                            application form
-                                            is
-                                            intended to be the revolving Facility. The disbursement of RMCF and Bank
-                                            reserves every right to reverse this application/Facility in case of any
-                                            misconduct.
+                                            I/We acknowledge the fact that the Facility requested by me/us in this application will be made available to me/us at the absolute discretion of BAHL and Bank Al Habib Limited reserves the rights to reject this application without assigning any reason, whatsoever.
                                         </li>
 
                                         <li>
-                                            We acknowledge/agree to hold the Bank indemnified and harmless against any
-                                            losses or
-                                            damages,
-                                            suffered by Bank, claims/suits, actions, institution, from any third party
-                                            or
-                                            ourselves or
-                                            my/our legal heirs/representatives without any limitation for misuse, loss,
-                                            theft
-                                            and any
-                                            other discrepancy of the device issued to me/us for using the Facility.
+                                            I/We indemnify and agree to hold BAHL indemnified and harmless against any loss, damage, costs and expenses, fees, claims and proceedings, which may be incurred or sustained by BAHL or claimed against BAHL as a result of a breach of these terms and conditions by me/us or any information provided or representation made by me/us in this application form being incorrect or untrue or any discrepancy in my/our signature on this application form and I/we hereby undertake to pay to BAHL the amount demanded by BAHL pursuant to this indemnity within [7] working days of the first written demand of BAHL.
                                         </li>
 
                                         <li>
-                                            We agree that Bank shall be entitled to exclusive without any
-                                            hesitation,
-                                            authority, charge or lien over goods/items/merchandise as security, which
-                                            shall be
-                                            sold
-                                            for the recovery of outstanding amount.
-                                        </li>
+                                            The applicable IRR (Internal Rate of Return) on the Facility is __________ %, which shall be fixed for the entire tenure of Facility. (For fixed markup mode).
 
-                                        <li>
-                                            The interest/profit rate on our Personal Facility is:
-                                            <ul>
-                                                <p class="mt-2">
-                                                    (i) The fixed interest rate shall be the Fixed Rate offered by
-                                                    Bank.
-                                                </p>
-                                                <p class="ml-4">
+<p class="ml-4">
                                                     OR
                                                 </p>
-                                                <p class="">
-                                                    (ii) Applicable Floating Rate on the Facility is _____ i.e. KIBOR
-                                                    Base
-                                                    (fixed) plus _____
-                                                    (Bank Spread). (Bank Spread may be revised based on the bank's
-                                                    policy of the
-                                                    Bank.)
-                                                </p>
-                                            </ul>
+
+Applicable Floating Rate on the facility is __________ KIBOR (Base Rate) plus __________ % (Spread). Base Rate shall be reviewed on the last business day of the previous Base Period. (For floating markup mode).
                                         </li>
 
                                         <li>
-                                            I/We agree that the Bank shall have the right to disburse the Loan amount or
-                                            part of
-                                            the loan
-                                            amount through Pay Order or Demand Draft in favour of the supplier of the
-                                            item/utility
-                                            mentioned by me/us.
+                                            Upon approval of the facility, I shall provide post dated cheques/debit authority for the repayments of my monthly installments to the bank.
                                         </li>
 
                                         <li>
-                                            The original of the Facility installment/card issued to the under-signed
-                                            authority
-                                            for the
-                                            requested Facility.
-                                        </li>
-
-                                        <li>It is understood that I/we shall repay/pay the said Facility to the Bank.
+                                            Processing Fee of Rs. __________ shall be paid by me to the bank.
                                         </li>
 
                                         <li>
-                                            The processing fee(s)/renewal/annual fee(s) shall be part of this Account,
-                                            at the
-                                            time of
-                                            disbursement and the Bank shall never refund the said amount under any
-                                            circumstances.
+                                            My/Our 1st total monthly installment may vary from the repayment schedule which shall be based on the date of the disbursement. Furthermore, I/we understand that if the facility is disbursed before 16th of the month my/our 1st monthly installment shall be due on the 1st of the following month.
+                                        </li>
+
+                                        <li>Installation of tracking device (if applicable) is solely being arranged by the insurance company which is selected with my consent.*
                                         </li>
 
                                         <li>
-                                            The title of the goods to be given by me/us before being arranged by the
-                                            finance/installment Facility/Bank is solely binding on us.
+                                            I/We am/are aware that the change in price and delivery of financed vehicle is the sole discretion of manufacturer/distributor which is selected with my/our consent.*
                                         </li>
 
                                         <li>
-                                            I/We shall not transfer the change of place or sell or demand other
-                                            facilities to
-                                            the Bank
-                                            without written approval.
+                                            I/We am/are well aware that after disbursement of the facility, if there is any change in the vehicle price, it shall be borne by me/us, and as when demanded by the manufacturer/distributor.*
                                         </li>
 
                                         <li>
-                                            We otherwise well aware that after disbursement of the Facility, if there
-                                            is/are any
-                                            difference in our signatures, the facility will stand cancelled without
-                                            assigning
-                                            any reason.
+                                            I/We am/are also aware that financed vehicle shall be covered under insurance policy at the price mentioned in the Offer Letter.*
                                         </li>
 
                                         <li>
-                                            We also acknowledge that the financed vehicle shall be covered under
-                                            insurance
-                                            through an
-                                            insurance company.
+                                           I/We will use and operate the motor vehicle (Motor Vehicle) financed by Bank AL Habib Ltd.(Bank) under the aforesaid undertaking for personal use only.*
                                         </li>
 
                                         <li>
-                                            We further acknowledge that insurance claims and/or received favored for the
-                                            Bank.
+                                           I/We will not use, operate or give the Motor Vehicle for rental purposes, on lease, hire-purchase or any other purpose in violation of the aforesaid purpose.*</li>
+
+                                        <li>
+                                           I/We will not sell or transfer any rights, interests, assign, hypothecate or in any manner create any encumbrance on the Motor Vehicle.*
                                         </li>
 
                                         <li>
-                                            We will, under all common laws be liable for any criminal process, in case,
-                                            I/We
-                                            shall omit
-                                            any signature on the Vehicle or related documents.
+                                            I/We will not utilize my Personal Finance Facility for the purpose of IPO and will utilize this facility only for the reason mentioned in my application. No cheques, drafts and/or any payment instructions will be made by me/us for IPO subscription from my saving/ current account sanctioned for the disbursement of aforesaid facility.*
                                         </li>
 
                                         <li>
-                                            We further shall not transfer or damage this documents/application in any
-                                            written or
-                                            oral form.
+                                            NOW THEREFORE, in consideration of the Bank agreeing to provide/ having provided finances to me under the aforesaid agreement, I/we hereby undertake to indemnify and keep the Bank indemnified, safe and harmless at all times and from time to time from and against all losses, damages, penalties, fines (including but not limited to any loss arising from a violation of the undertaking specified at above), actions, suits, proceedings, accounts, claims, liabilities, expenses, costs and fees which the Bank may incur, sustain or be put to by reason or on account of the Bank having extended the said finances to me/us.
                                         </li>
 
                                         <li>
-                                            We shall only use the Personal Finance Facility for the purpose of HIB and
-                                            any other
-                                            items.
+                                            I/we hereby authorize the bank to update CIF related information appearing in the above form across all the accounts maintained by me with Bank AL Habib Limited as per bank’s policy.
                                         </li>
-
-                                        <li>
-                                            We shall not use this Facility for purchase of shares, securities or real
-                                            estate.
-                                        </li>
-
-                                        <li>
-                                            We further agree that if my/our name(s) appear in the exit control list, we
-                                            will
-                                            immediately
-                                            inform Bank.
-                                        </li>
-
-                                        <li>
-                                            We hereby authorize the Bank to contact me/us for collection/pending
-                                            repayment of
-                                            loan, if any.
-                                        </li>
-
-                                        <li>This Facility is for Personal Use only.</li>
-
-                                        <li>Any additional requirements may apply.</li>
                                     </ol>
                                 </div>
                             </div>
@@ -2733,127 +2626,72 @@
                             <div class="grid grid-cols-12 gap-4 mb-4">
                                 <div class="col-span-10">
                                     <p>
-                                        Bank has always provided financial products with a customer-centric
-                                        approach,
-                                        keeping the interest of its customers at the forefront.
+                                        Bank AL Habib Limited has always provided financial products with a customer-centric approach, keeping the interests of its customers at the forefront. Under the “Financial Consumer Protection Framework” being devised in the country, your bank has launched a Consumer Protection policy, of which one part pertains to the roles & responsibilities of the consumer. 
                                     </p>
-
+<br>
                                     <p>
-                                        In this regard, a “Customer Protection Framework” is being shared to create
-                                        awareness as the Bank has launched a Customer Protection policy, which defines
-                                        the part
-                                        pertaining to the roles & responsibilities of the customers. The salient points
-                                        are:
+                                        The salient points are:
                                     </p>
                                     <br>
 
                                     <ol class="list-decimal list-outside pl-5 space-y-1">
                                         <li>
-                                            Be Honest with the Information Provided:<br />
-                                            Provide accurate information when filling any Bank documents. The customer
-                                            should
-                                            not give
-                                            false details or leave out important information.
+                                            <b>Be Honest with the Information Provided:</b><p>
+Customers are required to provide full and accurate information when filling in any bank documents and must not give false details or leave out important information.
+                                       </p> </li>
+
+                                        <li>
+                                            <b>Read all the Information Provided by the Bank:</b><p>
+Customers are encouraged and requested to read all the information provided by the bank at the time of establishing a relationship for their own benefit.
+                                       </p> </li>
+
+                                        <li>
+                                            <b>Ask Questions for Clarity:</b><p>
+Customers are encouraged to ask questions from the bank’s representatives / staff about anything that is unclear or any conditions that they are unsure about. The staff will answer any question in a professional manner to help customers in their decision making.
+                                        </p></li>
+
+                                        <li>
+                                            <b>Know How to Make a Complaint:</b><p>
+Bank will provide customers with details on how to lodge a complaint. Customer can proactively using this service and know how to escalate the complaint to higher levels and if required involve the Banking Ombudsman and the Consumer Protection Department of the State Bank of Pakistan.</p>
                                         </li>
 
                                         <li>
-                                            Read all the Information Provided by the Bank:<br />
-                                            Customers are encouraged and required to read all the information provided
-                                            by the
-                                            Bank.
-                                            The Bank will clearly mention all mandatory hints over the board.
-                                        </li>
+                                            <b>Use the Product or Service In-line with the Terms and Conditions:</b><p>
+Customer should not use the product or service, except in accordance with the terms and conditions associated with them and only after the customer has complete knowledge of the given product or service.
+                                       </p> </li>
 
                                         <li>
-                                            Ask Questions for Clarity:<br />
-                                            Customers are encouraged to ask questions from the Bank’s representatives if
-                                            they
-                                            have any
-                                            doubt or their query cannot be answered. The Bank staff shall answer
-                                            questions in a
-                                            professional manner to help customers make better decisions.
-                                        </li>
+                                            <b>Report Unauthorized Transactions to the Bank:</b><p>
+If any customer discovers unauthorized transactions on his/her account, he/she should report this to the bank immediately. The mechanisms of reporting are clearly enunciated in the bank’s Statement of Accounts.
+                                        </p></li>
 
                                         <li>
-                                            Know Where to Make a Complaint:<br />
-                                            Customers can register their complaints and/or know how to lodge a complaint
-                                            about
-                                            improper
-                                            financial services. The Bank’s complaint resolution mechanism is visible on
-                                            the
-                                            Customer
-                                            Service desks of the Bank. Customers may obtain information in case the
-                                            complaint is
-                                            not
-                                            addressed within the given timeframe.
-                                        </li>
+                                            <b>Do not Disclose Banking Information:</b><p>
+Under no circumstances should the customer provide any bank account details or other sensitive personal or financial information to any third party.
+                                        </p></li>
 
                                         <li>
-                                            Do Not Provide or Share Details to Unknown People:<br />
-                                            Customers should take precautionary measures and ensure their sensitive
-                                            information
-                                            is not
-                                            compromised in any case. Sensitive & confidential information i.e. ATM PINs,
-                                            passwords etc.
-                                            empower the customer while dealing with the Bank.
-                                        </li>
+                                            <b>Update Information:</b><p>
+Customer should update their personal contact information so that it is updated continuously and also when requested by the bank. Mechanisms are clearly elaborated to do the same.
+                                        </p></li>
 
                                         <li>
-                                            Be a Customer of Service with Best Terms & Conditions:<br />
-                                            Customers should always be aware regarding the risk. Customers understand
-                                            the nature
-                                            of the
-                                            service and that the customer has expert knowledge to make a wise decision
-                                            with the
-                                            Bank.
-                                        </li>
+                                            <b>Keep Copies of Documents:</b><p>
+Customers are expected to retain their own records of important documents so that they are fully conversant with the bank and their own roles and responsibilities in a transaction/ relationship.
+                                       </p> </li>
 
                                         <li>
-                                            Do Not Obscure Banking Information:<br />
-                                            Customers should refrain from disclosing their private Bank account
-                                            information
-                                            which may
-                                            jeopardize their financial relationship or any third party. Update
-                                            information
-                                            timely.
-                                            Bank will never disclose customer personal/confidential information so that
-                                            it is
-                                            protected
-                                            and safeguarded to the best of Bank’s efforts.
-                                        </li>
-
+                                            <b>Do not Sign Incomplete Forms:</b><p>
+Customer should make sure that all of the required fields and numbers are completed in a form that is presented to them for signing and under no circumstances should the customer sign a blank or partially completed form.
+                                        </p></li>
                                         <li>
-                                            Keep Copies of Documents:<br />
-                                            Customers are advised to retain their own records of important documents
-                                            related to
-                                            the
-                                            banking relationship with the Bank. It helps maintain transparency.
-                                        </li>
-
-                                        <li>
-                                            Be Aware of Numbers:<br />
-                                            Customers should check if the amount paid or required fields and numbers are
-                                            completed on a
-                                            form that is provided to the Bank. Selling any information is wrong and
-                                            doing so is
-                                            not
-                                            encouraged.
-                                        </li>
-
-                                        <li>
-                                            Fulfill Obligations Against the Signed Statement:<br />
-                                            Customers must adhere to the obligations in the contract, including terms,
-                                            repayment
-                                            schedule, and usage. The Bank may contact the customers for recovery of
-                                            overdue
-                                            installments.
-                                        </li>
+                                           <b> Fulfill obligations and make payments on time:</b><p>
+Customers must fulfill all obligations they have to the bank, including timely payment of all dues, charges and loan installments. In case of breach of contract, customers are bound by the terms and conditions duly signed by them at initiation of relationship or later amendments, duly informed to them from time to time.
+                                        </p></li>
                                     </ol>
                                     <br>
                                     <p>
-                                        We hope that the above information will help enhance financial literacy among
-                                        our valued
-                                        customers and enable them to make informed decisions.
+                                        We hope that this initiative will nourish a consumer-friendly banking environment that would cater to the needs of Al Habi
                                     </p>
 
                                     <p>
@@ -2944,14 +2782,14 @@
                                             <div class="col-span-6"></div>
                                             <div class="col-span-5">
                                                 <h3>
-                                                   <strong>Please Upload Scanned Signed Document</strong> 
+                                                    <strong>Please Upload Scanned Signed Document</strong>
                                                 </h3>
                                             </div>
                                         </div>
 
-                                            <div class="grid grid-cols-12 gap-4">
-                                                    <div class="col-span-3"></div>
-                                                    <div class="col-span-6">
+                                        <div class="grid grid-cols-12 gap-4">
+                                            <div class="col-span-3"></div>
+                                            <div class="col-span-6">
                                                 <FileUpload name="uploadDocumentSelfEmployed" label=""
                                                     icon="pi pi-file-pdf" @file-selected="handleFile" />
                                             </div>
@@ -3060,10 +2898,10 @@
                                                 <div class="grid grid-cols-12 gap-4">
                                                     <div class="col-span-3"></div>
                                                     <div class="col-span-6">
-                                                <FileUpload name="signatureImage" label="Upload signature image"
-                                                    icon="pi pi-file-pdf" @file-selected="handleFile" />
+                                                        <FileUpload name="signatureImage" label="Upload signature image"
+                                                            icon="pi pi-file-pdf" @file-selected="handleFile" />
                                                     </div>
-                                                    </div>
+                                                </div>
                                             </TabPanel>
                                         </TabView>
                                     </TabPanel>
@@ -3139,7 +2977,7 @@
 </template>
 <script setup>
 import { ref, defineAsyncComponent, watch, computed } from "vue";
-import { Button, Checkbox, TextBox, TextArea, Dropdown, Label, RadioButton, FileUpload} from '@cms/ui-components';
+import { Button, Checkbox, TextBox, TextArea, Dropdown, Label, RadioButton, FileUpload } from '@cms/ui-components';
 
 import Accordion from 'primevue/accordion';
 import AccordionPanel from 'primevue/accordionpanel';
@@ -3394,10 +3232,10 @@ const BlockTextBoxValue = resetter.ref('');
 const HouseNo = resetter.ref('');
 const NearestLandMark = resetter.ref('');
 const ResidenceStatus = resetter.ref('');
-const ResidenceStatusList = resetter.ref([{ label: 'Current', value: 'Current' }, { label: 'Permanent', value: 'Permanent' }]);
+const ResidenceStatusList = resetter.ref([{ label: 'Rented', value: 'Rented' }, { label: 'Own', value: 'Own' }]);
 const timeAtCurrentAddress = resetter.ref('');
 const AccomodationType = resetter.ref('');
-const AccomodationTypeList = resetter.ref([{ label: 'Rented', value: 'Rented' }, { label: 'Own', value: 'Own' }]);
+const AccomodationTypeList = resetter.ref([{ label: 'House', value: 'House' }, { label: 'Flat', value: 'Flat' } , { label: 'Apartment', value: 'Apartment' }]);
 const rentInRs = resetter.ref('');
 const CurrAddCountryDropDown = (val) => {
     CurrAddCountry.value = val.value;
@@ -3666,15 +3504,15 @@ const markUpModeList = [
 ];
 const modeOfRepayment = resetter.ref('');
 const modeOfRepaymentList = [
-    { label: 'Online', value: 'Online' },
-    { label: 'Cash', value: 'Cash' }
+    { label: 'Direct Debit Authority', value: 'Direct Debit Authority' },
+    { label: 'Post Dated Cheques', value: 'Post Dated Cheques' }
 ];
 const desiredFinancing = resetter.ref('');
 const desiredFinancingList = [
     { label: '1-year', value: '1-year' },
     { label: '2-year', value: '2-year' },
-    { label: '3-year', value: '3-year' },
-    { label: '4-year', value: '4-year' },
+    { label: '5-year', value: '5-year' },
+    { label: '10-year', value: '10-year' },
 
 ];
 const makeTextBox = (event, val) => {
@@ -4094,10 +3932,10 @@ const FetchButton = async () => {
         // inEmploymentSince.value = "";
 
         ///
-        grossMonthlySalary.value = '3,00,000';
-        netMonthlyIncome.value = '4,00,000';
-        monthlyIncomeFromOtherSourcesTabular.value = '1,00,000';
-        totalGrossMonthlyIncome.value = '4,00,000';
+        grossMonthlySalary.value = '300,000';
+        netMonthlyIncome.value = '400,000';
+        monthlyIncomeFromOtherSourcesTabular.value = '100,000';
+        totalGrossMonthlyIncome.value = '400,000';
         endOfServiceBenefits.value = 'N/A';
 
 
@@ -4105,9 +3943,11 @@ const FetchButton = async () => {
         make.value = 'TOYOTA';
         model.value = '2023';
         color.value = 'Silver';
-        downPayment.value = '20,000,00';
-        modeOfRepayment.value = 'Cash';
-        desiredFinancing.value = '1-year'
+        downPayment.value = '2,000,000';
+        price.value = '6,000,000'
+        modeOfRepayment.value = 'Direct Debit Authority';
+        desiredFinancing.value = '5-year'
+        desiredFinancingAmount.value = '4,000,000'
         ////
         Reference1Name.value = 'Sameer';
         Reference1Relationship.value = 'Brother';
@@ -4119,7 +3959,7 @@ const FetchButton = async () => {
         Reference2Name.value = 'Ali';
         Reference2Relationship.value = 'Friend';
         Reference2CNIC.value = '81402-4569852-4';
-        Reference2Address.value = 'Karachi,Pakistan';
+        Reference2Address.value = 'Islamabad,Pakistan';
         Reference2HomePhone.value = '';
         Reference2OtherPhone.value = '0348-2563458';
         Reference2Mobile.value = '0349-5142456';
@@ -4128,7 +3968,7 @@ const FetchButton = async () => {
     cnicIssueDate.value = "02/02/2020";
     cnicExpiryDate.value = "02/02/2030";
     ntnNumber.value = "78965425";
-    DobTextBox.value = "02//02/2025";
+    DobTextBox.value = "02/02/2025";
     salutation.value = "Ms.";
     qualification.value = "Bachelor";
     maritalStatus.value = "Single";
@@ -4152,8 +3992,8 @@ const FetchButton = async () => {
     BlockTextBoxValue.value = "Block 69"
     HouseNo.value = "House 06"
     NearestLandMark.value = "Giga Mall"
-    ResidenceStatus.value = "Permanent";
-    AccomodationType.value = "Rented";
+    ResidenceStatus.value = "Rented";
+    AccomodationType.value = "Flat";
     timeAtCurrentAddress.value = "1 year";
     rentInRs.value = "50,000";
     //
@@ -4164,9 +4004,9 @@ const FetchButton = async () => {
     PermanentBlockTextBoxValue.value = "Block 69"
     PermanentHouseNo.value = "House 06"
     PermanentNearestLandMark.value = "Giga Mall"
-    PermanentResidenceStatus.value = "Permanent";
-    PermanentAccomodationType.value = "Rented";
-    PermanenttimeAtCurrentAddress.value = "1 year";
+    PermanentResidenceStatus.value = "Rented";
+    PermanentAccomodationType.value = "Flat";
+    PermanenttimeAtCurrentAddress.value = "5 year";
     PermanentrentInRs.value = "50,000";
     //
     TempAddCountry.value = "Pakistan"
@@ -4176,8 +4016,8 @@ const FetchButton = async () => {
     TempBlockTextBoxValue.value = "Block 69"
     TempHouseNo.value = "House 06"
     TempNearestLandMark.value = "Giga Mall"
-    TempResidenceStatus.value = "Permanent";
-    TempAccomodationType.value = "Rented";
+    TempResidenceStatus.value = "Rented";
+    TempAccomodationType.value = "Flat";
     TemptimeAtCurrentAddress.value = "1 year";
     TemprentInRs.value = "50,000";
 
@@ -4201,7 +4041,7 @@ const onTabChange = (event) => {
     activeSubTab.value = 0
 }
 const CancelForm = () => {
-    router.push("./dashboard")
+    router.push("./loan-origination-&-management/Consumer-Loan")
 }
 const SubmitForm = () => {
     successDialog.value = true
@@ -4209,7 +4049,7 @@ const SubmitForm = () => {
 
 const handleOk = () => {
     successDialog.value = false
-    router.push('/dashboard') // 👈 change route
+    router.push('/loan-origination-&-management/Consumer-Loan') // 👈 change route
 }
 </script>
 <style scoped>
@@ -4376,11 +4216,11 @@ const handleOk = () => {
     vertical-align: middle;
 }
 
-fieldset {
+/* fieldset {
     padding: 0.99% !important;
-    /* border: 1px solid var(--text-color) !important; */
+    border: 1px solid var(--text-color) !important;
 
-}
+} */
 
 /* tabs */
 .custom-tab {

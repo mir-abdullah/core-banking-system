@@ -3,7 +3,7 @@
     <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 bg-transparent">
       <div class="flex items-center gap-2 sm:gap-3 md:gap-4 ml-2 sm:ml-5 mt-2 sm:mt-5 ">
         <img :src="bankLogo" alt="Bank Logo" class="w-[50px] h-[41px]" />
-        <h1 class="text-[32px]  font-semibold font-inter">Core Banking System - TL1</h1>
+        <h1 class="text-[32px]  font-semibold font-inter">Core Banking System - TL-1</h1>
       </div>
 
       <div class="flex items-center gap-2 bg-white rounded-md shadow-sm px-2 ">
@@ -78,7 +78,7 @@
     </main>
     <footer class="fixed bottom-0 left-0 right-0 sm:py-3 md:py-3 py-2.5 mb-4  ">
       <img :src="badgeImage" alt="Badge" class=" mb-4 w-48 h-17 lg:ml-90.75  " />
-      <p class="text-[#272835] sm:text-sm md:text-base lg:ml-85 ">©{{ currentYear }} Core Banking System-TL1</p>
+      <p class="text-[#272835] sm:text-sm md:text-base lg:ml-85 ">©{{ currentYear }} Core Banking System-TL-1</p>
     </footer>
   </div>
 </template>

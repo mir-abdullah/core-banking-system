@@ -13,12 +13,14 @@ import newAccountIcon from "../assets/images/icon_notification_new_account.svg";
 // import editProfileIcon from "../assets/images/icon_profile_edit_profile.svg";
 import logoutIcon from "../assets/images/icon_profile_logout.svg";
 // import changePasswordIcon from "../assets/images/icon_profile_change_password.svg";
-import notificatioIcon1 from "../assets/images/Avatar.png";
-import notificatioIcon2 from "../assets/images/Avatar_1.png";
-import notificatioIcon3 from "../assets/images/Avatar_2.png";
+import notificationIcon1 from "../assets/images/Avatar.png";
+import notificationIcon2 from "../assets/images/Avatar_1.png";
+import notificationIcon3 from "../assets/images/Avatar_2.png";
 import editProfileIcon from "../assets/images/edit-profile.svg";
 import changePasswordIcon from "../assets/images/change-password.svg";
 import notificationsIcon from "../assets/images/notifications.svg";
+import profilePic from "../assets/images/Profile_Picture.png";
+
 
 
 
@@ -131,7 +133,9 @@ export const notifications = [
     time: "Yesterday at 9:42 AM",
     hasActions: false,
     read: false,
-    Img: notificatioIcon1,
+      // Img: notificationIcon1,
+          Img:profilePic
+
   },
   {
     id: 2,
@@ -140,7 +144,9 @@ export const notifications = [
     time: "Today at 10:20 AM",
     hasActions: false,
     read: false,
-    Img: notificatioIcon2,
+    // Img: notificationIcon2,
+    Img:profilePic
+
   },
   {
     id: 3,
@@ -149,7 +155,8 @@ export const notifications = [
     time: "Yesterday ",
     hasActions: false,
     read: false,
-    Img: notificatioIcon3,
+    // Img: notificationIcon3,
+    Img:profilePic
   },
   {
     id: 4,
