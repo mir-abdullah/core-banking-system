@@ -1788,7 +1788,7 @@
                         <!-- //////////////////////////////// -->
                         <fieldset class="mt-4">
                             <div class="grid grid-cols-12 gap-4 mb-4">
-                                <div class="col-span-5" >
+                                <div class="col-span-5">
                                     <h3>
                                         <b>Are You a Salaried Individual or Self Employed / Business
                                             Individual? <span class="text-red-600">*</span></b>
@@ -1815,14 +1815,14 @@
                                         <h3>CNIC</h3>
                                     </div>
                                     <div class="grid grid-cols-12 gap-4 mb-4">
-                                        <div class="col-span-4">
-                                            <FileUpload name="CNICFront" label="CNIC Front" icon="pi pi-id-card"
+                                        <div class="col-span-5">
+                                            <FileUpload name="CNICFront" label="CNIC Front" icon="pi pi-id-card" 
                                                 @file-selected="handleFile" />
 
                                         </div>
-                                        <div class="col-span-4">
+                                        <div class="col-span-2">
                                         </div>
-                                        <div class="col-span-4">
+                                        <div class="col-span-5">
                                             <FileUpload name="CNICBack" label="CNIC Back" icon="pi pi-id-card"
                                                 @file-selected="handleFile" />
                                         </div>
@@ -1833,20 +1833,26 @@
                                     <div class="section-header">
                                         <h3>Bank Statement</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="bankStatement" label="Upload" icon="pi pi-receipt"
                                                 @file-selected="handleFile" />
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4" v-if="isAccountHolder == 'yes' ? true : false">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center"  v-if="isAccountHolder == 'yes' ? true : false">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
-                                        <!-- <div class="col-span-4">
-                                </div> -->
 
-                                        <div class="col-span-2" v-if="isAccountHolder == 'yes' ? true : false">
+                                        <!-- Fetch Button -->
+                                        <div class="col-span-5 flex justify-center"  v-if="isAccountHolder == 'yes' ? true : false">
                                             <Button label="Fetch Bank Statement" backgroundColor="var(--primary-color)"
                                                 name="fetchBankStatementButton"
                                                 @button-on-click="fetchBankStatementButton" />
@@ -1854,51 +1860,66 @@
                                     </div>
                                 </fieldset>
 
+
                                 <fieldset class="mt-4">
                                     <div class="section-header">
                                         <h3>Passport Photograph</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+                                     <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="takePhoto" label="Take Photo" icon="pi pi-camera"
                                                 :showDragFileText=false @file-selected="handleFile" />
                                             <!-- <CameraCapture label="Take Photo" icon="pi pi-camera"
                                         @image-captured="handleFile" /> -->
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
 
-                                        <div class="col-span-4">
+                                        <div class="col-span-5">
                                             <FileUpload name="uploadFromGallery" label="Upload from Gallery"
                                                 icon="pi pi-image" @file-selected="handleFile" />
                                         </div>
                                     </div>
+                                   
                                 </fieldset>
 
                                 <fieldset class="mt-4">
                                     <div class="section-header">
                                         <h3>Employment certificate / job card</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="uploadDocument" label="Upload" icon="pi pi-receipt"
                                                 @file-selected="handleFile" />
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
 
-                                        <div class="col-span-4">
+                                        <div class="col-span-5">
                                             <FileUpload name="anyOtherDocument"
                                                 label="Any other document required by Bank" icon="pi pi-plus"
                                                 @file-selected="handleFile" />
                                         </div>
                                     </div>
+                                    
                                 </fieldset>
 
                                 <fieldset class="mt-4">
@@ -1940,13 +1961,13 @@
                                         <h3>CNIC</h3>
                                     </div>
                                     <div class="grid grid-cols-12 gap-4 mb-4">
-                                        <div class="col-span-4">
+                                        <div class="col-span-5">
                                             <FileUpload name="CNICFrontSelfEmployed" label="CNIC Front"
                                                 icon="pi pi-id-card" @file-selected="handleFile" />
                                         </div>
-                                        <div class="col-span-4">
+                                        <div class="col-span-2">
                                         </div>
-                                        <div class="col-span-4">
+                                        <div class="col-span-5">
                                             <FileUpload name="CNICBackSelfEmployed" label="CNIC Back"
                                                 icon="pi pi-id-card" @file-selected="handleFile" />
                                         </div>
@@ -1957,25 +1978,30 @@
                                     <div class="section-header">
                                         <h3>Bank Statement</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="bankStatementSelfEmployed" label="Upload"
                                                 icon="pi pi-receipt" @file-selected="handleFile" />
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4" v-if="isAccountHolder == 'yes' ? true : false">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center" v-if="isAccountHolder == 'yes' ? true : false">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
-                                        <!-- <div class="col-span-4">
-                                </div> -->
 
-                                        <div class="col-span-2" v-if="isAccountHolder == 'yes' ? true : false">
+                                        <div class="col-span-5 flex justify-center" v-if="isAccountHolder == 'yes' ? true : false">
                                             <Button label="Fetch Bank Statement" backgroundColor="var(--primary-color)"
                                                 name="fetchBankStatementButton"
                                                 @button-on-click="fetchBankStatementButton" />
                                         </div>
                                     </div>
+                                    
                                 </fieldset>
 
                                 <fieldset class="mt-4">
@@ -1983,20 +2009,26 @@
                                     <div class="section-header">
                                         <h3>Passport Photograph</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="takePhotoSelfEmployed" label="Take Photo"
                                                 icon="pi pi-camera" :showDragFileText=false
                                                 @file-selected="handleFile" />
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
 
-                                        <div class="col-span-4">
-                                            <FileUpload name="uploadFromGallerySelfEmployed" label="Upload from Gallery"
+                                        <div class="col-span-5">
+                                           <FileUpload name="uploadFromGallerySelfEmployed" label="Upload from Gallery"
                                                 icon="pi pi-image" @file-selected="handleFile" />
                                         </div>
                                     </div>
@@ -2006,19 +2038,25 @@
                                     <div class="section-header">
                                         <h3>Business Proof</h3>
                                     </div>
-                                    <div class="grid grid-cols-12 gap-4 mb-4" align="middle">
-                                        <div class="col-span-4">
+                                    <div class="grid grid-cols-12 gap-4 mb-4 items-center">
+                                        <!-- Upload -->
+                                        <div class="col-span-5">
                                             <FileUpload name="uploadDocumentSelfEmployed" label="Upload"
                                                 icon="pi pi-receipt" @file-selected="handleFile" />
                                         </div>
 
-                                        <!-- OR in the middle -->
-                                        <div class="col-span-4">
-                                            <h3 class="section-header">OR</h3>
+                                        <!-- OR Divider -->
+                                        <div class="col-span-2 flex justify-center">
+                                            <Divider layout="vertical" class="!hidden md:!flex">
+                                                <b>OR</b>
+                                            </Divider>
+                                            <Divider layout="horizontal" class="!flex md:!hidden" align="center">
+                                                <b>OR</b>
+                                            </Divider>
                                         </div>
 
-                                        <div class="col-span-4">
-                                            <FileUpload name="anyOtherDocumentSelfEmployed"
+                                        <div class="col-span-5">
+                                           <FileUpload name="anyOtherDocumentSelfEmployed"
                                                 label="Any other document required by Bank" icon="pi pi-plus"
                                                 @file-selected="handleFile" />
                                         </div>
@@ -2906,14 +2944,14 @@
                                             <div class="col-span-6"></div>
                                             <div class="col-span-5">
                                                 <h3>
-                                                    Please Upload Scanned Signed Document
+                                                   <strong>Please Upload Scanned Signed Document</strong> 
                                                 </h3>
                                             </div>
                                         </div>
 
-                                        <div>
-                                            <div class="col-span-4" :lg="7"></div>
-                                            <div class="col-span-4">
+                                            <div class="grid grid-cols-12 gap-4">
+                                                    <div class="col-span-3"></div>
+                                                    <div class="col-span-6">
                                                 <FileUpload name="uploadDocumentSelfEmployed" label=""
                                                     icon="pi pi-file-pdf" @file-selected="handleFile" />
                                             </div>
@@ -2992,15 +3030,15 @@
                                             </div>
                                         </fieldset>
                                         <!-- Signature Area -->
-                                         <div class="grid grid-cols-12 gap-4 mb-4">
+                                        <div class="grid grid-cols-12 gap-4 mb-4">
                                             <div class="col-span-12">
-                                        <div class="font-bold  my-4 h-px w-full text-[var(--primary-color)]">
+                                                <div class="font-bold  my-4 h-px w-full text-[var(--primary-color)]">
 
-                                        <span><i class="pi pi-pen-to-square" /></span>
-                                        <span class="ml-1"> E-Signature</span>
+                                                    <i class="pi pi-pen-to-square" />
+                                                    <span class="ml-1"> E-Signature</span>
 
-                                        </div>
-                                        </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <TabView v-model:activeIndex="activeSubTab">
@@ -3019,8 +3057,13 @@
                                             </TabPanel>
 
                                             <TabPanel header="Upload">
+                                                <div class="grid grid-cols-12 gap-4">
+                                                    <div class="col-span-3"></div>
+                                                    <div class="col-span-6">
                                                 <FileUpload name="signatureImage" label="Upload signature image"
                                                     icon="pi pi-file-pdf" @file-selected="handleFile" />
+                                                    </div>
+                                                    </div>
                                             </TabPanel>
                                         </TabView>
                                     </TabPanel>
@@ -3096,7 +3139,7 @@
 </template>
 <script setup>
 import { ref, defineAsyncComponent, watch, computed } from "vue";
-import { Button, Checkbox, TextBox, TextArea, Dropdown, Label, RadioButton, FileUpload } from '@cms/ui-components';
+import { Button, Checkbox, TextBox, TextArea, Dropdown, Label, RadioButton, FileUpload} from '@cms/ui-components';
 
 import Accordion from 'primevue/accordion';
 import AccordionPanel from 'primevue/accordionpanel';
@@ -4029,7 +4072,7 @@ const FetchButton = async () => {
     if (isAccountHolder.value == 'yes') {
         identificationType.value = 'CNIC';
         cnicNo.value = "82313-2135678-2";
-        
+
 
         TempAddress.value = true;
         PermanentAddress.value = true;
@@ -4103,40 +4146,40 @@ const FetchButton = async () => {
     vehicleStatus.value = "Old"
 
     CurrAddCountry.value = "Pakistan"
-        Province.value = "Sindh"
-        City.value = "Islamabad"
-        Area.value = "Bahria"
-        BlockTextBoxValue.value = "Block 69"
-        HouseNo.value = "House 06"
-        NearestLandMark.value = "Giga Mall"
-        ResidenceStatus.value = "Permanent";
-        AccomodationType.value = "Rented";
-        timeAtCurrentAddress.value = "1 year";
-        rentInRs.value = "50,000";
-        //
-        PermanentAddCountry.value = "Pakistan"
-        PermanentProvince.value = "Sindh"
-        PermanentCity.value = "Islamabad"
-        PermanentArea.value = "Bahria"
-        PermanentBlockTextBoxValue.value = "Block 69"
-        PermanentHouseNo.value = "House 06"
-        PermanentNearestLandMark.value = "Giga Mall"
-        PermanentResidenceStatus.value = "Permanent";
-        PermanentAccomodationType.value = "Rented";
-        PermanenttimeAtCurrentAddress.value = "1 year";
-        PermanentrentInRs.value = "50,000";
-        //
-        TempAddCountry.value = "Pakistan"
-        TempProvince.value = "Sindh"
-        TempCity.value = "Islamabad"
-        TempArea.value = "Bahria"
-        TempBlockTextBoxValue.value = "Block 69"
-        TempHouseNo.value = "House 06"
-        TempNearestLandMark.value = "Giga Mall"
-        TempResidenceStatus.value = "Permanent";
-        TempAccomodationType.value = "Rented";
-        TemptimeAtCurrentAddress.value = "1 year";
-        TemprentInRs.value = "50,000";
+    Province.value = "Sindh"
+    City.value = "Islamabad"
+    Area.value = "Bahria"
+    BlockTextBoxValue.value = "Block 69"
+    HouseNo.value = "House 06"
+    NearestLandMark.value = "Giga Mall"
+    ResidenceStatus.value = "Permanent";
+    AccomodationType.value = "Rented";
+    timeAtCurrentAddress.value = "1 year";
+    rentInRs.value = "50,000";
+    //
+    PermanentAddCountry.value = "Pakistan"
+    PermanentProvince.value = "Sindh"
+    PermanentCity.value = "Islamabad"
+    PermanentArea.value = "Bahria"
+    PermanentBlockTextBoxValue.value = "Block 69"
+    PermanentHouseNo.value = "House 06"
+    PermanentNearestLandMark.value = "Giga Mall"
+    PermanentResidenceStatus.value = "Permanent";
+    PermanentAccomodationType.value = "Rented";
+    PermanenttimeAtCurrentAddress.value = "1 year";
+    PermanentrentInRs.value = "50,000";
+    //
+    TempAddCountry.value = "Pakistan"
+    TempProvince.value = "Sindh"
+    TempCity.value = "Islamabad"
+    TempArea.value = "Bahria"
+    TempBlockTextBoxValue.value = "Block 69"
+    TempHouseNo.value = "House 06"
+    TempNearestLandMark.value = "Giga Mall"
+    TempResidenceStatus.value = "Permanent";
+    TempAccomodationType.value = "Rented";
+    TemptimeAtCurrentAddress.value = "1 year";
+    TemprentInRs.value = "50,000";
 
 }
 
@@ -4158,7 +4201,7 @@ const onTabChange = (event) => {
     activeSubTab.value = 0
 }
 const CancelForm = () => {
-    router.push("/dashboard")
+    router.push("./dashboard")
 }
 const SubmitForm = () => {
     successDialog.value = true
@@ -4335,7 +4378,7 @@ const handleOk = () => {
 
 fieldset {
     padding: 0.99% !important;
-    border: 1px solid var(--border-color) !important;
+    /* border: 1px solid var(--text-color) !important; */
 
 }
 

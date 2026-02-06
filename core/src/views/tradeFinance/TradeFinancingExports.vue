@@ -1,8 +1,8 @@
     <script setup>
-    import { tradeFinanceExportsItems } from '../data/data';
-    import LayoutCard from '../components/LayoutCard.vue';
+    import { tradeFinanceExportsItems } from '../../data/data';
+    import LayoutCard from '../../components/LayoutCard.vue';
     import { useRouter, useRoute } from 'vue-router';
-    import { layoutColors } from '../data/data';
+    import { layoutColors } from '../../data/data';
 
     const route = useRoute();
     

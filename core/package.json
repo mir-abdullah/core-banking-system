@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cms/ui-components": "2.0.5",
+    "@cms/ui-components": "^2.0.8",
     "@primevue/themes": "^4.5.0",
     "@tailwindcss/vite": "^4.1.18",
     "primeicons": "^7.0.0",

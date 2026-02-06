@@ -8,9 +8,9 @@ import { useSidebar } from '../composables/useSidebar';
 const props = defineProps({
     name: { type: String, required: true },
     options: { type: Array, required: true },
-    dropdown: { type: Array, required: true },
+    // dropdown: { type: Array, required: true },
     color: { type: String, required: true },
-    showDropdown: { type: Boolean, default: true },
+    // showDropdown: { type: Boolean, default: true },
     
 });
 
@@ -72,28 +72,26 @@ const handleItemClick = (item) => {
 };
 
 const toggleCard = () => {
-    // If no dropdown, route to the page
     if (!props.dropdown || !props.dropdown.length) {
-        // Check if route name is a single name (no child routes)
         const isSingleRouteName = route.name && typeof route.name === 'string' && !route.name.includes('&');
         
         if (isSingleRouteName) {
-            // For single route names, just append the card name as a path segment
             const routePath = route.fullPath.endsWith('/') 
                 ? route.fullPath + props.name.toLowerCase().replace(/\s+/g, '-')
                 : route.fullPath + '/' + props.name.toLowerCase().replace(/\s+/g, '-');
             router.push(routePath);
         }
-    } else {
-        // If dropdown exists, toggle card open/close
-        if (cardOpen.value) {
-            closeAll();
-            setActiveCard(null);
-        } else {
-            cardOpen.value = true;
-            setActiveCard(cardId.value);
-        }
-    }
+    } 
+    // else {
+    //     // If dropdown exists, toggle card open/close
+    //     if (cardOpen.value) {
+    //         closeAll();
+    //         setActiveCard(null);
+    //     } else {
+    //         cardOpen.value = true;
+    //         setActiveCard(cardId.value);
+    //     }
+    // }
 };
 
 const toggleDropdown = (item) => {

@@ -1,6 +1,6 @@
 <script setup>
-import DashboardCard from '../components/DashboardCard.vue';
-import { tradeFinanceMenuItems } from '../data/data'; 
+import DashboardCard from '../../components/DashboardCard.vue';
+import { tradeFinanceMenuItems } from '../../data/data'; 
 import {  useRoute } from 'vue-router';
  const route = useRoute();
 

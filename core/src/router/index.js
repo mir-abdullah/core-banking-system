@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import SignUpPage from "../views/SignUpPage.vue";
 import Dashboard from "../views/Dashboard.vue";
 import GeneralBanking from "../views/GeneralBanking.vue";
-import TradeFinancing from "../views/TradeFinancing.vue";
+import TradeFinancing from "../views/tradeFinance/TradeFinancing.vue";
 import LoanOrigination from "../views/LoanOrigination.vue";
 import InternationalTransactions from "../views/InternationalTransactions.vue";
 import CustomerOnboarding from "../views/CustomerOnboarding.vue";
@@ -14,17 +14,17 @@ import GeneralInquiry from "../views/GeneralInquiry.vue";
 import Settings from "../views/Settings.vue";
 import OpenNewCustomerAccount from "../UseCase/openNewCustomerAccount.vue";
 import NewCustLoanApp from "../UseCase/NewCustLoanApp.vue";
-import TradeFinancingImports from "../views/TradeFinancingImports.vue";
-import TradeFinancingExports from "../views/TradeFinancingExports.vue";
+import TradeFinancingImports from "../views/tradeFinance/TradeFinancingImports.vue";
+import TradeFinancingExports from "../views/tradeFinance/TradeFinancingExports.vue";
 import Setup from "../views/Setup.vue";
 import UserGroup from "../views/UserGroup.vue";
-import Origination from "../views/Origination.vue";
+import Origination from "../views/consumerLoan/Origination.vue";
 import LoanOriginationMainScreen from "../views/LoanOriginationMainScreen.vue";
-import Disbursement from "../views/Disbursement.vue";
-import Recovery from "../views/Recovery.vue";
-import Approval from "../views/Approval.vue";
-
-
+import Disbursement from "../views/consumerLoan/Disbursement.vue";
+import Recovery from "../views/consumerLoan/Recovery.vue";
+import Approval from "../views/consumerLoan/Approval.vue";
+import LoanManagement from "../views/consumerLoan/LoanManagement.vue";
+import AssetManagement from "../views/consumerLoan/AssetManagement.vue";
 
 const routes = [
   { path: "/", name: "SignIn", component: SignUpPage, meta: { hide: true } },
@@ -45,20 +45,20 @@ const routes = [
     name: "TradeFinancing",
     component: TradeFinancing,
     meta: { title: "Trade Financing" },
-    children:[
-      { path: "imports",
+    children: [
+      {
+        path: "imports",
         name: "Imports",
         component: TradeFinancingImports,
         meta: { title: "Imports" },
       },
       {
-        path:"exports",
-        name:"Exports",
+        path: "exports",
+        name: "Exports",
         component: TradeFinancingExports,
-        meta:{ title: "Exports"}
-      }
-       
-    ]
+        meta: { title: "Exports" },
+      },
+    ],
   },
   {
     path: "/loan-origination-&-management",
@@ -73,96 +73,111 @@ const routes = [
         meta: { title: "Consumer Loans" },
         children: [
           {
-            path:"-origination",
-            name:"ConsumerOrigination",
+            path: "-origination",
+            name: "ConsumerOrigination",
             component: Origination,
-            meta:{ title: "Origination"},
-            children:[
-                {
-        path: "loan-application-submission",
-        name: "NewCustomerLoanApplication",
-        component: NewCustLoanApp,
-        meta: { title: "Auto Loan Application" },
-      }
-            ]
-
+            meta: { title: "Origination" },
+            // children: [
+            //   {
+            //     path: "loan-application-submission",
+            //     name: "NewCustomerLoanApplication",
+            //     component: NewCustLoanApp,
+            //     meta: { title: "Loan Application Submission" },
+            //   },
+            // ],
           },
           {
-            path:"-disbursement",
-            name:"ConsumerDisbursement",
+            path: "-disbursement",
+            name: "ConsumerDisbursement",
             component: Disbursement,
-            meta:{ title: "Disbursement"}
-
+            meta: { title: "Disbursement" },
           },
           {
-            path:"recovery-&-settlement",
-            name:"ConsumerRecovery",
+            path: "recovery-&-settlement",
+            name: "ConsumerRecovery",
             component: Recovery,
-            meta:{ title: "Recovery"}
+            meta: { title: "Recovery & Settlement" },
           },
           {
-            path:"-approval",
-            name:"ConsumerApproval",
+            path: "-approval",
+            name: "ConsumerApproval",
             component: Approval,
-            meta:{ title: "Approval"}
+            meta: { title: "Approval" },
           },
-         
-        ]
+          {
+            path: "loan-management",
+            name: "ConsumerLoanManagement",
+            component: LoanManagement,
+            meta: { title: "Loan Management" },
+          },
+          {
+            path:"Asset-Management",
+            name:"AssetManagement",
+            component:AssetManagement,
+            meta:{title:"Asset Management"} 
+          },
+           {
+                path: "loan-application-submission",
+                name: "NewCustomerLoanApplication",
+                component: NewCustLoanApp,
+                meta: { title: "Loan Application Submission" },
+              },
+        ],
       },
       {
         path: "SME-Agri-Corporate-Loan",
         name: "SMEAgriCorporateLoan",
         component: LoanOrigination,
-        meta: { title: "SME, Agri & Corporate Loans" },
+        meta: { title: "Corporate, SME, Agri Loans" },
 
         children: [
-           {
-            path:"-origination",
-            name:"SMEOrigination",
+          {
+            path: "-origination",
+            name: "SMEOrigination",
             component: Origination,
-            meta:{ title: "Origination"},
-            children:[
-                 {
-        path: "loan-application-submission",
-        name: "SMENewCustomerLoanApplication",
-        component: NewCustLoanApp,
-        meta: { title: "Auto Loan Application" },
-                 }
-               
-            ]
-
+            meta: { title: "Origination" },
+            // children: [
+            //   {
+            //     path: "loan-application-submission",
+            //     name: "LoanApplicationSubmission",
+            //     component: NewCustLoanApp,
+            //     meta: { title: "Loan Application Submission" },
+            //   },
+            // ],
           },
           {
-            path:"-disbursement",
-            name:"SMEDisbursement",
+            path: "-disbursement",
+            name: "SMEDisbursement",
             component: Disbursement,
-            meta:{ title: "Disbursement"}
-
+            meta: { title: "Disbursement" },
           },
           {
-           path:"recovery-&-settlement",
-            name:"SMERecovery",
+            path: "recovery-&-settlement",
+            name: "SMERecovery",
             component: Recovery,
-            meta:{ title: "Recovery"}
+            meta: { title: "Recovery & Settlement" },
           },
           {
-            path:"-approval",
-            name:"SMEApproval",
+            path: "-approval",
+            name: "SMEApproval",
             component: Approval,
-            meta:{ title: "Approval"},
-            
+            meta: { title: "Approval" },
           },
-        
-      
-      // {
-      //   path: "new-customer-loan-application",
-      //   name: "NewCustomerLoanApplication",
-      //   component: NewCustLoanApp,
-      //   meta: { title: "Auto Loan Application" },
-      // },
-    ]
-      }
-    ]
+          {
+            path: "loan-management",
+            name: "SMELoanManagement",
+            component: LoanManagement,
+            meta: { title: "Loan Management" },
+          },
+           {
+                path: "loan-application-submission",
+                name: "LoanApplicationSubmission",
+                component: NewCustLoanApp,
+                meta: { title: "Loan Application Submission" },
+              },
+        ],
+      },
+    ],
   },
   {
     path: "/international-transactions",
@@ -225,7 +240,7 @@ const routes = [
     name: "UserGroup",
     component: UserGroup,
     meta: { title: " User Group" },
-  }
+  },
 ];
 
 const router = createRouter({

@@ -31,6 +31,7 @@ const unreadCount = computed(() => {
 const formattedRouteName = computed(() => {
     if (!route.name) return '';
     let name = route.name;
+    // console.log("route:",route.path)
     name = name.replace(/([A-Z])/g, ' $1').trim();
     name = name.replace(/&/g, ' & ');
     name = name.replace(/\s+/g, ' ').trim();
@@ -38,9 +39,7 @@ const formattedRouteName = computed(() => {
 });
 
 const displayTitle = computed(() => {
-    if (route.path === '/dashboard') return 'Main Menu';
-    if(route.path === '/loan-origination-&-management/SME-Agri-Corporate-Loan') return 'SME Agri Corporate Loan';
-    return formattedRouteName.value || 'Main Menu';
+  return route.meta.title || 'Main Menu';
 });
 
 const breadcrumbItems = computed(() => {
@@ -51,8 +50,8 @@ const breadcrumbItems = computed(() => {
 
             // Formatting route name
             let label = '';
-            if (matched.name) {
-                label = matched.name;
+            if (matched.meta.title) {
+                label = matched.meta.title;
                 // Split camelCase but preserve acronyms
                 label = label.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
                 label = label.replace(/([a-z])([A-Z])/g, '$1 $2');
@@ -223,7 +222,7 @@ const handleProfileMenuClick = (action) => {
                 <img :src="profilePic" alt="Profile" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg" />
                 <div class="hidden md:block">
                     <p class="text-lg font-semibold text-gray-900">Bonface</p>
-                    <p class="text-xs sm:text-sm text-gray-500">Operation Manager</p>
+                    <p class="text-xs sm:text-sm text-gray-500">Operations Manager</p>
                 </div>
                 <button @click="toggleProfile" class="text-gray-400 hover:text-gray-600">
                     <i class="pi pi-chevron-down text-xs sm:text-sm"></i>
@@ -237,7 +236,7 @@ const handleProfileMenuClick = (action) => {
                             <img :src="profilePic" alt="Profile" class="w-10 h-10 rounded-lg" />
                             <div class="flex-1">
                                 <p class="text-sm sm:text-sm font-semibold text-gray-900">Bonface</p>
-                                <p class="text-xs font-medium mt-1 text-[#666D80]">Operation Manager</p>
+                                <p class="text-xs font-medium mt-1 text-[#666D80]">Operations Manager</p>
                             </div>
                         </div>
                     </div>

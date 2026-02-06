@@ -72,20 +72,16 @@ const handleItemClick = (item) => {
 };
 
 const toggleCard = () => {
-    // If no dropdown, route to the page
     if (!props.dropdown || !props.dropdown.length) {
-        // Check if route name is a single name (no child routes)
         const isSingleRouteName = route.name && typeof route.name === 'string' && !route.name.includes('&');
         
         if (isSingleRouteName) {
-            // For single route names, just append the card name as a path segment
             const routePath = route.fullPath.endsWith('/') 
                 ? route.fullPath + props.name.toLowerCase().replace(/\s+/g, '-')
                 : route.fullPath + '/' + props.name.toLowerCase().replace(/\s+/g, '-');
             router.push(routePath);
         }
     } else {
-        // If dropdown exists, toggle card open/close
         if (cardOpen.value) {
             closeAll();
             setActiveCard(null);
