@@ -40,7 +40,7 @@ onUnmounted(() => {
 const routeMap = {
     'Main Menu': '/dashboard',
     'General Banking': '/general-banking',
-    'Trade Financing': '/trade-financing',
+    'Trade Finance': '/trade-financing',
     'Loan Origination & Management': '/loan-origination-&-management',
     'International Transactions': '/international-transactions',
     'Customer Onboarding & Management': '/customer-onboarding-&-management',

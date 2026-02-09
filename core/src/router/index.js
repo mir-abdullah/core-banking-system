@@ -44,7 +44,7 @@ const routes = [
     path: "/trade-financing",
     name: "TradeFinancing",
     component: TradeFinancing,
-    meta: { title: "Trade Financing" },
+    meta: { title: "Trade Finance" },
     children: [
       {
         path: "imports",

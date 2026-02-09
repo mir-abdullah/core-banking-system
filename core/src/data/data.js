@@ -45,7 +45,7 @@ export const sidebarItems = [
     routeName: "GeneralBanking",
   },
   {
-    name: "Trade Financing",
+    name: "Trade Finance",
     icon: "pi-chart-bar",
     iconSrc: iconNavbarTradeFinance,
     backgroundColor: "#4880ff",
